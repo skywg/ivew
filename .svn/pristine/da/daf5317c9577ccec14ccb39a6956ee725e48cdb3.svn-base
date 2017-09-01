@@ -1,0 +1,163 @@
+<template>
+	<!--3设置栏目第三步开始-->
+	<div id="cer3_2">
+
+		<div style="padding: 0 38px">
+			<Row>
+				<Col span="12" style="border: 1px solid #ededed;width: 358px;margin-right: 26px;">
+				<div style="margin-left: 128px;">
+					<h2 style="line-height: 52px">选择资讯类型</h2>
+					<div class="zhuce-list">
+						<Tree :data="informations"  show-checkbox multiple @on-check-change="changePlant"></Tree>
+					</div>
+					<div style="margin: 14px">
+						<Button type="primary" size="small" @click="modal1=true">添加</Button>&nbsp&nbsp&nbsp
+						<Button type="error" size="small">删除</Button>
+					</div>
+
+					<Modal v-model="modal1" width="450" :closable="true" :mask-closable="false" class="gex" @on-ok="ok">
+
+						<Row style="margin-top: 20px;padding: 0 20px;text-align:left;font-size: 12px;">
+							<span>当前选中：<span v-for="c in leibie" style="color: red;">*{{c}};</span>
+							</span>
+						</Row>
+						<hr />
+						<Collapse accordion @on-change="getname1">
+							<Panel name="生产行业">
+								生产行业
+								<div slot="content">
+											<span style="margin: 5px;" @click="savea()">农业 </span>
+											<span style="margin: 5px;" @click="savea()">林业</span>
+											<span style="margin: 5px;" @click="savea()">畜牧</span>
+											<span style="margin: 5px;" @click="savea()">渔业</span>
+											<span style="margin: 5px;" @click="savea()">农药</span>
+								</div>
+							</Panel>
+
+							<Panel name="服务行业">
+								服务行业
+								<div slot="content">
+											<span style="margin: 5px;" @click="savea()">农业服务业 </span>
+											<span style="margin: 5px;" @click="savea()">林业服务业</span>
+											<span style="margin: 5px;" @click="savea()">仓储业质检</span>
+											<span style="margin: 5px;" @click="savea()">包装</span>
+											<span style="margin: 5px;" @click="savea()">运输</span>
+								</div>
+							</Panel>
+
+
+
+						</Collapse>
+
+					</Modal>
+
+				</div>
+				</Col>
+				<Col span="12" style="border: 1px solid #ededed;width: 358px">
+				<div style="text-align: center">
+					<h2 style="line-height: 52px">关联关注</h2>
+					<div class="zhuce-list2">
+						<ul>
+							<li @click="changeColor">关联产品</li>
+							<li @click="changeColor">关联物种</li>
+							<li @click="changeColor">关联服务</li>
+
+						</ul>
+					</div>
+					<div style="margin: 14px">
+						<Button type="primary" size="small">保存</Button>
+
+					</div>
+
+				</div>
+				</Col>
+
+			</Row>
+		</div>
+	</div>
+	<!--3设置栏目第三步结束-->
+</template>
+
+<script>
+	import $ from 'jquery'
+	export default {
+		data() {
+			return {
+				modal1:false,
+				informations: [{
+                    expand: true,
+                    title: '资讯',
+                    children: []
+
+                }],
+                leibie:[],
+                resultCP:[]
+			}
+		},
+		methods:{
+			changeColor() {
+				var obj = event.target
+				var len=this.resultCP.length;
+				var e=$(obj).html()
+				var _this=this;
+				$(obj).toggleClass("intro");
+				var cla=$(obj).attr("class")
+				console.log("intro="+cla)
+				if(cla=="intro"){
+					if(len>0){
+							var le=_this.resultCP.indexOf(e)
+							console.log("e=="+e)
+							console.log(_this.resultCP)
+							if(le==-1){
+								_this.resultCP.push(e)
+							}
+
+					}else{
+						_this.resultCP.push(e)
+					}
+				}else{
+					if(len>0){
+							var le=_this.resultCP.indexOf(e)
+							if(le>-1){
+								_this.resultCP.splice(le,1)
+							}
+					}
+				}
+				console.log(this.resultCP)
+			},
+			savea() {
+				var obj = event.target
+				var e=$(obj).html()
+				var len=this.leibie.length;
+				var _this=this;
+				$(obj).toggleClass("intro");
+				var cla=$(obj).attr("class")
+				if(cla=="intro"){
+					if(len>0){
+							var le=_this.leibie.indexOf(e)
+							if(le==-1){
+								_this.leibie.push(e)
+							}
+
+					}else{
+						_this.leibie.push(e)
+					}
+
+				}else{
+					if(len>0){
+							var le=_this.leibie.indexOf(e)
+							if(le>-1){
+								_this.leibie.splice(le,1)
+							}
+					}
+
+
+				}
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

@@ -1,0 +1,53 @@
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1503561246358'); /* IE9*/
+  src: url('iconfont.eot?t=1503561246358#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1503561246358') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1503561246358') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1503561246358#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-farming:before { content: "\e620"; }
+
+.icon-instr:before { content: "\e6da"; }
+
+.icon-jiage:before { content: "\e615"; }
+
+.icon-record:before { content: "\e80b"; }
+
+.icon-rice:before { content: "\e694"; }
+
+.icon-desc:before { content: "\e605"; }
+
+.icon-asce:before { content: "\e606"; }
+
+.icon-produce:before { content: "\e63b"; }
+
+.icon-holl-gold:before { content: "\e854"; }
+
+.icon-holl-team:before { content: "\e604"; }
+
+.icon-gift:before { content: "\e601"; }
+
+.icon-desc-default:before { content: "\e607"; }
+
+.icon-spade:before { content: "\e617"; }
+
+.icon-laud:before { content: "\e60d"; }
+
+.icon-arrow-right:before { content: "\e602"; }
+
+.icon-holl-hammer:before { content: "\e603"; }
+
+.icon-field:before { content: "\e608"; }
+
+.icon-machine:before { content: "\e609"; }
+

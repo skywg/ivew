@@ -1,0 +1,332 @@
+<template>
+	<div>
+		<div style="text-align: center;margin: 20px 0 40px 0">
+			<div style="margin-bottom: 16px">
+				<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">农事无忧ID</span>
+				<span style="font-size: 14px;width: 190px;display: inline-block;text-align: left">
+									{{id}}
+								</span>
+				<i-switch style="margin-left: 30px" v-model="switch1">
+					<span slot="open">公开</span>
+        			 <span slot="close">隐藏</span>
+				</i-switch>
+			</div>
+			<div style="margin-bottom: 16px">
+				<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">姓名</span>
+				<span style="font-size: 14px;width: 190px;display: inline-block;text-align: left">
+					{{name}}
+				</span>
+				<i-switch style="margin-left: 30px" v-model="switch2" @on-change="change1">
+					<span slot="open">公开</span>
+        			 <span slot="close">隐藏</span>
+				</i-switch>
+			</div>
+			<div style="margin-bottom: 16px">
+				<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">性别</span>
+				<span style="font-size: 14px;width: 190px;display: inline-block;text-align: left">
+					<Select v-model="sex" style="width:100px" placeholder="男" @on-change="change">
+        				<Option v-for="item in sexs" :value="item.value" >{{ item.label }}</Option>
+    				</Select>
+				</span>
+				<i-switch style="margin-left: 30px" v-model="switch3" @on-change="change1">
+					<span slot="open">公开</span>
+        			 <span slot="close">隐藏</span>
+				</i-switch>
+			</div>
+			<div style="margin-bottom: 16px">
+				<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">民族</span>
+				<span style="font-size: 14px;width: 190px;display: inline-block;text-align: left">
+					<Select v-model="family" style="width:100px" placeholder="汉族" @on-change="change">
+        				<Option v-for="f in families" :value="f.value" >{{ f.label }}</Option>
+    				</Select>
+				</span>
+				<i-switch style="margin-left: 30px" v-model="switch4" @on-change="change1">
+					<span slot="open">公开</span>
+        			 <span slot="close">隐藏</span>
+				</i-switch>
+			</div>
+
+			<div style="margin-bottom: 16px">
+				<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">生日</span>
+				<span style="font-size: 14px;width: 190px;display: inline-block;text-align: left">
+            		<Date-picker type="datetime" placeholder="选择日期" style="width: 100px" v-model="birth" @on-change="birth=$event" @on-ok="change" format="yyyy年MM月dd日" ></Date-picker>
+        		</span>
+				<i-switch style="margin-left: 30px" v-model="switch5" @on-change="change1">
+					<span slot="open">公开</span>
+        			 <span slot="close">隐藏</span>
+				</i-switch>
+			</div>
+			<div style="margin-bottom: 16px">
+				<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">职业</span>
+				<span style="font-size: 14px;width: 190px;display: inline-block;text-align: left">
+					<Select v-model="zhicheng" style="width:100px" placeholder="IT" @on-change="change">
+        				<Option v-for="item in professions" :value="item.value" >{{ item.label }}</Option>
+    				</Select>
+				</span>
+				<i-switch style="margin-left: 30px" v-model="switch6" @on-change="change1">
+					<span slot="open">公开</span>
+        			 <span slot="close">隐藏</span>
+				</i-switch>
+			</div>
+			<div style="margin-bottom: 16px">
+				<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">职称</span>
+				<span style="font-size: 14px;width: 190px;display: inline-block;text-align: left">
+					<Select v-model="profession" style="width:100px" placeholder="初级" @on-change="change">
+        				<Option v-for="item in zhichengs" :value="item.value" >{{ item.label }}</Option>
+    				</Select>
+				</span>
+				<i-switch style="margin-left: 30px" v-model="switch7" @on-change="change1">
+					<span slot="open">公开</span>
+        			 <span slot="close">隐藏</span>
+				</i-switch>
+			</div>
+			<div style="margin-bottom: 16px">
+				<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">擅长物种</span>
+				<span style="font-size: 14px;width: 190px;display: inline-block;text-align: left">
+					<Select v-model="specy" style="width:100px" placeholder="植物" @on-change="change">
+        				<Option v-for="item in species" :value="item.value" >{{ item.label }}</Option>
+    				</Select>
+				</span>
+				<i-switch style="margin-left: 30px" v-model="switch8" @on-change="change1">
+					 <span slot="open">公开</span>
+        			 <span slot="close">隐藏</span>
+				</i-switch>
+			</div>
+
+		</div>
+		<div>
+			<h2 style="text-align: center;padding:0 0 20px 0">实时预览</h2>
+
+			<Input v-model="con.content" type="textarea" :rows="7" placeholder="请输入..." @on-change="saveBasic"></Input>
+		</div>
+	</div>
+</template>
+
+<script>
+	var contents={
+		family:'',
+		sex:'',
+		birth:'',
+		specy:'',
+		zhicheng:'',
+		profession:'',
+		name:''
+	};
+	var contents1={
+		family:'',
+		sex:'',
+		birth:'',
+		specy:'',
+		zhicheng:'',
+		profession:'',
+		name:''
+	};
+	export default {
+		data() {
+			return {
+				switch1:true,
+				switch2:true,
+				switch3:true,
+				switch4:true,
+				switch5:true,
+				switch6:true,
+				switch7:true,
+				switch8:true,
+				families:[
+				{
+					value:'满族',
+					label:'满族'
+
+				},
+				{
+					value:'汉族',
+					label:'汉族'
+
+				}
+				],
+				 professions:[
+				 {
+					value:'农业',
+					label:'农业'
+
+				},
+				{
+					value:'IT',
+					label:'IT'
+
+				}
+				 ],
+				 species:[
+				 {
+					value:'大米',
+					label:'大米'
+
+				},
+				{
+					value:'玉米',
+					label:'玉米'
+
+				}
+				 ],
+				 zhichengs:[
+				 {
+					value:'初级',
+					label:'初级'
+
+				},
+				{
+					value:'中级',
+					label:'中级'
+
+				},
+				{
+					value:'高级',
+					label:'高级'
+
+				}
+				 ],
+				sexs:[
+				{
+					value:'男',
+					label:'男'
+
+				},
+				{
+					value:'女',
+					label:'女'
+
+				}
+				],
+
+					id:'653461342342351123',
+					family:'',
+					sex:'',
+					birth:'',
+					specy:'',
+					zhicheng:'',
+					profession:'',
+					name:JSON.parse(sessionStorage.getItem("user")).displayName,
+					textinfo:'',
+					con:{
+						content:'',
+						content1:'',
+					},
+
+			}
+
+
+		},
+		created: function() {
+			this.change()
+		},
+		methods: {
+			saveBasic() {
+				this.$store.commit('saveContent',this.con)
+			},
+			change(){
+				if(this.name!=''){
+					contents.name=this.name+',';
+					if(this.switch2==true){
+						contents1.name=this.name+',';
+					}
+				}
+				if(this.sex!=''){
+					contents.sex=this.sex;
+					if(this.switch3==true){
+						contents1.sex=this.sex;
+					}
+				}
+				if(this.family!=''){
+					contents.family=','+this.family;
+					if(this.switch4==true){
+						contents1.family=','+this.family;
+					}
+				}
+				if(this.birth!=''){
+					contents.birth=','+this.birth;
+					if(this.switch5==true){
+						contents1.birth=','+this.birth;
+					}
+				}
+				if(this.specy!=''){
+					contents.specy=','+this.specy;
+					if(this.switch6==true){
+						contents1.specy=','+this.specy;
+					}
+				}
+				if(this.zhicheng!=''){
+					contents.zhicheng=','+this.zhicheng;
+					if(this.switch7==true){
+						contents1.zhicheng=','+this.zhicheng;
+					}
+				}
+				if(this.profession!=''){
+					contents.profession=','+this.profession
+					if(this.switch8==true){
+						contents1.profession=','+this.profession;
+					}
+				}
+
+
+				this.con.content=contents.name+contents.sex+contents.family
+								+contents.birth+contents.specy
+								+contents.zhicheng+contents.profession;
+				this.con.content1=contents1.name+contents1.sex+contents1.family
+								+contents1.birth+contents1.specy
+								+contents1.zhicheng+contents1.profession;
+				this.saveBasic()
+			},
+			change1(){
+
+					if(this.name!=''&this.switch2==true){
+						contents1.name=this.name+',';
+					}else{
+						contents1.name='';
+					}
+
+					if(this.sex!=''&this.switch3==true){
+						contents1.sex=this.sex;
+					}else{
+						contents1.sex='';
+					}
+					if(this.family!=''&this.switch4==true){
+						contents1.family=','+this.family;
+					}else{
+						contents1.family='';
+					}
+					if(this.birth!=''&this.switch5==true){
+						contents1.birth=','+this.birth;
+					}else{
+						contents1.birth='';
+					}
+
+					if(this.specy!=''&this.switch6==true){
+						contents1.specy=','+this.specy;
+					}else{
+						contents1.specy='';
+					}
+
+					if(this.zhicheng!=''&this.switch7==true){
+						contents1.zhicheng=','+this.zhicheng;
+					}else{
+						contents1.zhicheng='';
+					}
+					if(this.profession!=''&this.switch8==true){
+						contents1.profession=','+this.profession;
+					}else{
+						contents1.profession='';
+					}
+
+
+				this.con.content1=contents1.name+contents1.sex+contents1.family
+								+contents1.birth+contents1.specy
+								+contents1.zhicheng+contents1.profession;
+				this.saveBasic()
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

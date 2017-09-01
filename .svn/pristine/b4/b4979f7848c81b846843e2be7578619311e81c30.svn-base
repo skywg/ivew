@@ -1,0 +1,901 @@
+<style scoped>
+    .layout {
+        background: #fff;
+    }
+
+    header {
+        height: 81px;
+        background: #FFFFFF;
+        border-bottom: 1px solid #e7e7e7;
+    }
+
+
+    /*main样式开始*/
+    .main{
+        margin-top: 10px;
+    }
+
+    .mian-left{
+        border-right: 1px  solid #fafafa;
+        width: 210px;
+
+
+    }
+
+
+    /*main样式结束*/
+
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+        color: #51ad79;
+
+    }
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+        color: #51ad79;
+        border-right: 2px solid #51ad79;
+        z-index: 2;
+    }
+    .mian-center{
+        max-width: 702px;
+        margin-left: 10px;
+        margin-top: 60px;
+        background: #fafafa;
+        border: 1px solid #eeeeee;
+        padding-bottom: 500px;
+    }
+    .main-user{
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        margin-top: -46px;
+
+
+
+
+    }
+    .main-top-bg{
+        height: 135px;
+        width: 100%;
+        background: url("../../img/images/mian-img.png") no-repeat center top;
+        position: relative;
+    }
+
+    .main-t-r{
+        width: 74%;
+        margin-top: 24px;
+        height: 100px;
+    }
+    .main-t-r ul li{
+        float: right;
+        margin-right: 28px;
+        text-align: center;
+    }
+    .main-t-r span{
+        font-size: 20px;
+        font-weight: 500;
+
+
+
+    }
+    .main-t-r p{
+        font-size: 14px;
+
+
+    }
+    .main-bot{
+        width: 600px;
+
+        margin: 0 auto;
+        border-top: 1px solid #ededed;
+        position: relative;
+    }
+    .main-bot-title{
+        width: 120px;
+        height: 35px;
+        font-size: 18px;
+        background: #ededed;
+        text-align: center;
+        line-height: 35px;
+        position: absolute;
+        top: -20px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        color: #333;
+        border-radius: 18px;
+    }
+    .mian-bot1-title{
+        width: auto;
+        height: 18px;
+        font-size: 16px;
+        margin-top: 46px;
+        border-left: 4px solid #51ad79;
+        padding-left: 10px;
+        line-height: 16px;
+
+    }
+    .mian-bot1-title a{
+        color: #333;
+        font-size: 12px;
+    }
+    .main-bot2 img{
+        margin-right: 16px;
+        margin-top: 8px;
+    }
+    .main-bot2 p{
+        font-size: 14px;
+        line-height: 30px;
+    }
+    .main-bot2 ul{
+        margin-right: 63px;
+    }
+    .main-bot2 ul li{
+        line-height: 30px;
+        font-size: 14px;
+    }
+    .main-bot3 li{
+        line-height: 18px;
+
+    }
+    .main-bot3 ul{
+        margin-left: 24px;
+
+    }
+
+
+    .check-box ul li{
+        margin-bottom: 20px;
+        font-size: 14px;
+
+    }
+    .ivu-switch-checked {
+        border-color: #51ad79;
+        background-color: #51ad79;
+    }
+    .ivu-btn-group-small > .ivu-btn {
+        padding: 4px 12px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+    .ivu-btn-group:not(.ivu-btn-group-vertical) .ivu-btn-primary:not(:first-child):not(:last-child) {
+        border: 1px solid #51ad79;
+    }
+    .ivu-btn:hover {
+        color: #51ad79;
+        background-color: #fff;
+        border-color: #51ad79;
+    }
+    /*本页出了头和底部样式结束*/
+</style>
+<template>
+    <div class="main-bot">
+        <div class="main-bot-title">个人信息</div>
+        <div class="mian-bot1" style="height:100px;">
+            <div class="mian-bot1-title" >
+                <span>基础信息</span>
+                &nbsp;
+                <div  style="float: right">
+                    <a style="color: #51ad79;padding-left: 10px" @click="basic">   修改</a>
+                </div>
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <!--隐藏开始-->
+                    <p style="font-size: 14px ;line-height: 2;display: block">{{basicInfo}}</p>
+                    <!--隐藏结束-->
+                    <Modal v-model="basicInformation" width="360" :closable="false">
+                        <div style="text-align:center">
+                            <Form ref="userInfo" :model="userInfo" :rules="ruleInline">
+                                <Form-item prop="realName">
+                                    <Input type="text" v-model="userInfo.realName" placeholder="姓名" v-on:input ="inputUserInfo">
+                                        <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                    </Input>
+                                </Form-item>
+                                <Form-item prop="rece">
+                                    <Input type="text" v-model="userInfo.rece" placeholder="民族"  v-on:input ="inputUserInfo">
+                                        <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                    </Input>
+                                </Form-item>
+                                <Form-item prop="birdhday">
+                                    <Input type="text" v-model="userInfo.birdhday" placeholder="生日" v-on:input ="inputUserInfo"/>
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Form-item>
+                                <Form-item prop="job">
+                                    <Input type="text" v-model="userInfo.job" placeholder="职业" v-on:input ="inputUserInfo">
+                                        <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                    </Input>
+                                </Form-item>
+                                <Form-item prop="species">
+                                    <Input type="text" v-model="userInfo.species" placeholder="擅长物种" v-on:input ="inputUserInfo">
+                                        <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                    </Input>
+                                </Form-item>
+                                <div>
+                                    <h2 style="text-align: center;padding:0 0 10px 0;font-size: 18px;font-weight: normal">实时预览</h2>
+                                    <Input v-model="userInfoContent" type="textarea" :rows="4" placeholder="请输入..." ></Input>
+                                </div>
+                            </Form>
+                        </div>
+                        <div slot="footer">
+                            <Button type="primary" shape="circle" @click="submit('userContent')" style="width:100%">确定</Button>
+                        </div>
+                    </Modal>
+<!--                    &lt;!&ndash;显示开始&ndash;&gt;
+                    <div style="display: none;margin-bottom: 500px">
+                        <div style="text-align: center;margin: 20px 0 40px 0">
+
+                            <div style="margin-bottom: 16px">
+                                <span style="font-size: 14px;padding-right: 30px;text-align: right;width: 100px;display: inline-block;">农事无忧ID</span>
+                                <span style="font-size: 14px;width: 230px;display: inline-block;text-align: left">
+									  <Select v-model="model1" style="width:150px">
+											<Option v-for="item in cityList" :value="item.value"
+                                                    :key="item.value">{{ item.label }}</Option>
+										</Select>
+								</span>
+                                <i-switch style="margin-left: 30px"></i-switch>
+                            </div>
+                            <div style="margin-bottom: 16px">
+                                <span style="font-size: 14px;padding-right: 30px;text-align: right;width: 100px;display: inline-block;">民族</span>
+                                <span style="font-size: 14px;width: 230px;display: inline-block;text-align: left">
+									  <Select v-model="model1" style="width:150px">
+											<Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+										</Select>
+								</span>
+                                <i-switch style="margin-left: 30px"></i-switch>
+                            </div>
+                            <div style="margin-bottom: 16px">
+                                <span style="font-size: 14px;padding-right: 30px;text-align: right;width: 100px;display: inline-block;">性别</span>
+                                <span style="font-size: 14px;width: 230px;display: inline-block;text-align: left">
+									  <Select v-model="model1" style="width:150px">
+											<Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+										</Select>
+								</span>
+                                <i-switch style="margin-left: 30px"></i-switch>
+                            </div>
+                            <div style="margin-bottom: 16px">
+                                <span style="font-size: 14px;padding-right: 30px;text-align: right;width: 100px;display: inline-block;">农事无忧ID</span>
+                                <span style="font-size: 14px;width: 230px;display: inline-block;text-align: left">
+									  <Select v-model="model1" style="width:150px">
+											<Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+										</Select>
+								</span>
+                                <i-switch style="margin-left: 30px"></i-switch>
+                            </div>
+                            <div style="margin-bottom: 16px">
+                                <span style="font-size: 14px;padding-right: 30px;text-align: right;width: 100px;display: inline-block;">农事无忧ID</span>
+                                <span style="font-size: 14px;width: 230px;display: inline-block;text-align: left">
+  <Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
+									</span>
+                                <i-switch style="margin-left: 30px"></i-switch>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 style="text-align: center;padding:0 0 10px 0;font-size: 18px;font-weight: normal">实时预览</h2>
+                            <Input v-model="value6" type="textarea" :rows="4" placeholder="请输入..."></Input>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="mian-bot1" style="padding-top: 20px;height:100px;">
+            <div class="mian-bot1-title" >
+                <span>联系方式</span>
+                &nbsp;
+                <div  style="float: right">
+                    <a style="color: #51ad79;padding-left: 10px"  @click="contractInfoEdit">   修改</a>
+                </div>
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                            {{contract}}</p>
+                </div>
+                <Modal v-model="contractInfoShow" width="360" :closable="false">
+                    <div style="text-align:center">
+                        <Form ref="contactInfo" :model="contactInfo" :rules="ruleInline">
+                            <Form-item prop="mobile">
+                                <Input type="text" v-model="contactInfo.mobile" placeholder="手机号"  v-on:input ="inputContractInfo">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="phone">
+                                <Input type="text" v-model="contactInfo.phone" placeholder="座机号"  v-on:input ="inputContractInfo">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="qq">
+                                <Input type="text" v-model="contactInfo.qq" placeholder="QQ号"  v-on:input ="inputContractInfo">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="postcode">
+                                <Input type="text" v-model="contactInfo.postcode" placeholder="邮编" v-on:input ="inputContractInfo">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="email">
+                                <Input type="text" v-model="contactInfo.email" placeholder="邮箱" v-on:input ="inputContractInfo">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="location">
+                                <Input type="text" v-model="contactInfo.location" placeholder="所在地" v-on:input ="inputContractInfo">
+                                 <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="address">
+                                <Input type="text" v-model="contactInfo.address" placeholder="通讯地址" v-on:input ="inputContractInfo">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="position">
+                                <Input type="text" v-model="contactInfo.position" placeholder="我的位置"  v-on:input ="inputContractInfo">
+                                <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <div>
+                                <h2 style="text-align: center;padding:0 0 10px 0;font-size: 18px;font-weight: normal">实时预览</h2>
+                                <Input v-model="contactInfoContent" type="textarea" :rows="4" placeholder="请输入..."></Input>
+                            </div>
+                        </Form>
+                    </div>
+                    <div slot="footer">
+                        <Button type="primary" shape="circle" @click="contactInfoSubmit('contactInfo')" style="width:100%">确定</Button>
+                    </div>
+                </Modal>
+            </div>
+        </div>
+        <div class="mian-bot1" style="padding-top: 20px;height:200px;">
+            <div class="mian-bot1-title" >
+                <span>教育经历</span>
+                &nbsp;
+                <div  style="float: right">
+                    <a style="color: #51ad79;padding-left: 10px"  @click="educationExperience">   修改</a>
+                </div>
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                        {{education}}</p>
+                </div>
+            </div>
+            <Modal v-model="educationExperienceInfo" width="360" :closable="false">
+                <div style="text-align:center">
+                    <Form ref="UserEducationExperience" :model="UserEducationExperience" :rules="ruleInline">
+                        <Form-item prop="shcoolName">
+                            <Input type="text" v-model="UserEducationExperience.shcoolName" placeholder="性别" v-on:input ="inputUserEducaiton">
+                                <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                            </Input>
+                        </Form-item>
+                        <Form-item prop="profession">
+                            <Input type="text" v-model="UserEducationExperience.profession" placeholder="专业" v-on:input ="inputUserEducaiton">
+                                <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                            </Input>
+                        </Form-item>
+                        <Form-item prop="entranceDate">
+                            <Input type="text" v-model="UserEducationExperience.entranceDate" placeholder="入学" v-on:input ="inputUserEducaiton">
+                            <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                            </Input>
+                        </Form-item>
+                        <Form-item prop="graduationDate">
+                            <Input type="text" v-model="UserEducationExperience.graduationDate" placeholder="毕业" v-on:input ="inputUserEducaiton">
+                                <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                            </Input>
+                        </Form-item>
+                        <Form-item prop="status">
+                            <Input type="text" v-model="UserEducationExperience.status" placeholder="是否统招" v-on:input ="inputUserEducaiton">
+                                <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                            </Input>
+                        </Form-item>
+                        <Form-item prop="degree">
+                            <Input type="text" v-model="UserEducationExperience.degree" placeholder="学位" v-on:input ="inputUserEducaiton">
+                            <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                            </Input>
+                        </Form-item>
+                        <div>
+                            <h2 style="text-align: center;padding:0 0 10px 0;font-size: 18px;font-weight: normal">实时预览</h2>
+                            <Input v-model="userEducaitonContent" type="textarea" :rows="4" placeholder="请输入..."></Input>
+                        </div>
+                    </Form>
+                </div>
+                <div slot="footer">
+                    <Button type="primary" shape="circle" @click="educationSubmit('userContent')" style="width:100%">确定</Button>
+                </div>
+            </Modal>
+        </div>
+        <div class="mian-bot1" style="padding-top: 20px;height:200px;">
+            <div class="mian-bot1-title" >
+                <span>工作经历</span>
+                &nbsp;
+                <div  style="float: right">
+                    <a style="color: #51ad79;padding-left: 10px"  @click="userWorkEdit">   修改</a>
+                </div>
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                        {{work}}</p>
+                </div>
+                <Modal v-model="userWork" width="360" :closable="false">
+                    <div style="text-align:center">
+                        <Form ref="userWorkExperience" :model="userWorkExperience" :rules="ruleInline">
+                            <Form-item prop="organazationName">
+                                <Input type="text" v-model="userWorkExperience.organazationName" placeholder="工作单位" v-on:input ="inputUserWork">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="startDate">
+                                <Input type="text" v-model="userWorkExperience.startDate" placeholder="开始时间" v-on:input ="inputUserWork">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="endDate">
+                                <Input type="text" v-model="userWorkExperience.endDate" placeholder="结束时间"  v-on:input ="inputUserWork">
+                                <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="content">
+                                <Input type="text" v-model="userWorkExperience.content" placeholder="工作内容" v-on:input ="inputUserWork">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <div>
+                                <h2 style="text-align: center;padding:0 0 10px 0;font-size: 18px;font-weight: normal">实时预览</h2>
+                                <Input v-model="userWorkContent" type="textarea" :rows="4" placeholder="请输入..."></Input>
+                            </div>
+                        </Form>
+                    </div>
+                    <div slot="footer">
+                        <Button type="primary" shape="circle" @click="workSubmit('userWorkExperience')" style="width:100%">确定</Button>
+                    </div>
+                </Modal>
+            </div>
+        </div>
+        <div class="mian-bot1" style="padding-top: 20px;height:200px;">
+            <div class="mian-bot1-title" >
+                <span>种养信息</span>&nbsp;
+                <div  style="float: right">
+                    <a style="color: #51ad79;padding-left: 10px" @click="userFarmInfoEdit">   修改</a>
+                </div>
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                        {{farmlan}} </p>
+                </div>
+                <Modal v-model="userFarmInfoShow" width="360" :closable="false">
+                    <div style="text-align:center">
+                        <Form ref="userFarmInfo" :model="userFarmInfo" :rules="ruleInline">
+                            <Form-item prop="farmlan">
+                                <Input type="text" v-model="userFarmInfo.farmlan" placeholder="耕地" v-on:input ="inputUserFarmInfo">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <Form-item prop="species">
+                                <Input type="text" v-model="userFarmInfo.species" placeholder="农作物" v-on:input ="inputUserFarmInfo">
+                                    <Icon type="ios-locked-outline" slot="prepend"></Icon>
+                                </Input>
+                            </Form-item>
+                            <div>
+                                <h2 style="text-align: center;padding:0 0 10px 0;font-size: 18px;font-weight: normal">实时预览</h2>
+                                <Input v-model="userFarmInfoContent" type="textarea" :rows="4" placeholder="请输入..."></Input>
+                            </div>
+                        </Form>
+                    </div>
+                    <div slot="footer">
+                        <Button type="primary" shape="circle" @click="userFarmInfoSubmit('userWorkExperience')" style="width:100%">确定</Button>
+                    </div>
+                </Modal>
+            </div>
+        </div>
+        <div class="mian-bot1" style="padding-top: 20px;height:auto;">
+            <div class="mian-bot1-title" >
+                <span>政治面貌</span>
+                &nbsp;
+                <div  style="float: right">
+                    <a style="color: #51ad79;padding-left: 10px">   修改</a>
+                </div>
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                        {{policial}} </p>
+                </div>
+            </div>
+        </div>
+        <div class="mian-bot1" style="padding-top: 20px;height:auto;">
+            <div class="mian-bot1-title" >
+                <span>宗教信仰</span>
+                &nbsp;
+                <div  style="float: right">
+                    <a style="color: #51ad79;padding-left: 10px">   修改</a>
+                </div>
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                       {{religion}} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    import axios from 'axios'
+    import $ from 'jquery'
+
+    var userInfotxt = ''
+    var ContractInfotxt =''
+    var userEducaitontxt = ''
+    var userWorktxt = ''
+    var userFarmInfotxt = ''
+    export default {
+        data () {
+            return {
+                portal :'',
+                basicInformation:false,
+                educationExperienceInfo:false,
+                contractInfoShow:false,
+                userWork:false,
+                userFarmInfoShow:false,
+                contract:'',
+                education:'',
+                work:'',
+                farmlan:'',
+                policial:'',
+                religion:'',
+                honor:'',
+                basicInfo:'',
+                userInfoContent:'',
+                contactInfoContent:'',
+                userEducaitonContent:'',
+                userWorkContent:'',
+                userFarmInfoContent:'',
+                ruleInline: {
+                    user: [{
+                        required: true,
+                        message: '请填写用户名',
+                        trigger: 'blur'
+                    }],
+                    password: [{
+                        required: true,
+                        message: '请填写密码',
+                        trigger: 'blur'
+                    },
+                        {
+                            type: 'string',
+                            min: 6,
+                            message: '密码长度不能小于6位',
+                            trigger: 'blur'
+                        }
+                    ]
+                },
+                userInfo: {
+                    realName:'',
+                    rece:'',
+                    birdhday:'',
+                    job:'',
+                    species:'',
+                    userInfoContent:''
+                },
+                UserEducationExperience:{
+                    shcoolName:'',
+                    profession:'',
+                    entranceDate:'',
+                    graduationDate:'',
+                    status:'',
+                    degree:'',
+                    userEducaitonContent:''
+                },
+                contactInfo:{
+                    mobile:'',
+                    phone:'',
+                    qq:'',
+                    postcode:'',
+                    email:'',
+                    location:'',
+                    address:'',
+                    position:'',
+                    contactInfoContent:''
+                },
+                userWorkExperience:{
+                    organazationName:'',
+                    startDate:'',
+                    endDate:'',
+                    content:'',
+                    userWorkContent:''
+                },
+                userFarmInfo:{
+                    farmlan:'',
+                    species:'',
+                    userFarmInfoContent:''
+                }
+            }
+        },
+        created () {
+            this.fetchData()
+        },
+        methods: {
+            fetchData: function () {
+                axios.get('http://localhost:1111/userFullInfo/findUserFullInfo')
+                    .then(response => {
+                        this.contract = response.data.userFullInfo.contract1
+                        this.education =  response.data.userFullInfo.education1
+                        this.work = response.data.userFullInfo.work1
+                        this.farmlan = response.data.userFullInfo.farmlan1
+                        this.policial = response.data.userFullInfo.policial1
+                        this.religion = response.data.userFullInfo.religion1
+                        this.basicInfo = response.data.userFullInfo.basic1
+                    }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            findUserInfo: function () {
+                axios.get('http://localhost:1111/userInfo/findUserInfo')
+                    .then(response => {
+                        this.basicInfo = response.data.realName+"," + response.data.rece +","  + response.data.birdhday +","  + response.data.job +","  + response.data.species +"。"
+                    }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            findUserEducation: function () {
+                axios.get('http://localhost:1111/userEducation/findUserEducation')
+                    .then(response => {
+                        this.education = response.data.shcoolName+"," + response.data.profession +","  + response.data.entranceDate +","  + response.data.graduationDate +","  + response.data.status +","  + response.data.degree +"。"
+                    }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            findContactInfo: function () {
+                axios.get('http://localhost:1111/contactInfo/findContactInfo')
+                    .then(response => {
+                        this.contract = "手机号："+response.data.mobile+",座机：" + response.data.phone +",QQ号："  + response.data.qq +",邮编："  + response.data.postcode +",邮箱："  + response.data.email +",所在地:"  + response.data.location +",通信地址："  + response.data.address +",我的位置："  + response.data.position+"。"
+                    }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            findUserWork: function () {
+                axios.get('http://localhost:1111/userWork/findUserWork')
+                    .then(response => {
+                        this.work = response.data.organazationName+"," + response.data.startDate +","  + response.data.endDate +","  + response.data.content +"。"
+                    }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            findUserFarm: function () {
+                axios.get('http://localhost:1111/userFarmInfo/findUserFarmInfo')
+                    .then(response => {
+                        this.farmlan = response.data.farmlan+"," + response.data.species  +"。"
+                    }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            routeTo(e) {
+                if(e == '/portal'){
+                    this.portal = 'http://192.168.7.61:8080/gf_mall_client/shop/seller.html?memLoginId='+this.loginuserinfo.loginAccount
+                    window.open(this.portal)
+                }else{
+                    this.$router.push(e)
+                }
+            },
+            basic(){
+                this.basicInformation = true;
+            },
+            educationExperience(){
+                this.educationExperienceInfo = true;
+            },
+            contractInfoEdit(){
+                this.contractInfoShow = true;
+            },
+            userWorkEdit(){
+                this.userWork = true;
+            },
+            userFarmInfoEdit(){
+                this.userFarmInfoShow = true;
+            },
+            submit(name){
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/userInfo/updateUserInfo',
+                    data: {
+                        realName:this.userInfo.realName,
+                        rece:this.userInfo.rece,
+                        birdhday:this.userInfo.birdhday,
+                        job:this.userInfo.job,
+                        species:this.userInfo.species,
+                        userInfoContent:this.userInfoContent
+                    }
+                }).then(response => {
+                    this.flag = response.data.flag
+                    if(this.flag=='1'){
+                        this.$Message.success('修改成功!');
+                        this.basicInformation = false;
+                        this.findUserInfo()
+                    }
+                }).catch(function(error) {
+                    this.$Message.success('修改失败!');
+                    console.log(error)
+                })
+            },
+            educationSubmit(name){
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/userEducation/updateUserEducation',
+                    data: {
+                        shcoolName:this.UserEducationExperience.shcoolName,
+                        profession:this.UserEducationExperience.profession,
+                        entranceDate:this.UserEducationExperience.entranceDate,
+                        graduationDate:this.UserEducationExperience.graduationDate,
+                        status:this.UserEducationExperience.status,
+                        degree:this.UserEducationExperience.degree,
+                        userEducaitonContent:this.userEducaitonContent
+                    }
+                }).then(response => {
+                    this.flag = response.data.flag
+                    if(this.flag=='1'){
+                        this.$Message.success('修改成功!');
+                        this.educationExperienceInfo = false;
+                        this.findUserEducation()
+                    }
+                }).catch(function(error) {
+                    this.$Message.success('修改失败!');
+                    console.log(error)
+                })
+            },
+            contactInfoSubmit(name){
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/contactInfo/updateContactInfo',
+                    data: {
+                        mobile:this.contactInfo.mobile,
+                        phone:this.contactInfo.phone,
+                        qq:this.contactInfo.qq,
+                        postcode:this.contactInfo.postcode,
+                        email:this.contactInfo.email,
+                        location:this.contactInfo.location,
+                        address:this.contactInfo.address,
+                        position:this.contactInfo.position,
+                        contactInfoContent:this.contactInfoContent
+                    }
+                }).then(response => {
+                    this.flag = response.data.flag
+                    if(this.flag=='1'){
+                        this.$Message.success('修改成功!');
+                        this.contractInfoShow = false;
+                        this.findContactInfo()
+                    }
+                }).catch(function(error) {
+                    this.$Message.success('修改失败!');
+                    console.log(error)
+                })
+            },
+            workSubmit(name){
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/userWork/updateUserWork',
+                    data: {
+                        organazationName:this.userWorkExperience.organazationName,
+                        startDate:this.userWorkExperience.startDate,
+                        endDate:this.userWorkExperience.endDate,
+                        content:this.userWorkExperience.content,
+                        userWorkContent:this.userWorkContent
+                    }
+                }).then(response => {
+                    this.flag = response.data.flag
+                    if(this.flag=='1'){
+                        this.$Message.success('修改成功!');
+                        this.userWork = false;
+                        this.findUserWork()
+                    }
+                }).catch(function(error) {
+                    this.$Message.success('修改失败!');
+                    console.log(error)
+                })
+            },
+            userFarmInfoSubmit(name){
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/userFarmInfo/updateUserFarmInfo',
+                    data: {
+                        farmlan:this.userFarmInfo.farmlan,
+                        species:this.userFarmInfo.species,
+                        userFarmInfoContent:this.userFarmInfoContent
+                    }
+                }).then(response => {
+                    this.flag = response.data.flag
+                    if(this.flag=='1'){
+                        this.$Message.success('修改成功!');
+                        this.userFarmInfoShow = false;
+                        this.findUserFarm()
+                    }
+                }).catch(function(error) {
+                    this.$Message.success('修改失败!');
+                    console.log(error)
+                })
+            },
+            inputUserInfo(){
+                if(this.userInfo.realName!=''){
+                    userInfotxt="姓名："+ this.userInfo.realName
+                }
+                if(this.userInfo.rece!=''){
+                    userInfotxt +=",民族：" +this.userInfo.rece
+                }
+                if(this.userInfo.birdhday!=''){
+                    userInfotxt +=",生日："+ this.userInfo.birdhday
+                }
+                if(this.userInfo.job!=''){
+                    userInfotxt +=",职业：" +this.userInfo.job
+                }
+                if(this.userInfo.species!=''){
+                    userInfotxt +=",擅长物种："+ this.userInfo.species
+                }
+                this.userInfoContent = userInfotxt
+            },
+            inputContractInfo(){
+                if(this.contactInfo.mobile!=''){
+                    ContractInfotxt="手机号："+ this.contactInfo.mobile
+                }
+                if(this.contactInfo.phone!=''){
+                    ContractInfotxt +=",座机号：" +this.contactInfo.phone
+                }
+                if(this.contactInfo.qq!=''){
+                    ContractInfotxt +=",QQ号："+ this.contactInfo.qq
+                }
+                if(this.contactInfo.postcode!=''){
+                    ContractInfotxt +=",邮编：" +this.userInfo.postcode
+                }
+                if(this.contactInfo.email!=''){
+                    ContractInfotxt +=",邮箱："+ this.contactInfo.email
+                }
+                if(this.contactInfo.location!=''){
+                    ContractInfotxt +=",所在地：" +this.contactInfo.location
+                }
+                if(this.contactInfo.address!=''){
+                    ContractInfotxt +=",通讯地址："+ this.contactInfo.address
+                }
+                if(this.contactInfo.position!=''){
+                    ContractInfotxt +=",我的位置："+ this.contactInfo.position
+                }
+                this.contactInfoContent = ContractInfotxt
+            },
+            inputUserEducaiton(){
+                if(this.UserEducationExperience.shcoolName!=''){
+                    userEducaitontxt="性别："+ this.UserEducationExperience.shcoolName
+                }
+                if(this.UserEducationExperience.profession!=''){
+                    userEducaitontxt +=",专业：" +this.UserEducationExperience.profession
+                }
+                if(this.UserEducationExperience.entranceDate!=''){
+                    userEducaitontxt +=",入学："+ this.UserEducationExperience.entranceDate
+                }
+                if(this.UserEducationExperience.graduationDate!=''){
+                    userEducaitontxt +=",毕业：" +this.UserEducationExperience.graduationDate
+                }
+                if(this.UserEducationExperience.status!=''){
+                    userEducaitontxt +=",是否统招："+ this.UserEducationExperience.status
+                }
+                if(this.UserEducationExperience.degree!=''){
+                    userEducaitontxt +=",学位：" +this.UserEducationExperience.degree
+                }
+                this.userEducaitonContent = userEducaitontxt
+            },
+            inputUserWork(){
+                if(this.userWorkExperience.organazationName!=''){
+                    userWorktxt="工作单位："+ this.userWorkExperience.organazationName
+                }
+                if(this.userWorkExperience.startDate!=''){
+                    userWorktxt +=",开始时间：" +this.userWorkExperience.startDate
+                }
+                if(this.userWorkExperience.endDate!=''){
+                    userWorktxt +=",结束时间："+ this.userWorkExperience.endDate
+                }
+                if(this.userWorkExperience.content!=''){
+                    userWorktxt +=",工作内容：" +this.userWorkExperience.content
+                }
+                this.userWorkContent = userWorktxt
+            },
+            inputUserFarmInfo(){
+                if(this.userFarmInfo.farmlan!=''){
+                    userFarmInfotxt="耕地："+ this.userFarmInfo.farmlan
+                }
+                if(this.userFarmInfo.species!=''){
+                    userFarmInfotxt +=",农作物：" +this.userFarmInfo.species
+                }
+                this.userFarmInfoContent = userFarmInfotxt
+            }
+        }
+    }
+</script>

@@ -1,0 +1,1082 @@
+<style scoped>
+    .layout {
+        background: #fff;
+    }
+    /* header样式开始*/
+
+    header {
+        height: 81px;
+        background: #FFFFFF;
+        border-bottom: 1px solid #e7e7e7;
+    }
+
+    .container {
+        width: 1196px;
+        margin: 0 auto;
+    }
+
+    .header-top {
+        height: 81px;
+    }
+
+    .ivu-menu-horizontal {
+        height: 81px;
+        line-height: 74px;
+    }
+
+    .region {
+        float: left;
+        margin-left: 14px;
+        width: 80px;
+        margin-top: 26px;
+        height: 36px;
+    }
+
+    .nav-center {
+        margin-left: 20px;
+    }
+
+    .nav-r {
+        float: right;
+        margin-top: 26px;
+    }
+
+    .btn1 {
+        height: 36px;
+        margin-left: 12px;
+    }
+
+    .ivu-menu-horizontal .ivu-menu-item,
+    .ivu-menu-horizontal .ivu-menu-submenu {
+        float: left;
+        padding: 0 18px;
+        position: relative;
+        cursor: pointer;
+        z-index: 3;
+        transition: all .2s ease-in-out;
+        border-top: 6px solid #fff;
+    }
+
+    .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item-active,
+    .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item:hover,
+    .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu-active,
+    .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu:hover {
+        color: #51ad79;
+        border-bottom: none;
+        border-top: 6px solid #51ad79;
+        font-size: 16px;
+    }
+
+    .ivu-menu-item {
+        display: block;
+        outline: 0;
+        list-style: none;
+        font-size: 16px;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+    }
+
+    .ivu-menu {
+        list-style: none;
+        color: #657180;
+        font-size: 16px;
+    }
+
+    .ivu-select-selection:hover {
+        border-color: #51ad79;
+    }
+
+    .ivu-btn-primary {
+        color: #fff;
+        background-color: #51ad79;
+        border-color: #51ad79;
+    }
+
+    .ivu-btn-ghost:hover {
+        color: #51ad79;
+        background-color: transparent;
+        border-color: #51ad79;
+    }
+
+    .ivu-btn-primary:hover {
+        color: #fff;
+        background-color: #51ad79;
+        border-color: #51ad79;
+        opacity: 0.8;
+    }
+
+    .banner {
+        background: url("../../img/index-banner.png") center top no-repeat;
+        height: 512px;
+        background-size: cover;
+    }
+
+    .banner-main {
+        width: 802px;
+        padding: 24px;
+        background: #272727;
+        border-radius: 4px;
+        opacity: 0.7;
+        margin-top: 80px;
+        margin: auto;
+    }
+
+    .banner-logo {
+        width: 109px;
+        margin: 20px auto;
+    }
+
+    .ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab {
+        margin: 0;
+        margin-right: 14px;
+        height: 31px;
+        padding: 5px 16px 4px;
+        border: 1px solid #d7dde4;
+        border-bottom: 0;
+        border-radius: 4px 4px 0 0;
+        transition: all .3s ease-in-out;
+        background: #f5f7f9;
+    }
+
+    .ivu-input {
+        display: inline-block;
+        width: 100%;
+        height: 41px;
+        line-height: 1.5;
+        padding: 4px 7px;
+        font-size: 12px;
+        border: 1px solid #d7dde4;
+        border-radius: 4px;
+        color: #657180;
+        background-color: #fff;
+        background-image: none;
+        position: relative;
+        cursor: text;
+        transition: border .2s ease-in-out, background .2s ease-in-out, box-shadow .2s ease-in-out;
+    }
+
+    .ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab-active {
+        height: 32px;
+        padding-bottom: 5px;
+        background: #fd1212;
+        transform: translateZ(0);
+        border-color: #d7dde4;
+        color: #39f;
+    }
+    /*header样式结束*/
+
+    .ivu-tabs-nav .ivu-tabs-tab-active {
+        color: #fff;
+    }
+
+    .search {
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+        width: 94px;
+        margin-left: -4px;
+    }
+
+    .footer {
+        height: 163px;
+        border-top: 5px solid #51ad79;
+        background: #333333;
+        margin-top: 140px;
+        padding-top: 22px;
+    }
+
+    .footer-l {
+        float: left;
+    }
+
+    .footer-r {
+        float: right;
+        color: #fff;
+    }
+
+    .footer-l ul li {
+        color: #fff;
+        float: left;
+        padding: 0 16px;
+        border-right: 1px solid #474747;
+    }
+
+    .footer-r ul li {
+        color: #fff;
+        float: left;
+        padding: 0 16px;
+        border-left: 1px solid #474747;
+    }
+
+    .footer-l div {
+        color: #b4b4b4;
+        padding-left: 16px;
+    }
+
+    .cardList {
+        width: 1000px;
+        margin: 10px auto;
+        box-shadow: 2px 2px 5px #efefef, -2px -2px 5px #efefef;
+    }
+
+    .ivu-card-head {
+        border-bottom: none;
+    }
+
+    .ivu-card-head h3 {
+        text-align: center;
+        font-size: 22px;
+        font-family: normal;
+        color: #000;
+    }
+
+    .cardList-content h3 {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #efefef;
+    }
+
+    .cardList-content h3 span {
+        padding-left: 10px;
+        border-left: 4px solid #51ad79;
+    }
+
+    .forgetPassWord {
+        float: right;
+    }
+
+    .loginList {
+        text-align: center;
+    }
+
+    .loginList li {
+        display: inline-block;
+        margin: 0 15px;
+    }
+
+    .loginTab .ivu-tabs-bar {
+        border-bottom: 1px solid #000;
+    }
+
+    .tuijian-user {
+        height: 64px;
+        width: 64px;
+        border-radius: 50px;
+        background: url("../../img/yuijian-user.png");
+        margin: 0 auto;
+        margin-top: 38px;
+    }
+    /*专家样式开始*/
+    .zj-banner{
+        height: 420px;
+        width: 100%;
+        background: url("../../img/images/zj-banner.png") no-repeat center top;
+        background-size: cover;
+
+    }
+    .banner-inner{
+        width: 1106px;
+        margin: auto;
+        padding-left: 36px;
+        padding-top: 210px;
+    }
+    .zj-banner-user{
+        height: 176px;
+        width: 176px;
+        background: url("../../img/images/zj-users.png") no-repeat center top;
+        float: left;
+
+
+    }
+    .banner-inner-text{
+        float: left;
+        margin-left:45px;
+
+    }
+    .banner-inner-text h2{
+        font-size: 24px;
+        line-height: 40px;
+
+    }
+    .banner-inner-text p{
+
+        line-height: 40px;
+        font-size: 14px;
+        color:#666666;
+        line-height: 24px;
+
+    }
+    .banner-inner-btn button{
+        background: rgba(0, 0, 0, 0.35);
+
+        color: #fff;
+        width: 98px;
+        height: 44px;
+        font-size: 16px;
+        border:none;
+        margin-right: 8px;
+        margin-top: 18px;
+    }
+    .banner-inner-btn button:hover{
+        background:#51ad79
+    }
+    .banner-inner-btn .btn-active{
+        background:#51ad79
+
+    }
+    .banner-inner-text .ivu-menu-light {
+        background: none;
+    }
+    .banner-inner-text .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item-active[data-v-72e01b42], .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item[data-v-72e01b42]:hover, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu-active[data-v-72e01b42], .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu[data-v-72e01b42]:hover {
+        color: #51ad79;
+        border-bottom: 3px solid #51ad79;
+        border-top: none;
+        font-size: 16px;
+    }
+    .banner-inner-text  .ivu-menu-horizontal .ivu-menu-item[data-v-72e01b42], .ivu-menu-horizontal .ivu-menu-submenu[data-v-72e01b42] {
+        float: left;
+        padding: 0 4px;
+        position: relative;
+        cursor: pointer;
+        z-index: 3;
+        transition: all .2s ease-in-out;
+        border-top: none;
+        margin-right: 42px;
+    }
+    .banner-inner-text .ivu-menu-light.ivu-menu-horizontal .ivu-menu-item, .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu {
+        height: inherit;
+        line-height: inherit;
+        color: #495060;
+        margin-top: 18px;
+        height: 56px;
+    }
+    .main-bot-inner{
+        width: 1106px;
+        margin: auto;
+        margin-top: 10px;
+
+    }
+    .banner-inner-text .ivu-menu-horizontal.ivu-menu-light:after {
+
+        height: 0px !important;
+
+    }
+    .zj-main-l{
+        width: 242px;
+        margin-right: 10px;
+
+    }
+    .zj-main-l-top{
+
+        border: 1px solid #ededed;
+        padding:  0 20px;
+        padding-bottom: 26px;
+        margin-bottom: 10px;
+
+    }
+    .main-l-text,.main-l-text2,.main-l-text3{
+        margin-bottom: 10px;
+
+    }
+
+
+
+    .zj-main-l-top h3,.zj-main-l-bot h3{
+        font-size: 20px;
+        text-align: center;
+        line-height: 70px;
+        font-weight: normal;
+
+    }
+    .main-l-text p,.main-l-text2 p,.main-l-text3 p{
+        display: block;
+        font-size: 16px;
+        padding-left: 24px;
+
+    }
+    .main-l-text span, .main-l-text2 span, .main-l-text3 span{
+
+        font-size: 14px;
+        color: #999999;
+
+        line-height: 30px;
+
+
+    }
+    .haopin span{
+        font-size: 14px;
+        color: #999999;
+
+        line-height: 24px;
+
+    }
+    .main-l-text p{
+        background: url("../../img/images/zj-l-icon1.png") no-repeat center left;
+
+
+    }
+    .main-l-text2 p{
+        background: url("../../img/images/zj-l-icon2.png") no-repeat center left;
+
+
+    }
+    .main-l-text3 p{
+        background: url("../../img/images/zj-l-icon3.png") no-repeat center left;
+
+
+    }
+    .zj-main-l-bot{
+
+        height: 234px;
+        border: 1px solid #ededed;
+        padding: 0 20px;
+        padding-bottom: 26px;
+        margin-bottom: 10px;
+
+    }
+    .zj-main-l-bot ul li{
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .zj-main-l-bot ul .no-margin{
+        margin-right: 0px;
+
+    }
+    .zj-main-r{
+        border: 1px solid #ededed;
+
+        min-height: 700px;
+        width: 854px;
+        padding: 26px;
+
+    }
+
+    .zjjs-main-text{
+        margin-bottom: 10px;
+        line-height: 1.8;
+        font-size: 14px;
+    }
+    .zjjs-main-text2{
+        text-indent:25px
+    }
+    .zjzs .ivu-btn-ghost {
+        color: #51ad79;
+        background-color: transparent;
+        border-color: #51ad79;
+        width: 44px;
+        height: 24px;
+        padding: 0;
+    }
+    .zjzs-box1{
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ededed;
+        margin-bottom: 20px;
+
+    }
+    .zjzs h3{
+        font-size: 18px;
+
+
+    }
+    .zjzs p{
+        font-size: 14px;
+        color: #999999;
+        line-height: 1.6;
+
+
+    }
+    .zjzs-btn{
+        margin: 6px 0 14px 0;
+    }
+    .zjzs-bot{
+        margin-top: 20px;
+        font-size: 13px;
+        color: #999999;
+    }
+
+    .zjzs-bot .ivu-icon {
+        display: inline-block;
+        font-family: Ionicons;
+        speak: none;
+        font-style: normal;
+        font-weight: 400;
+        font-variant: normal;
+        text-transform: none;
+        text-rendering: auto;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 22px;
+        margin-right: 4px;
+        vertical-align: bottom;
+        color: #999999;
+    }
+    .grxc ul li{
+        width: 143px;
+        height: 192px;
+        border: 1px solid #ededed ;
+        margin: 0 20px 20px 0;
+        float: left;
+    }
+    .grxc p{
+        font-size: 14px;
+        padding-left: 10px;
+    }
+    .grxc span{
+        font-size: 12px;
+        color: #999;
+        padding-left: 10px;
+    }
+    .grxc .no-margin{
+        margin-right: 0px;
+    }
+
+
+
+
+
+
+
+
+    /*专家样式结束*/
+</style>
+<template>
+    <div class="layout">
+        <header>
+            <div class="container">
+                <Row>
+                    <i-col span="2" class="region ">
+                        <Cascader :data="cityList" v-model="value1"></Cascader>
+                    </i-col>
+                    <i-col span="2" class="region ">
+                        <!-- <Select filterable class="select1">
+                            <Option v-for="item in cityList" :value="item.value" :key="item">{{ item.label }}</Option>
+                        </Select> -->
+                    </i-col>
+                    <i-col span="12" class="nav-center">
+                        <Menu mode="horizontal" active-name="/pro/index" @on-select="routeTo">
+                            <Menu-item name="/pro/firstPage">
+                                <Icon type="ios-home"></Icon>
+                                首页
+                            </Menu-item>
+                            <Menu-item name="/pro/member">
+                                会员中心
+                            </Menu-item>
+                            <Menu-item name="2">
+                                地图导航
+                            </Menu-item>
+                            <Menu-item name="4">
+                                农事移动端
+                            </Menu-item>
+                        </Menu>
+                    </i-col>
+                    <Col span="3" style="float: right;height:81px;" v-model="loginUserMyNo" v-if="loginuserinfo != null">
+                    <p href="#" style=";float: right;line-height: 81px;font-size: 14px;">
+                        <Dropdown >
+                            <a href="javascript:void(0)" style="color: #51ad79">
+                                {{loginuserinfo.displayName}}
+                                <Icon type="arrow-down-b"></Icon>
+                            </a>
+                            <Dropdown-menu slot="list" trigger="click">
+                                <Dropdown-item>账户安全</Dropdown-item>
+                                <Dropdown-item>收货地址</Dropdown-item>
+                                <Dropdown-item>消费记录</Dropdown-item>
+                                <Dropdown-item><a href="javascript:void0" @click="logout">退出</a></Dropdown-item>
+                            </Dropdown-menu>
+                        </Dropdown>
+                    </p>
+                    <Badge count="3" style="margin-top:30px;float: right;margin-right: 20px">
+                        <a href="#" class="demo-badge">
+                            <Icon type="ios-bell" size="22" style="color: #51ad79"></Icon>
+                        </a>
+                    </Badge>
+                    </Col>
+                    <i-col span="2">
+                        <Modal v-model="modal1" width="850">
+                            <h1 style="font-size: 24px;font-weight: normal;line-height: 70px;text-align: center">推荐好友</h1>
+                            <Row style="    padding-left: 14px;">
+                                <Col span="6" style="width: 138px;height: 174px;border: 1px solid #cccccc;border-radius: 7px;margin: 10px  10px" v-for="f in friend">
+                                <div>
+                                    <div style="position: absolute;left: 0;top: 0"><img src="../../img/huiyuan-gou.png" alt=""></div>
+                                    <div style="position: absolute;right:10px;top: 10px">
+                                        <img src="../../img/huiyuan-hongxin.png" alt="">
+                                    </div>
+                                    <span style="font-size: 14px;color: #4fac77;position: absolute;right: 30px;top: 6px">222</span>
+                                    <div class="tuijian-user"></div>
+                                    <div style="text-align: center;font-size: 16px;margin-top: 8px">
+                                        <span><img src="../../img/tuijian-vip.png" alt=""></span>
+                                        <span>{{f.displayName}}</span>
+                                    </div>
+                                    <div style="text-align: center;margin-top: 4px">
+                                        <Button type="ghost" size="small" style="margin: auto">农业</Button>
+                                    </div>
+                                </div>
+                                </Col>
+                            </Row>
+                            <div style="text-align: center;" slot="footer">
+                                <Button type="primary" shape="circle" size="large" style="width: 200px;height: 50px;margin: 20px 0;font-size: 16px">一键关注</Button>
+                                <span style="font-size: 16px;padding-left: 16px;vertical-align: middle;" @click="pass()">跳过</span>
+                            </div>
+                        </Modal>
+                    </i-col>
+                </Row>
+            </div>
+        </header>
+        <!--header结束-->
+        <div class="zj-main">
+            <div class="zj-banner">
+                <div class="banner-inner">
+                    <div class="zj-banner-user"></div>
+                    <div class="banner-inner-text">
+                        <h2>梁铭文</h2>
+                        <p>华中农业大学畜牧研究所</p>
+                        <div class="banner-inner-btn">
+                            <Button>联系我</Button>
+                            <Button>关注我</Button>
+                            <Button class="btn-active">加为好友</Button>
+                        </div>
+
+                        <Menu mode="horizontal" :theme="theme1" active-name="1">
+                            <Menu-item name="1">
+
+                                专家介绍
+                            </Menu-item>
+                            <Menu-item name="2">
+
+                                个人相册
+                            </Menu-item>
+
+                            <Menu-item name="3">
+
+                                知识
+                            </Menu-item>
+
+
+                            <Menu-item name="4">
+
+                                商品
+                            </Menu-item>
+                            <Menu-item name="5">
+
+                                服务
+                            </Menu-item>
+                        </Menu>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="zj-main-bot">
+                <div class="main-bot-inner">
+                    <Row>
+                        <Col span="7" class="zj-main-l">
+                        <div class="zj-main-l-top">
+                            <h3>个人资料</h3>
+                            <div class="main-l-text ">
+                                <p>擅长领域</p>
+                                <span>蔬菜学、水稻</span>
+                            </div>
+                            <div class="main-l-text2">
+                                <p>擅长物种</p>
+                                <span>甜瓜、小麦、稻子、茄子、黄瓜</span>
+                            </div>
+                            <div class="main-l-text3">
+                                <p>活跃圈子</p>
+                                <span>暂无</span>
+                            </div>
+                            <div class="haopin">
+                                <span>好评率</span> &nbsp;<span>100%</span>
+                                <div><Rate disabled v-model="valueDisabled"></Rate></div>
+
+                            </div>
+                        </div>
+                        <div class="zj-main-l-bot">
+                            <h3>资质证书</h3>
+                            <ul>
+                                <li><img src="../../img/images/zj-l-icon4.png" alt=""></li>
+                                <li><img src="../../img/images/zj-l-icon4.png" alt=""></li>
+                                <li class="no-margin"><img src="../../img/images/zj-l-icon4.png" alt=""></li>
+                            </ul>
+                            <ul>
+                                <li><img src="../../img/images/zj-l-icon4.png" alt=""></li>
+                                <li><img src="../../img/images/zj-l-icon4.png" alt=""></li>
+                                <li class="no-margin"><img src="../../img/images/zj-l-icon4.png" alt=""></li>
+                            </ul>
+
+                        </div>
+                        </Col>
+
+
+                        <Col span="17" class="zj-main-r">
+
+                        <!--专家介绍开始-->
+                        <div class="zjjs" >
+                            <div class="zjjs-main-text">
+                                <p class="zjjs-main-text1">个性签名：暂无，快去添加吧。</p>
+                            </div>
+                            <div class="zjjs-main-text">
+                                <p >主要学习及工作经历：</p>
+                                <p class="zjjs-main-text2">1995年至今：湖北省农业科学院湖北省农科院畜牧兽医研究所</p>
+                                <p class="zjjs-main-text2">1990-1995年：华中农业大学畜牧兽医学院兽医专业</p>
+                            </div>
+                            <div class="zjjs-main-text">
+                                <p >主要学习及工作经历：</p>
+                                <p class="zjjs-main-text2">1995年至今：湖北省农业科学院湖北省农科院畜牧兽医研究所</p>
+                                <p class="zjjs-main-text2">1990-1995年：华中农业大学畜牧兽医学院兽医专业</p>
+                            </div>
+
+                        </div>
+                        <!--专家介绍结束-->
+
+                        <!--知识开始-->
+                        <div class="zjzs">
+                            <div class="zjzs-box1">
+                                <h3>营养互补助睡眠药膳  豆浆小米粥</h3>
+                                <span style="float: right;margin-top: -20px;color: #999">2017.05.22 19:38</span>
+                                <div class="zjzs-btn">
+                                    <Button type="ghost">资讯</Button>
+                                    <Button type="ghost">品种</Button>
+                                    <Button type="ghost">有机</Button>
+                                </div>
+                                <p>大家都知道小米粥是养胃的典型药膳，而且做法也是最简单的，可是，如果把煮　　小米粥的清水换成豆浆，豆浆小米粥更能让黄豆
+与小米两种食物营养互补，不仅利于消化吸收，还有安神助眠的作用...
+<span style="color: #3194d0">查看全文</span></p>
+                                <div class="zjzs-bot">
+                                    <span><Icon type="android-star-outline"></Icon>收藏 106</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span><Icon type="ios-chatboxes-outline"></Icon>评论 106</span>
+                                    <span style="float: right"><Icon type="ios-eye-outline"></Icon>106</span>
+                                </div>
+
+                            </div>
+                            <div class="zjzs-box1">
+                                <h3>营养互补助睡眠药膳  豆浆小米粥</h3>
+                                <span style="float: right;margin-top: -20px;color: #999">2017.05.22 19:38</span>
+                                <div class="zjzs-btn">
+                                    <Button type="ghost">资讯</Button>
+                                    <Button type="ghost">品种</Button>
+                                    <Button type="ghost">有机</Button>
+                                </div>
+                                <p>大家都知道小米粥是养胃的典型药膳，而且做法也是最简单的，可是，如果把煮　　小米粥的清水换成豆浆，豆浆小米粥更能让黄豆
+与小米两种食物营养互补，不仅利于消化吸收，还有安神助眠的作用...
+<span style="color: #3194d0">查看全文</span></p>
+                                <div class="zjzs-bot">
+                                    <span><Icon type="android-star-outline"></Icon>收藏 106</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span><Icon type="ios-chatboxes-outline"></Icon>评论 106</span>
+                                    <span style="float: right"><Icon type="ios-eye-outline"></Icon>106</span>
+                                </div>
+
+                            </div>
+                            <div class="zjzs-box1">
+                                <h3>营养互补助睡眠药膳  豆浆小米粥</h3>
+                                <span style="float: right;margin-top: -20px;color: #999">2017.05.22 19:38</span>
+                                <div class="zjzs-btn">
+                                    <Button type="ghost">资讯</Button>
+                                    <Button type="ghost">品种</Button>
+                                    <Button type="ghost">有机</Button>
+                                </div>
+                                <p>大家都知道小米粥是养胃的典型药膳，而且做法也是最简单的，可是，如果把煮　　小米粥的清水换成豆浆，豆浆小米粥更能让黄豆
+与小米两种食物营养互补，不仅利于消化吸收，还有安神助眠的作用...
+<span style="color: #3194d0">查看全文</span></p>
+                                <div class="zjzs-bot">
+                                    <span><Icon type="android-star-outline"></Icon>收藏 106</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span><Icon type="ios-chatboxes-outline"></Icon>评论 106</span>
+                                    <span style="float: right"><Icon type="ios-eye-outline"></Icon>106</span>
+                                </div>
+
+                            </div>
+                            <div class="zjzs-box1">
+                                <h3>营养互补助睡眠药膳  豆浆小米粥</h3>
+                                <span style="float: right;margin-top: -20px;color: #999">2017.05.22 19:38</span>
+                                <div class="zjzs-btn">
+                                    <Button type="ghost">资讯</Button>
+                                    <Button type="ghost">品种</Button>
+                                    <Button type="ghost">有机</Button>
+                                </div>
+                                <p>大家都知道小米粥是养胃的典型药膳，而且做法也是最简单的，可是，如果把煮　　小米粥的清水换成豆浆，豆浆小米粥更能让黄豆
+与小米两种食物营养互补，不仅利于消化吸收，还有安神助眠的作用...
+<span style="color: #3194d0">查看全文</span></p>
+                                <div class="zjzs-bot">
+                                    <span><Icon type="android-star-outline"></Icon>收藏 106</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span><Icon type="ios-chatboxes-outline"></Icon>评论 106</span>
+                                    <span style="float: right"><Icon type="ios-eye-outline"></Icon>106</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--知识结束-->
+
+                        <!--专家相册开始-->
+                        <div class="grxc">
+                            <ul>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li class="no-margin">
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li class="no-margin">
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li class="no-margin">
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li>
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                                <li class="no-margin">
+                                    <img src="../../img/images/zjxc-img.png" alt="">
+                                    <p>长江</p>
+                                    <span>更新与20170601</span>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <!--专家相册结束-->
+
+
+
+                        </Col>
+                    </Row>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="footer-l">
+                    <ul>
+                        <li>关于NSS1</li>
+                        <li>公益性质</li>
+                        <li>服务项目</li>
+                        <li>以往案例</li>
+                        <li>新闻动态</li>
+                        <li>联系我们</li>
+                    </ul>
+                    <br/>
+                    <br/>
+                    <div>Copyright©2015trecare.com All Rights Reserved 版权所有TREcare
+						<br/>备案号：蜀ICP备88888888号-1</div>
+                </div>
+                <div class="footer-r">
+                    <ul>
+                        <li>微博</li>
+                        <li>微信</li>
+                        <li>Support:DGG Group</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+<script>
+    import Qs from 'qs'
+    import axios from 'axios'
+
+    export default {
+        data() {
+            return {
+                loginuserinfo: JSON.parse(sessionStorage.getItem("user")),
+                portal :'',
+                loginUserMyNo: true,
+                valueDisabled: 4,
+                value1: [],
+                cityList: this.$zone.data,
+                modal1: false,
+                modal2: false,
+                modal_loading: false,
+                modal3: false,
+                modal4: false,
+                modal5: false,
+                value: '',
+                friend: [],
+                currentPage: 0,
+                formInline: {
+                    user: '',
+                    password: ''
+                },
+                ruleInline: {
+                    user: [{
+                        required: true,
+                        message: '请填写用户名',
+                        trigger: 'blur'
+                    }],
+                    password: [{
+                        required: true,
+                        message: '请填写密码',
+                        trigger: 'blur'
+                    },
+                        {
+                            type: 'string',
+                            min: 6,
+                            message: '密码长度不能小于6位',
+                            trigger: 'blur'
+                        }
+                    ],
+                    methods: {
+                        del() {
+                            this.modal_loading = true
+                            setTimeout(() => {
+                                this.modal_loading = false
+                                this.modal2 = false
+                                this.$Message.success('删除成功')
+                            }, 2000)
+                        },
+                        ok() {
+                            this.$Message.info('点击了确定');
+                        },
+                        cancel() {
+                            this.$Message.info('点击了取消');
+                        }
+                    }
+                },
+                cardShow: false,
+                appShow: true
+            }
+        },
+	created: function () {
+        this.loginuserinfo=JSON.parse(sessionStorage.getItem("user"))
+	},
+    methods: {
+        routeTo(e) {
+            if(e == '/portal'){
+                this.portal = 'http://192.168.7.61:8080/gf_mall_client/shop/seller.html?memLoginId='+this.loginuserinfo.loginAccount
+                window.open(this.portal)
+            }else{
+                this.$router.push(e)
+            }
+        },
+        login(name) {
+            this.$refs[name].validate((valid) => {
+                if (valid) {
+                    axios({
+                        method: 'post',
+                        url: 'http://localhost:1111/login/login',
+                        data: {
+                            username: this.formInline.user,
+                            pwd: this.formInline.password
+                        }
+                    }).then(response => {
+                        if (undefined != response.data.user) {
+                            sessionStorage.setItem("user", JSON.stringify(response.data.user))
+                            this.$Message.success('登录成功!')
+                            this.modal2 = false
+                            this.loginuserinfo=JSON.parse(sessionStorage.getItem("user"))
+                            //$(".ivu-modal-content ,.ivu-modal-mask").hide()
+                            window.location.reload();
+                        } else {
+                            this.$Message.error('用户名或密码错误!')
+                        }
+                    }).catch(function (error) {
+                        console.log(error)
+                    })
+                }
+            })
+        },
+        //点击登录显示登录界面
+        loginuser() {
+            this.value = '登录'
+            this.modal2 = true
+        },
+        logout(){
+            axios.get('http://localhost:1111/login/logout')
+                .then(response => {
+                    console.log(response.data)
+                })
+                sessionStorage.removeItem("user")
+                this.$router.push('/pro/firstPage')
+        }
+    }
+}
+</script>

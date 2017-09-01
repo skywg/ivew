@@ -1,0 +1,2307 @@
+<style scoped>
+    .layout {
+        background: #fff;
+    }
+    /* header样式开始*/
+
+    header {
+        height: 81px;
+        background: #FFFFFF;
+        border-bottom: 1px solid #e7e7e7;
+    }
+    /*main样式开始*/
+
+    .main {
+        margin-top: 10px;
+    }
+
+    .mian-left {
+        border: 10px solid #fafafa;
+        width: 210px;
+    }
+
+    .mian-left h3 {
+        line-height: 70px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .app_icon {
+        height: 72px;
+        width: 72px;
+        background: url("../../img/app-icon1.png");
+        margin: auto;
+    }
+
+    .mian-left p {
+        line-height: 38px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .mian-left ul li {
+        margin-bottom: 30px;
+    }
+
+    .app-btn-top {
+        width: 32px;
+        height: 32px;
+        margin: auto;
+        background: url("../../img/app-btn-top.png") no-repeat center;
+        margin-bottom: 20px;
+    }
+
+    .app-btn-bot {
+        width: 32px;
+        height: 32px;
+        margin: auto;
+        background: url("../../img/app-btn-bot.png") no-repeat center;
+        margin-bottom: 20px;
+    }
+
+    .mian-center {
+        width: 640px;
+        margin: 0 10px;
+    }
+
+    .main-center-top {
+        border: 1px solid #ededed;
+        height: 190px;
+    }
+
+    .main-t-l {
+        float: left;
+        margin: 24px;
+    }
+
+    .main-t-l img {
+        margin-bottom: 6px;
+    }
+
+    .main-user {
+        margin: 18px auto;
+        width: 86px;
+    }
+
+    .demo-i-circle-custom {
+        & span {
+            display: block;
+            padding-top: 15px;
+            color: #657180;
+            font-size: 14px;
+            &:before {
+                content: '';
+                display: block;
+                width: 50px;
+                height: 1px;
+                margin: 0 auto;
+                background: #e0e3e6;
+                position: relative;
+                top: -15px;
+            }
+            ;
+        }
+        & span i {
+            font-style: normal;
+            color: #3f414d;
+        }
+    }
+
+    .main-t-r {
+        float: right;
+    }
+
+    .main-t-r ul li {
+        float: right;
+        margin-right: 28px;
+        text-align: center;
+    }
+
+    .main-t-r span {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .main-t-r p {
+        font-size: 14px;
+    }
+
+    .mian-top-text {
+        text-align: center;
+        margin-top: 120px;
+    }
+
+    .mian-top-text p {
+        text-align: center;
+    }
+
+    .mian-top-text h2 {
+        color: #333;
+        font-weight: normal;
+    }
+
+    .main-center-bot {
+        border: 1px solid #ededed;
+        margin-top: 10px;
+    }
+
+    .main-bot-tu {
+        border: 1px solid #d3d3d3;
+        width: 142px;
+    }
+
+    .main-bot-tu p {
+        font-size: 14px;
+        padding-left: 10px;
+        padding-top: 4px;
+        color: #333;
+    }
+
+    .main-bot-tu span {
+        font-size: 12px;
+        padding-left: 10px;
+        line-height: 24px;
+        color: #a6a6a6;
+    }
+
+    .main-right-t {
+        width: 290px;
+        border: 1px solid #ededed;
+    }
+
+    .main-right-t span {
+        font-size: 18px;
+        color: #333;
+    }
+
+    .main-right-t p {
+        text-align: center;
+        font-size: 14px;
+        color: #acacac;
+    }
+
+    .mian-r-t-text1 {
+        height: 84px;
+        background: #f5f5f5;
+        padding-top: 18px;
+    }
+
+    .mian-r-t-text {
+        height: 84px;
+        padding-top: 18px;
+    }
+
+    .main-right-c {
+        margin-top: 10px;
+        padding: 0 12px;
+        width: 290px;
+        border: 1px solid #ededed;
+    }
+
+    .main-right-c p {
+        line-height: 21px;
+    }
+
+    .main-r-title {
+        line-height: 56px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .main-r-title a {
+        position: relative;
+        margin-right: 10px;
+        line-height: 56px;
+        font-size: 14px;
+    }
+
+    .main-right-c ul li {
+        margin-bottom: 14px;
+        height: 50px;
+    }
+
+    .main-right-c button {
+        background: #c9c9c9;
+        border: none;
+        width: 18px;
+        height: 18px;
+        margin-bottom: 20px;
+    }
+
+    .main-right-b {
+        margin-top: 10px;
+        padding: 0 12px;
+        width: 290px;
+        border: 1px solid #ededed;
+    }
+
+    .main-right-b p {
+        font-size: 14px;
+        line-height: 32px;
+        text-align: center;
+    }
+
+    .guanggao {
+        margin-top: 10px;
+        width: 290px;
+        height: 222px;
+        border: 1px solid #ededed;
+        background: url("../../img/guanggao.png") no-repeat;
+    }
+
+    #appcenter p {
+        text-align: center;
+    }
+    /*main样式结束*/
+    /*footer样式开始*/
+
+    .footer {
+        height: 163px;
+        border-top: 5px solid #51ad79;
+        background: #333333;
+        margin-top: 140px;
+        padding-top: 22px;
+    }
+
+    .footer-l {
+        float: left;
+    }
+
+    .footer-r {
+        float: right;
+        color: #fff;
+    }
+
+    .footer-l ul li {
+        color: #fff;
+        float: left;
+        padding: 0 16px;
+        border-right: 1px solid #474747;
+    }
+
+    .footer-r ul li {
+        color: #fff;
+        float: left;
+        padding: 0 16px;
+        border-left: 1px solid #474747;
+    }
+
+    .footer-l div {
+        color: #b4b4b4;
+        padding-left: 16px;
+    }
+    /*footer样式结束*/
+    /*除头底的样式开始*/
+
+    .main-l {
+        width: 210px;
+        border: 1px solid #ededed;
+        padding: 0 20px;
+    }
+
+    .main-l-title {
+        line-height: 56px;
+        font-size: 20px;
+        text-align: center;
+        border-bottom: 1px solid #ededed;
+    }
+
+    .gjyy {
+        width: 110px;
+        height: 68px;
+        margin: auto;
+        cursor: pointer;
+    }
+
+    .gjyy p {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .gjyy span {
+        font-size: 12px;
+        margin-left: 0px;
+    }
+
+    .jcyy ul li {
+        width: 110px;
+        height: 35px;
+        margin-left: 14px;
+    }
+
+    .jcyy ul li a {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .main-r-top {
+        height: 134px;
+        background: url("../../img/images/hyzx-banner.png") no-repeat top center;
+    }
+
+    .main-r-top ul {
+        float: right;
+        margin: 70px 30px 0 0;
+    }
+
+    .main-r-top ul li {
+        float: left;
+        margin-left: 34px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .main-r-top ul li p {
+        font-size: 20px;
+    }
+
+    .main-r-top ul li span {
+        margin-left: 0px;
+        font-size: 14px;
+    }
+
+    .hyzx-user-img {
+        width: 160px;
+        height: 160px;
+        border: 4px solid #FFFFFF;
+        background: url("../../img/images/hyzx-uese-img.png") center top no-repeat;
+        margin: 78px 0 0 24px;
+    }
+
+    .main_r_d {
+        margin-top: 10px;
+    }
+
+    .container .region {
+        width: 140px;
+        margin-left: 0px;
+    }
+
+    .ivu-modal-footer {
+        text-align: center !important;
+    }
+
+    .jing {
+        color: #4fac77;
+    }
+</style>
+<template>
+    <div class="layout">
+        <!--header开始-->
+        <header>
+            <div class="container">
+                <Row>
+                    <Col span="4" class="region">
+                    <img src="../../img/huiyuan-logo.png" alt="">
+                    </Col>
+                    <Col span="10" class="nav-center" style="width:45%;">
+                    <ul class="ns-nav">
+                        <li>
+                            <a href="" class="ns-active">
+                                <Icon type="monitor"></Icon> 无忧导航
+                            </a>
+                        </li>
+                        <li>
+                            <a @click="goto('/mall/index')">
+                                <Icon type="ios-home"></Icon> 无忧首页
+                            </a>
+                        </li>
+                        <li>
+                            <a @click="goto('1')">
+                                <Icon type="ipad"></Icon> 掌上无忧
+                            </a>
+                        </li>
+                        <li>
+                            <a @click="goto('2')">
+                                <Icon type="map"></Icon> 地图导航
+                            </a>
+                        </li>
+                    </ul>
+                    </Col>
+                    <Col span="7">
+                    <div class="header-serch">
+                        <!--<Input v-model="value13" style="margin-top: 19px;margin-left: 60px;    width: 108px;">
+                        <Button slot="append" icon="ios-search"></Button>
+                        </Input>-->
+                    </div>
+                    </Col>
+                    <Col span="3" style="float: right;height:81px;">
+                    <p href="#" style=";float: right;line-height: 81px;font-size: 14px;">
+                        <Dropdown>
+                            <a href="javascript:void(0)" style="color: #51ad79">
+                                {{loginuserinfo.displayName}}
+                                <Icon type="arrow-down-b"></Icon>
+                            </a>
+                            <Dropdown-menu slot="list" trigger="click">
+                                <Dropdown-item>账户安全</Dropdown-item>
+                                <Dropdown-item><a :href="['http://192.168.7.61:8080/ovit/center/address.htm?uid='+loginuserinfo.uniqueId]" target="_blank">收货地址</a></Dropdown-item>
+                                <Dropdown-item><a :href="['http://192.168.7.61:8080/ovit/center/order/list.htm?uid='+loginuserinfo.uniqueId]" target="_blank">消费记录</a></Dropdown-item>
+                                <Dropdown-item @click.native="showSec">重启认证</Dropdown-item>
+                                <Dropdown-item>
+                                    <a href="javascript:void0" @click="logout">退出</a>
+                                </Dropdown-item>
+                            </Dropdown-menu>
+                        </Dropdown>
+                    </p>
+                    <Badge count="3" style="margin-top: 30px;float: right;margin-right: 20px">
+                        <a href="#" class="demo-badge">
+                            <Icon type="ios-bell" size="22" style="color: #51ad79"></Icon>
+                        </a>
+                    </Badge>
+                    </Col>
+                </Row>
+            </div>
+        </header>
+        <!--header结束-->
+        <!--main开始-->
+        <div class="main">
+            <div class="container" style="width: 1220px">
+                <Row>
+                    <Col span="6" class="main-l">
+                    <div class="main-l-title">
+                        <router-link to="/center">应用中心</router-link>
+                        <Icon type="ios-arrow-right" style="float: right;margin-top: 19px;color: #4fac77"></Icon>
+                    </div>
+                    <div style="font-size: 16px ;line-height: 50px;height: 60px;">高级应用</div>
+                    <div class="gjyy">
+                        <div style="float: left">
+                            <img src="../../img/images/gjyy-icon1.png" alt="">
+                        </div>
+                        <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                            <p>物种百科</p>
+                            <span>物种百科</span>
+                        </div>
+                    </div>
+                    <div class="gjyy">
+                        <div style="float: left">
+                            <img src="../../img/images/gjyy-icon1.png" alt="">
+                        </div>
+                        <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                            <p>应用资讯</p>
+                            <span>农业资讯</span>
+                        </div>
+                    </div>
+                    <div class="gjyy">
+                        <div style="float: left">
+                            <img src="../../img/images/gjyy-icon1.png" alt="">
+                        </div>
+                        <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                            <p>应用资讯</p>
+                            <span>农业资讯</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center;height: 40px;border-bottom: 1px solid #ededed;">
+                        <Button size="small">收起</Button>
+                    </div>
+                    <div style="font-size: 16px ;line-height: 50px;height: 60px;">基础应用</div>
+                    <div class="jcyy">
+                        <ul>
+                            <li>
+                                <a href="">• 代理管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 关系圈管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 公众号管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 关注管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 收藏管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 聘请管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 名称库管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 库存管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 生产管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 储藏账户</a>
+                            </li>
+                            <div style="text-align: center;height: 40px;border-bottom: 1px solid #ededed;">
+                                <Button size="small">收起</Button>
+                            </div>
+                        </ul>
+                    </div>
+                    <div style="font-size: 16px ;line-height: 50px;height: 60px;">通用应用</div>
+                    <div class="jcyy" style="margin-bottom: 40px">
+                        <ul>
+                            <li>
+                                <a href="">• 订单管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 客服管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 编码管理</a>
+                            </li>
+                            <li>
+                                <a href="">• 资金账户</a>
+                            </li>
+                            <div style="text-align: center;height: 40px;border-bottom: 1px solid #ededed;">
+                                <Button size="small">收起</Button>
+                            </div>
+                        </ul>
+                    </div>
+                    </Col>
+                    <Col span="18" class="main-r" style="width: 998px">
+                    <div style="height: 268px;border: 1px solid #ededed">
+                        <div class="main_r_t">
+                            <div class="main-r-top">
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <span>{{favorite}}</span>
+                                            <p>关注</p>
+                                        </li>
+                                        <li>
+                                            <span>{{favorite}}</span>
+                                            <p>粉丝</p>
+                                        </li>
+                                        <li>
+                                            <span>{{number}}</span>
+                                            <p>总访问</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div style="position: absolute;">
+                                    <div class="hyzx-user-img"></div>
+                                </div>
+                            </div>
+                            <div style="margin-left: 180px" class="pd10">
+                                <h2 style="line-height: 50px;font-size: 24px">{{displayName}}</h2>
+                                <!--<router-link to="/identification">
+                                    <img src="../../img/images/yyzx-maintop1.png" alt="">
+                                </router-link>-->
+                                <div class="mb10">
+                                    <img src="../../img/images/yyzx-maintop1.png" alt="" @click="show" /> &nbsp;
+                                    <img src="../../img/images/yyzx-maintop2.png" alt="">
+                                </div>
+                                <div class="clear">
+                                    <span class="fl">{{signature}}</span>
+                                    <Button type="ghost" class="fr">栏目管理</Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_r_d">
+                        <Row>
+                            <Col span="16" style="width: 728px;padding: 20px;margin-right: 10px;border: 1px solid #ededed;">
+                            <Tabs value="name1" @on-click="tabsClick">
+                                <Dropdown slot="extra" placement="bottom-start" style="float: left" v-show="tabsDynaShow">
+                                    <Dropdown-menu>
+
+                                        <Dropdown-item>账户安全</Dropdown-item>
+                                        <Dropdown-item><a :href="['http://192.168.7.61:8080/ovit/center/address.htm?uid='+loginuserinfo.uniqueId]" target="_blank">收货地址</a></Dropdown-item>
+                                        <Dropdown-item><a :href="['http://192.168.7.61:8080/ovit/center/order/list.htm?uid='+loginuserinfo.uniqueId]" target="_blank">消费记录</a></Dropdown-item>
+                                    </Dropdown-menu>
+                                </Dropdown>
+                                <Tab-pane label="动态" name="name1">
+                                    <Tabs :animated="false">
+                                        <Tab-pane label="全部">
+                                            <div style="border-bottom: 1px solid #ededed;padding-bottom: 10px;padding-top: 5px;height:200px;" v-for="item in list.list">
+                                                <div style="float: right;">
+                                                    <Button type="ghost" size="small">已审核</Button>
+                                                </div>
+                                                <div style="width: 100%;    height: 52px;">
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                        <p style="font-size: 14px">{{item.displayName}}</p>
+                                                        <span style="margin-left: 0px;color: #999999">{{item.createTime}}</span>
+                                                    </div>
+                                                </div>
+                                                <div style="width:100%;height:100px;">
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-img01.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 70%;">
+                                                        <Collapse accordion>
+                                                            <Panel>
+                                                                {{item.title}}
+                                                                <p slot="content" v-html="item.content"></p>
+                                                            </Panel>
+                                                        </Collapse>
+                                                        <!--<p style="font-size: 16px;font-weight: 600;line-height: 34px">三月30-31我参加了</p>
+                                                        <span style="margin-left: 0px;color: #999999;line-height: 1.6 ;font-size: 14px">
+                                                        {{item.summary}}
+                                                         <span style="color: #4fac77">阅读全文</span>
+                                                        </span>-->
+                                                    </div>
+                                                </div>
+                                                <div style="float: right;margin-top: 10px;margin-right: 10px;color: #999">
+                                                    <span @click="dianzan(item.id)"><img src="../../img/images/zan.png" alt="" style="vertical-align: sub;"> 赞 {{item.thumbUpNum}}</span> &nbsp;
+                                                    <span @click="showHuiFu(item.id)"><img src="../../img/images/huifu.png" alt="" style="vertical-align: middle;"> 回复</span> &nbsp;
+                                                    <!--<span><img src="../../img/images/zhuanfa.png" alt="" style="vertical-align: middle;"> 转发</span>-->
+                                                </div>
+                                                <div :id="item.id" style="display: none">
+                                                    <Input v-model="huifu" type="textarea" placeholder="请输入..." style="width: 100%;margin: 30px 0px 10px 0;"></Input>
+                                                    <Button type="primary" size="small" style="float:right;margin-bottom:20px" @click="reply(item.id)">发送</Button>
+                                                </div>
+                                            </div>
+                                        </Tab-pane>
+                                        <Tab-pane label="油菜">
+                                            <div style="border-bottom: 1px solid #ededed;padding-bottom: 20px;padding-top: 15px">
+                                                <div style="float: right;">
+                                                    <Button type="ghost" size="small">已审核</Button>
+                                                </div>
+
+                                                <div style="width: 100%;    height: 52px;">
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                        <p style="font-size: 14px">韩少寒</p>
+                                                        <span style="margin-left: 0px;color: #999999">半小时前</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-img01.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 70%;">
+                                                        <p style="font-size: 16px;font-weight: 600;line-height: 34px">安徽全椒县古河镇全力为油菜育苗“解渴”</p>
+                                                        <span style="margin-left: 0px;color: #999999;line-height: 1.6 ;font-size: 14px">                                                        全椒县古河镇今年秋种发动早、起步快，油菜采取集中育苗和农户分散育苗相结合，到9月底全镇已完成油菜育苗任务3000亩。近一个月来的持续的干旱，已严重影响到油菜育苗的生长。为了确保秋种质量...
+                                                         <span style="color: #4fac77">阅读全文</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div style="float: right;margin-top: 20px;margin-right: 10px;color: #999">
+                                                    <span><img src="../../img/images/zan.png" alt="" style="vertical-align: sub;"> 赞 106</span> &nbsp;
+                                                    <span><img src="../../img/images/huifu.png" alt="" style="vertical-align: middle;"> 回复</span> &nbsp;
+                                                    <span><img src="../../img/images/zhuanfa.png" alt="" style="vertical-align: middle;"> 转发</span>
+                                                </div>
+                                                <Input v-model="value" placeholder="请输入..." style="width: 100%;margin-top: 10px;"></Input>
+                                            </div>
+
+                                            <div style="border-bottom: 1px solid #ededed;padding-bottom: 20px;padding-top: 15px">
+                                                <div style="float: right;">
+                                                    <Button type="ghost" size="small">已审核</Button>
+                                                </div>
+
+                                                <div style="width: 100%;    height: 52px;">
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                        <p style="font-size: 14px">韩少寒</p>
+                                                        <span style="margin-left: 0px;color: #999999">半小时前</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-img01.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 70%;">
+                                                        <p style="font-size: 16px;font-weight: 600;line-height: 34px">甘蓝型油菜可种植区域海拔提高200米</p>
+                                                        <span style="margin-left: 0px;color: #999999;line-height: 1.6 ;font-size: 14px">                                                        青海大学杜德志研究员主持培育的“青杂7号”近日被农业部作为全国春油菜唯一品种推介，标志着我国高海拨、高纬度油菜主产区一般甘蓝型春油菜不能正常成熟难题得以有效解决...
+                                                         <span style="color: #4fac77">阅读全文</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div style="float: right;margin-top: 20px;margin-right: 10px;color: #999">
+                                                    <span><img src="../../img/images/zan.png" alt="" style="vertical-align: sub;"> 赞 106</span> &nbsp;
+                                                    <span><img src="../../img/images/huifu.png" alt="" style="vertical-align: middle;"> 回复</span> &nbsp;
+                                                    <span><img src="../../img/images/zhuanfa.png" alt="" style="vertical-align: middle;"> 转发</span>
+                                                </div>
+                                                <Input v-model="value" placeholder="请输入..." style="width: 100%;margin-top: 10px;"></Input>
+                                            </div>
+                                        </Tab-pane>
+                                        <Tab-pane label="土豆">
+                                            <div style="border-bottom: 1px solid #ededed;padding-bottom: 20px;padding-top: 15px">
+                                                <div style="float: right;">
+                                                    <Button type="ghost" size="sm
+
+
+                                                    all">已审核</Button>
+                                                </div>
+
+                                                <div style="width: 100%;    height: 52px;">
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                        <p style="font-size: 14px">韩少寒</p>
+                                                        <span style="margin-left: 0px;color: #999999">半小时前</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-img01.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 70%;">
+                                                        <p style="font-size: 16px;font-weight: 600;line-height: 34px">土豆为何要翻身成主粮</p>
+                                                        <span style="margin-left: 0px;color: #999999;line-height: 1.6 ;font-size: 14px">                                                        近日,农业部表示,土豆有望成为中国的第四大主粮。为何土豆要翻身成主粮?您了解土豆吗?土豆要怎样才能真正成为主粮呢?土豆将成为第四大主粮据农业部消息，我国将启动马铃薯主粮化战略，推进把马铃薯加工成馒头、面条、米粉等主食，马铃薯将成稻米、小麦、玉米外又一主粮...
+                                                         <span style="color: #4fac77">阅读全文</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div style="float: right;margin-top: 20px;margin-right: 10px;color: #999">
+                                                    <span><img src="../../img/images/zan.png" alt="" style="vertical-align: sub;"> 赞 106</span> &nbsp;
+                                                    <span><img src="../../img/images/huifu.png" alt="" style="vertical-align: middle;"> 回复</span> &nbsp;
+                                                    <span><img src="../../img/images/zhuanfa.png" alt="" style="vertical-align: middle;"> 转发</span>
+                                                </div>
+                                                <Input v-model="value" placeholder="请输入..." style="width: 100%;margin-top: 10px;"></Input>
+                                            </div>
+
+                                            <div style="border-bottom: 1px solid #ededed;padding-bottom: 20px;padding-top: 15px">
+                                                <div style="float: right;">
+                                                    <Button type="ghost" size="small">已审核</Button>
+                                                </div>
+
+                                                <div style="width: 100%;    height: 52px;">
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                        <p style="font-size: 14px">韩少寒</p>
+                                                        <span style="margin-left: 0px;color: #999999">半小时前</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-img01.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 70%;">
+                                                        <p style="font-size: 16px;font-weight: 600;line-height: 34px">土豆“雄起”进军主粮界</p>
+                                                        <span style="margin-left: 0px;color: #999999;line-height: 1.6 ;font-size: 14px">                                                        在今天（1月7日）举行的马铃薯主粮化战略研讨会上，农业部副部长余欣荣表示，将力争通过几年不懈努力，使马铃薯的种植面积、单产水平、总产量和主粮化产品在马铃薯总消费量中的比重均有显著提升，让马铃薯逐渐成为水稻、小麦、玉米之后的我国第四大主粮作物...
+                                                         <span style="color: #4fac77">阅读全文</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div style="float: right;margin-top: 20px;margin-right: 10px;color: #999">
+                                                    <span><img src="../../img/images/zan.png" alt="" style="vertical-align: sub;"> 赞 106</span> &nbsp;
+                                                    <span><img src="../../img/images/huifu.png" alt="" style="vertical-align: middle;"> 回复</span> &nbsp;
+                                                    <span><img src="../../img/images/zhuanfa.png" alt="" style="vertical-align: middle;"> 转发</span>
+                                                </div>
+                                                <Input v-model="value" placeholder="请输入..." style="width: 100%;margin-top: 10px;"></Input>
+                                            </div>
+                                        </Tab-pane>
+                                        <Tab-pane label="玉米">
+                                            <div style="border-bottom: 1px solid #ededed;padding-bottom: 20px;padding-top: 15px">
+                                                <div style="float: right;">
+                                                    <Button type="ghost" size="small">已审核</Button>
+                                                </div>
+
+                                                <div style="width: 100%;    height: 52px;">
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                        <p style="font-size: 14px">韩少寒</p>
+                                                        <span style="margin-left: 0px;color: #999999">半小时前</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-img01.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 70%;">
+                                                        <p style="font-size: 16px;font-weight: 600;line-height: 34px">我国进口玉米发现疫情</p>
+                                                        <span style="margin-left: 0px;color: #999999;line-height: 1.6 ;font-size: 14px">                                                        近日，深圳出入境检验检疫局坪山新区办事处工作人员按照相关规定销毁处理了一批来自保加利亚的携带疫情的进口玉米下脚料。据了解，该批进口玉米来自保加利亚，重约3000吨，由蛇口港入境，入境时蛇口检验检疫局检疫检出该批玉米中携带有植物检疫性有害生物—假高粱...
+                                                         <span style="color: #4fac77">阅读全文</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div style="float: right;margin-top: 20px;margin-right: 10px;color: #999">
+                                                    <span><img src="../../img/images/zan.png" alt="" style="vertical-align: sub;"> 赞 106</span> &nbsp;
+                                                    <span><img src="../../img/images/huifu.png" alt="" style="vertical-align: middle;"> 回复</span> &nbsp;
+                                                    <span><img src="../../img/images/zhuanfa.png" alt="" style="vertical-align: middle;"> 转发</span>
+                                                </div>
+                                                <Input v-model="value" placeholder="请输入..." style="width: 100%;margin-top: 10px;"></Input>
+                                            </div>
+
+                                            <div style="border-bottom: 1px solid #ededed;padding-bottom: 20px;padding-top: 15px">
+                                                <div style="float: right;">
+                                                    <Button type="ghost" size="small">已审核</Button>
+                                                </div>
+
+                                                <div style="width: 100%;    height: 52px;">
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                        <p style="font-size: 14px">韩少寒</p>
+                                                        <span style="margin-left: 0px;color: #999999">半小时前</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div style="float: left">
+                                                        <img src="../../img/images/dongtai-img01.png" alt="">
+                                                    </div>
+                                                    <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 70%;">
+                                                        <p style="font-size: 16px;font-weight: 600;line-height: 34px">今明年加拿大玉米和大麦产量不变</p>
+                                                        <span style="margin-left: 0px;color: #999999;line-height: 1.6 ;font-size: 14px">据加拿大农业及农业食品部发布的最新报告显示，2013/14年度加拿大玉米产量预测数据不变，仍为1380万吨，相比之下，上年为1310万吨。2013/14年度加拿大玉米收获面积预计为150万公顷，与早先的预测相一致，上年为140万公顷。玉米出口数据同样不变，仍为60万吨，上年为100万吨。国内用量1250万吨，与早先的预测相一致，上年为1210万吨...
+                                                         <span style="color: #4fac77">阅读全文</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div style="float: right;margin-top: 20px;margin-right: 10px;color: #999">
+                                                    <span><img src="../../img/images/zan.png" alt="" style="vertical-align: sub;"> 赞 106</span> &nbsp;
+                                                    <span><img src="../../img/images/huifu.png" alt="" style="vertical-align: middle;"> 回复</span> &nbsp;
+                                                    <span><img src="../../img/images/zhuanfa.png" alt="" style="vertical-align: middle;"> 转发</span>
+                                                </div>
+                                                <Input v-model="value" placeholder="请输入..." style="width: 100%;margin-top: 10px;"></Input>
+                                            </div>
+                                        </Tab-pane>
+                                        <Button type="ghost" @click="publish" size="small" slot="extra">发布</Button>
+                                        <Modal v-model="publishShow" width="600" :closable="false">
+                                            <div style="text-align:center">
+                                                <Form ref="mydynamic" :model="mydynamic" :rules="ruleInline" label-position="right" :label-width="100">
+                                                    <Form-item label="标题" prop="title">
+                                                        <Input type="text" v-model="mydynamic.title" placeholder="标题">
+                                                        </Input>
+                                                    </Form-item>
+                                                    <Form-item label="分类" prop="type">
+                                                        <Input type="text" v-model="mydynamic.type" placeholder="分类" label-position="right" :label-width="100">
+                                                        </Input>
+                                                    </Form-item>
+                                                    <Form-item label="信息来源" prop="source" label-position="right" :label-width="100" style="text-align: left;">
+                                                        <Radio-group v-model="mydynamic.source">
+                                                            <Radio label="原创">
+                                                            </Radio>
+                                                            <Radio label="转载">
+                                                            </Radio>
+                                                        </Radio-group>
+                                                    </Form-item>
+                                                    <Form-item label="关联物种" prop="species" label-position="right" :label-width="100">
+                                                        <Input type="text" v-model="mydynamic.species" placeholder="关联物种">
+                                                        </Input>
+                                                    </Form-item>
+                                                    <Form-item label="通用商品名" prop="goodsname" label-position="right" :label-width="100">
+                                                        <Input type="text" v-model="mydynamic.goodsname" placeholder="通用商品名">
+                                                        </Input>
+                                                    </Form-item>
+                                                    <Form-item label="通用服务名" prop="servicename" label-position="right" :label-width="100">
+                                                        <Input type="text" v-model="mydynamic.servicename" placeholder="通用服务名">
+                                                        </Input>
+                                                    </Form-item>
+                                                    <Form-item label="行业分类" prop="industry" label-position="right" :label-width="100">
+                                                        <Input type="text" v-model="mydynamic.industry" placeholder="行业分类">
+                                                        </Input>
+                                                    </Form-item>
+                                                    <Form-item label="地区" prop="district" label-position="right" :label-width="100">
+                                                        <Cascader :data="cityList" v-model="mydynamic.district"></Cascader>
+                                                    </Form-item>
+                                                    <Form-item label="栏目类别" prop="category" label-position="right" :label-width="100">
+                                                        <Input type="text" v-model="mydynamic.category" placeholder="栏目类别">
+                                                        </Input>
+                                                    </Form-item>
+                                                    <Form-item label="摘要" prop="summary" label-position="right" :label-width="100">
+                                                        <Input type="text" v-model="mydynamic.summary" placeholder="摘要">
+                                                        </Input>
+                                                    </Form-item>
+                                                    <Form-item label="详细内容" prop="content">
+                                                        <ueditor></ueditor>
+                                                    </Form-item>
+                                                    <Form-item label="关键字" prop="label" label-position="right" :label-width="100">
+                                                        <Input type="text" v-model="mydynamic.label" placeholder="关键字">
+                                                        </Input>
+                                                    </Form-item>
+                                                    <Form-item label="公开范围" prop="security" label-position="right" :label-width="100" style="text-align: left;">
+                                                        <Radio-group v-model="mydynamic.security">
+                                                            <Radio label="所有人可见">
+                                                            </Radio>
+                                                            <Radio label="仅好友可见">
+                                                            </Radio>
+                                                            <Radio label="仅自己可见">
+                                                            </Radio>
+                                                            <Radio label="仅指定组可见">
+                                                            </Radio>
+                                                        </Radio-group>
+                                                    </Form-item>
+                                                </Form>
+                                            </div>
+                                            <div slot="footer" style="text-algin:center">
+                                                <div style="text-algin:center">
+                                                    <Button type="primary" shape="circle" @click="publishSubmit()" style="width:100px">确定</Button>
+                                                </div>
+
+                                            </div>
+                                        </Modal>
+
+                                    </Tabs>
+								</Tab-pane>
+                                <Tab-pane v-for="item in columnSetting" :label="item.columnName" >
+                                    <Tabs   @on-click="showMydynamic(item.columnName)">
+                                        <TabPane label="我的动态"  >
+                                            <Tabs @on-click="showColumnList" >
+                                                <TabPane  v-for="info in columnMydynamic" :label="info.label">
+                                                    <div style="border-bottom: 1px solid #ededed;padding-bottom: 10px;padding-top: 5px;height:120px;" v-for="item in columnList">
+                                                        <div style="width: 100%;    height: 52px;">
+                                                            <div style="float: left">
+                                                                <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                                            </div>
+                                                            <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                                <p style="font-size: 14px">{{item.displayName}}</p>
+                                                                <span style="margin-left: 0px;color: #999999">{{item.createTime}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div style="width:100%;height:auto;">
+                                                            <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 96%;">
+                                                                <p style="font-size: 16px;font-weight: 600;line-height: 34px">
+                                                                    <a target="_blank" @click="read(item.fid,'policy')" >{{item.title}}</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </TabPane>
+
+                                            </Tabs>
+
+                                        </TabPane>
+                                        <TabPane label="关注动态">
+
+                                        </TabPane>
+                                    </Tabs>
+                                </Tab-pane>
+                               <!-- <Tab-pane label="政策" name="name3">
+									<div style="border-bottom: 1px solid #ededed;padding-bottom: 10px;padding-top: 5px;height:120px;" v-for="item in policy">
+										<div style="width: 100%;    height: 52px;">
+											<div style="float: left">
+												<img src="../../img/images/dongtai-uesr-img.png" alt="">
+											</div>
+											<div style="float: left;margin-left: 10px;margin-top: 2px;">
+												<p style="font-size: 14px">{{item.displayName}}</p>
+												<span style="margin-left: 0px;color: #999999">{{item.createTime}}</span>
+											</div>
+										</div>
+										<div style="width:100%;height:auto;">
+											<div style="float: left;margin-left: 10px;margin-top: 2px;  width: 96%;">
+												<p style="font-size: 16px;font-weight: 600;line-height: 34px">
+													<a target="_blank" @click="read(item.fid,'policy')" >{{item.title}}</a>
+												</p>
+											</div>
+										</div>
+									</div>
+
+                                </Tab-pane>
+                                <Tab-pane label="资讯" name="name2">
+                                    <div style="border-bottom: 1px solid #ededed;padding-bottom: 10px;padding-top: 5px;height:120px;" v-for="item in inforMation">
+                                        <div style="width: 100%;    height: 52px;">
+                                            <div style="float: left">
+                                                <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                            </div>
+                                            <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                <p style="font-size: 14px">{{item.displayName}}</p>
+                                                <span style="margin-left: 0px;color: #999999">{{item.createTime}}</span>
+                                            </div>
+                                        </div>
+                                        <div style="width:100%;height:auto;">
+                                            <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 96%;">
+                                                <Collapse accordion>
+                                                    <Panel>
+                                                        {{item.title}},{{item.id}}
+                                                        <p slot="content" v-html="item.content"></p>
+                                                    </Panel>
+                                                </Collapse>
+                                </Tab-pane>
+                                <Tab-pane label="知识" name="name4">
+                                    <div style="border-bottom: 1px solid #ededed;padding-bottom: 10px;padding-top: 5px;height:120px;" v-for="item in knowLedge">
+                                        <div style="width: 100%;    height: 52px;">
+                                            <div style="float: left">
+                                                <img src="../../img/images/dongtai-uesr-img.png" alt="">
+                                            </div>
+                                            <div style="float: left;margin-left: 10px;margin-top: 2px;">
+                                                <p style="font-size: 14px">{{item.displayName}}</p>
+                                                <span style="margin-left: 0px;color: #999999">{{item.createTime}}</span>
+                                            </div>
+                                        </div>
+                                        <div style="width:100%;height:auto;">
+                                            <div style="float: left;margin-left: 10px;margin-top: 2px;  width: 96%;">
+                                                <p style="font-size: 16px;font-weight: 600;line-height: 34px">
+                                                    <a target="_blank" @click="read(item.fid,'knowLedge')" >{{item.title}}</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Tab-pane>
+                                <Tab-pane label="商品" name="name5">标签二的内容</Tab-pane>
+                                <Tab-pane label="服务" name="name6">标签三的内容</Tab-pane>
+                                <Tab-pane label="直播" name="name7">标签三的内容</Tab-pane>
+                                <Tab-pane label="更多" name="name8">标签三的内容</Tab-pane>-->
+                            </Tabs>
+
+
+                            </Col>
+                            <Col span="8" style="height:240px;width: 260px;">
+                            <div style="padding: 0px 10px;border: 1px solid #ededed;margin-bottom: 10px">
+                                <h3 style="text-align: center;font-size: 20px;line-height: 58px">好友</h3>
+                                <Input v-model="value" placeholder="请输入..." icon="ios-search" style="width: 100%"></Input>
+                                <div style="height:310px;widht:100%;">
+                                    <ul style="height:280px;widht:98%;margin-top:5px;">
+                                        <li v-if="friend==''">
+                                            <div style="float: left">
+                                                <span style="font-size: 12px;color: #a6a6a6;margin-top: 6px;margin-left: 10px;">还没有好友</span>
+                                            </div>
+                                        </li>
+                                        <li v-else="friend!=''" v-for="f in friend" style="height:55px;">
+                                            <a href="#">
+                                                <div style="float: left">
+                                                    <img src="../../img/user2.png" alt="">
+                                                </div>
+                                                <div style="float: left">
+                                                    <p style="font-size: 14px;color: #333;margin-top: 6px;margin-left: 10px;">{{f.displayName}}</p>
+                                                    <span style="font-size: 12px;color: #a6a6a6;margin-top: 6px;margin-left: 10px;" v-if="f.signaTure ==''">还没有签名！</span>
+                                                    <span style="font-size: 12px;color: #a6a6a6;margin-top: 6px;margin-left: 10px  !important;" v-else="f.signaTure !=''">{{f.signaTure}}</span>
+                                                </div>
+                                                <div style="float: right;margin-top: 16px;margin-right: 10px;">
+                                                    <Badge :count="f.tourNumber">
+                                                        <a href="#" class="demo-badge"></a>
+                                                    </Badge>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <Page :total='total' page-size=5 show-total :current='currentPage' size="small" @on-change="nextPage"></Page>
+                                </div>
+                            </div>
+                            <div style="padding: 0px 10px;border: 1px solid #ededed;margin-bottom: 20px;padding-bottom: 20px">
+                                <p style="font-size: 14px;float: right;margin-top: 20px;color: #333">
+                                    <router-link to="/circle">逛圈子</router-link>
+                                    <Icon type="ios-arrow-right"></Icon>
+                                </p>
+                                <h3 style="text-align: center;font-size: 20px;line-height: 58px">圈子</h3>
+                                <Input v-model="value" placeholder="请输入..." icon="ios-search" style="width: 100%"></Input>
+                                <Row style="margin-top: 14px">
+                                    <Col span="8" style="text-align: center">
+                                    <img src="../../img/images/quanzix-img01.png" alt="">
+                                    <p style="font-size: 14px ;line-height: 30px">瓜果蔬菜圈</p>
+                                    </Col>
+                                    <Col span="8" style="text-align: center">
+                                    <img src="../../img/images/quanzix-img01.png" alt="">
+                                    <p style="font-size: 14px ;line-height: 30px">蔬菜圈</p>
+                                    </Col>
+                                    <Col span="8" style="text-align: center">
+                                    <img src="../../img/images/quanzix-img01.png" alt="">
+                                    <p style="font-size: 14px ;line-height: 30px">瓜果蔬菜圈</p>
+                                    </Col>
+                                </Row>
+                                <Row style="margin-top: 14px">
+                                    <Col span="8" style="text-align: center">
+                                    <img src="../../img/images/quanzix-img01.png" alt="">
+                                    <p style="font-size: 14px ;line-height: 30px">瓜果蔬菜圈</p>
+                                    </Col>
+                                    <Col span="8" style="text-align: center">
+                                    <img src="../../img/images/quanzix-img01.png" alt="">
+                                    <p style="font-size: 14px ;line-height: 30px">蔬菜圈</p>
+                                    </Col>
+                                    <Col span="8" style="text-align: center">
+                                    <img src="../../img/images/quanzix-img01.png" alt="">
+                                    <p style="font-size: 14px ;line-height: 30px">瓜果蔬菜圈</p>
+                                    </Col>
+                                </Row>
+                                <Row style="margin-top: 14px">
+                                    <Col span="8" style="text-align: center">
+                                    <img src="../../img/images/quanzix-img01.png" alt="">
+                                    <p style="font-size: 14px ;line-height: 30px">瓜果蔬菜圈</p>
+                                    </Col>
+                                    <Col span="8" style="text-align: center">
+                                    <img src="../../img/images/quanzix-img01.png" alt="">
+                                    <p style="font-size: 14px ;line-height: 30px">蔬菜圈</p>
+                                    </Col>
+                                    <Col span="8" style="text-align: center">
+                                    <img src="../../img/images/quanzix-img01.png" alt="">
+                                    <p style="font-size: 14px ;line-height: 30px">瓜果蔬菜圈</p>
+                                    </Col>
+                                </Row>
+                            </div>
+                            </Col>
+                        </Row>
+                    </div>
+                    </Col>
+                </Row>
+            </div>
+        </div>
+        <!--main结束-->
+        <!--
+    作者：786905664@qq.com
+    时间：2017-08-03
+    描述：第一次认证引导
+-->
+        <div class="layout">
+
+            <Modal v-model="modal2" width="850" :closable="true" :mask-closable="false">
+                <div>
+                    <Steps :current="current" style="margin-top: 20px;width: 860px;padding: 0 20px">
+                        <Step title="实名认证"></Step>
+                        <Step title="设置栏目"></Step>
+                        <Step title="个性化"></Step>
+                        <Step title="应用设置"></Step>
+                        <Step title="完善信息"></Step>
+                        <Step title="网站设置"></Step>
+                    </Steps>
+                </div>
+
+                <transition>
+                    <router-view></router-view>
+                </transition>
+                <div slot="footer" class="footer-btn" v-if="this.$route.path=='/pro/member/step1'
+                                                        ||this.$route.path=='/pro/member/step3'
+                                                        ||this.$route.path=='/pro/member/step5'
+                                                        ||this.$route.path=='/pro/member/step17'
+                                                        ||this.$route.path=='/pro/member/step26'
+                                                        ||this.$route.path=='/pro/member/step19'
+                                                        ||this.$route.path=='/pro/member/step20'
+                                                        ||this.$route.path=='/pro/member/step21'
+                                                        ||this.$route.path=='/pro/member/step22'
+                                                        ||this.$route.path=='/pro/member/step31'
+                                                        ||this.$route.path=='/pro/member/step33'
+                                                        ||this.$route.path=='/pro/member/step23/step24'">
+                    <i-button type="primary" shape="circle" @click="next" class="zhuce-btn1">继续</i-button>
+                </div>
+
+                <div slot="footer" class="footer-btn" v-else-if="this.$route.path=='/pro/member/step2'">
+                    <i-button type="primary" shape="circle" @click="next" class="zhuce-btn1">提交</i-button>
+                </div>
+                <div slot="footer" class="footer-btn" v-else-if="this.$route.path=='/pro/member/step4'">
+
+                    <i-button type="primary" shape="circle" @click="next" class="zhuce-btn1">继续</i-button>
+                    <span class="tiaoguo" @click="next">跳过</span>
+                </div>
+                <div slot="footer" class="footer-btn" v-else>
+                    <i-button type="primary" shape="circle" @click="preStep" size="large">上一步</i-button>
+                    <i-button type="primary" shape="circle" @click="next" size="large">下一步</i-button>
+                    <span class="tiaoguo" @click="next">跳过</span>
+                </div>
+
+            </Modal>
+
+        </div>
+
+        <!--
+    作者：786905664@qq.com
+    时间：2017-08-03
+    描述：重启会员引导
+
+-->
+        <div class="layout">
+
+            <Modal v-model="modal3" width="850" :closable="true" :mask-closable="false">
+                <div>
+                    <Row style="margin-top: 20px;width: 790px;padding: 0 20px;text-align: center;font-size: 17px;">
+                        <Col span="3" offset="1" @click.native="identification" :class="[this.$route.path=='/pro/member/progress1'
+                                                                                         ||this.$route.path=='/pro/member/progress2' ? jing :'']">实名认证</Col>
+                        <Col span="3" offset="1" @click.native="column" :class="[this.$route.path=='/pro/member/progress3'
+                                                                                         ||this.$route.path=='/pro/member/progress4' ? jing :'']">设置栏目</Col>
+                        <Col span="3" offset="1" @click.native="individualization" :class="[this.$route.path=='/pro/member/progress5'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress7/progress8'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress7/progress9'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress7/progress10'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress7/progress11'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress7/progress12'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress7/progress13'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress14'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress15'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress16'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress17'
+                                                                                            ||this.$route.path=='/pro/member/progress6/progress18' ? jing :'']">个性化</Col>
+                        <Col span="3" offset="1" @click.native="application" :class="[this.$route.path=='/pro/member/progress19'
+                                                                                          ||this.$route.path=='/pro/member/progress20'
+                                                                                          ||this.$route.path=='/pro/member/progress21' ? jing :'']">应用设置</Col>
+                        <Col span="3" offset="1" @click.native="perfect" :class="[this.$route.path=='/pro/member/progress22'
+                                                                                            ||this.$route.path=='/pro/member/progress23/progress24'
+                                                                                            ||this.$route.path=='/pro/member/progress23/progress25'
+                                                                                            ||this.$route.path=='/pro/member/progress23/progress26'
+                                                                                            ||this.$route.path=='/pro/member/progress23/progress27'
+                                                                                            ||this.$route.path=='/pro/member/progress23/progress28'
+                                                                                            ||this.$route.path=='/pro/member/progress23/progress29'
+                                                                                            ||this.$route.path=='/pro/member/progress23/progress30'
+                                                                                            ||this.$route.path=='/pro/member/progress23/progress31'
+                                                                                            ||this.$route.path=='/pro/member/progress23/progress32' ? jing :'']">完善信息</Col>
+                        <Col span="3" offset="1" @click.native="website" :class="[this.$route.path=='/pro/member/progress33' ? jing :'']">网站设置</Col>
+                    </Row>
+                </div>
+
+                <transition>
+                    <router-view></router-view>
+                </transition>
+                <div slot="footer" class="footer-btn" v-if="this.$route.path=='/pro/member/progress1'
+                                                        ||this.$route.path=='/pro/member/progress3'
+                                                        ||this.$route.path=='/pro/member/progress5'
+                                                        ||this.$route.path=='/pro/member/progress17'
+                                                        ||this.$route.path=='/pro/member/progress19'
+                                                        ||this.$route.path=='/pro/member/progress26'
+                                                        ||this.$route.path=='/pro/member/progress20'
+                                                        ||this.$route.path=='/pro/member/progress21'
+                                                        ||this.$route.path=='/pro/member/progress22'
+                                                        ||this.$route.path=='/pro/member/progress33'">
+                    <i-button type="primary" shape="circle" @click="nextSec" class="zhuce-btn1">继续</i-button>
+                </div>
+
+                <div slot="footer" class="footer-btn" v-else-if="this.$route.path=='/pro/member/progress2'">
+                    <i-button type="primary" shape="circle" @click="nextSec" class="zhuce-btn1">提交</i-button>
+                </div>
+                <div slot="footer" class="footer-btn" v-else-if="this.$route.path=='/pro/member/progress4'">
+
+                    <i-button type="primary" shape="circle" @click="nextSec" class="zhuce-btn1">继续</i-button>
+                    <span class="tiaoguo" @click="next">跳过</span>
+                </div>
+                <div slot="footer" class="footer-btn" v-else>
+                    <i-button type="primary" shape="circle" @click="preStep" size="large">上一步</i-button>
+                    <i-button type="primary" shape="circle" @click="nextSec" size="large">下一步</i-button>
+                    <span class="tiaoguo" @click="nextSec">跳过</span>
+                </div>
+
+            </Modal>
+
+        </div>
+
+        <!--footer开始-->
+        <div class="footer">
+            <div class="container">
+                <div class="footer-l">
+                    <ul>
+                        <li>关于NSS1</li>
+                        <li>公益性质</li>
+                        <li>服务项目</li>
+                        <li>以往案例</li>
+                        <li>新闻动态</li>
+                        <li>联系我们</li>
+                    </ul>
+                    <br/>
+                    <br/>
+                    <div>Copyright©2015trecare.com All Rights Reserved 版权所有TREcare
+                        <br/>备案号：蜀ICP备88888888号-1</div>
+                </div>
+                <div class="footer-r">
+                    <ul>
+                        <li>微博</li>
+                        <li>微信</li>
+                        <li>Support:DGG Group</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--footer结束-->
+    </div>
+</template>
+<script>
+
+    import axios from 'axios'
+    import $ from 'jquery'
+    import ueditor from '../../components/ue.vue';
+    export default {
+        components: {
+            ueditor
+        },
+        data() {
+            return {
+                tabsDynaShow:true,
+                jing: 'jing',
+                huifu: '',
+                cityList: this.$zone.data,
+                publishShow: false,
+                modal2: false,
+                modal3: false,
+                current: 0,
+                count1: 1,
+                loginuserinfo: JSON.parse(sessionStorage.getItem("user")),
+                portal: '',
+                theme1: 'light',
+                value13: '',
+                total: 0,
+                pageSize: 10,
+                currentPage: 1,
+                modal2: false,
+                modal_loading: false,
+                modal3: false,
+                modal4: false,
+                modal5: false,
+                favorite: '0',
+                theme1: 'light',
+                count: '',
+                number: '0',
+                displayName: '',
+                signature: '还没有签名！',
+                dateOne: '',
+                dateTwo: '',
+                dateThree: '',
+                weekOne: '',
+                weekTwo: '',
+                weekThree: '',
+                value: '',
+                list: [],
+                columnSetting:[],
+                columnMydynamic:[],
+                columnList:[],
+                formInline: {
+                    user: '',
+                    password: ''
+                },
+                con: {
+                    content: null,
+                    content1: null,
+                },
+                friend: [],
+                ruleInline: {
+                    user: [{
+                        required: true,
+                        message: '请填写用户名',
+                        trigger: 'blur'
+                    }],
+                    password: [{
+                        required: true,
+                        message: '请填写密码',
+                        trigger: 'blur'
+                    }]
+                },
+                friend: [],
+                user: sessionStorage.getItem("user"),
+                mydynamic: {
+                    title: '',
+                    type: '',
+                    category: '',
+                    source: '',
+                    district: '',
+                    goodsname: '',
+                    servicename: '',
+                    label: '',
+                    species: '',
+                    summary: '',
+                    industry: '',
+                    security: '',
+                    prior: '',
+                    content: ''
+                },
+                mydynamicComment: {
+                    dynamicId: '',
+                    content: ''
+                },
+                inforMation: [],
+                knowLedge: [],
+                policy: [],
+                ruleInline: {
+                    user: [{
+                        required: true,
+                        message: '请填写用户名',
+                        trigger: 'blur'
+                    }],
+                    password: [{
+                            required: true,
+                            message: '请填写密码',
+                            trigger: 'blur'
+                        },
+                        {
+                            type: 'string',
+                            min: 6,
+                            message: '密码长度不能小于6位',
+                            trigger: 'blur'
+                        }
+                    ],
+                    methods: {
+                        del() {
+                            this.modal_loading = true
+                            setTimeout(() => {
+                                this.modal_loading = false
+                                this.modal2 = false
+                                this.$Message.success('删除成功')
+                            }, 2000);
+                        }
+                    }
+                }
+            }
+        },
+        computed: {
+            getCertification() {
+                return this.$store.getters.getCertification
+            },
+            getContent() {
+                return this.$store.getters.getContent
+            },
+            getPhone() {
+                return this.$store.getters.getPhone
+            },
+            getEducation() {
+                return this.$store.getters.getEducation
+            },
+            getWork() {
+                return this.$store.getters.getWork
+            },
+            getPlant() {
+                return this.$store.getters.getPlant
+            },
+            getAccount() {
+                return this.$store.getters.getAccount
+            },
+            getApp() {
+                return this.$store.getters.getApp
+            },
+            getColumn() {
+                return this.$store.getters.getColumn
+            },
+            getFriend() {
+                return this.$store.getters.getFriend
+            },
+            getHonor() {
+                return this.$store.getters.getHonor
+            },
+            getPolitical() {
+                return this.$store.getters.getPolitical
+            },
+            getReligion() {
+                return this.$store.getters.getReligion
+            }
+        },
+        created: function() {
+            this.findMyDnamic();
+            this.findMyFollow();
+            axios.get('http://localhost:1111/memberCenter/index')
+                .then(response => {
+                    this.favorite = response.data.favorite
+                    this.dateOne = response.data.dateOne
+                    this.dateTwo = response.data.dateTwo
+                    this.dateThree = response.data.dateThree
+                    this.weekOne = response.data.weekOne
+                    this.weekTwo = response.data.weekTwo
+                    this.weekThree = response.data.weekThree
+                    this.number = response.data.number
+                    this.signature = response.data.signature
+                    this.displayName = response.data.displayName
+                    this.signNum = response.data.signNum
+                    if(this.signNum != '') {
+                        $('#SignIn').attr('disabled', 'disabled')
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error)
+                })
+        },
+
+
+        mounted: function() { // 挂在完成后的生命周期钩子注册。
+            this.friends()
+        },
+
+        methods: {
+            SignIn() {
+                axios.get('http://localhost:1111/memberCenter/signIn')
+                    .then(response => {
+                        this.count = response.data.count
+                        if(this.count != '') {
+                            $('#SignIn').attr('disabled', 'disabled')
+                        }
+                    })
+                    .catch(function(error) {
+                        console.log(error)
+                    })
+            },
+            publish() {
+                if(this.publishShow == false) {
+                    this.publishShow = true
+                }
+            },
+            routeTo(e) {
+                if(e == '/portal') {
+                    this.portal = 'http://192.168.7.61:8080/ovit/center/gateway.htm?uid='+this.loginuserinfo.uniqueId
+                    window.open(this.portal)
+                } else {
+                    this.$router.push(e)
+                }
+            },
+            /**
+             * 好友列表
+             */
+            friends() {
+                axios.get('http://localhost:1111/login/friend_list/' + this.currentPage)
+                    .then(response => {
+                        this.friend = response.data.list
+                        this.total = response.data.total
+                        console.log("好友")
+                        console.log(response.data)
+                    })
+            },
+            findMyDnamic() {
+                axios.get('http://localhost:1111/mydynamic/findMydynamic/' + this.currentPage + "?pageSize=" + this.pageSize)
+                    .then(response => {
+                        this.list = response.data.list
+                    })
+            },
+
+
+			findMyFollow() {
+                axios.get('http://localhost:1111/columnSettings/findColumnSetting/' + this.currentPage + "?pageSize=" + this.pageSize)
+                    .then(response => {
+                        /*this.inforMation = response.data.inforMation.list
+                        this.knowLedge = response.data.knowLedge.list
+                        this.policy = response.data.policy.list*/
+                        this.columnSetting=response.data.list
+                    })
+			},
+            showMydynamic(columnName) {
+                axios.get('http://localhost:1111/columnSettings/findColumnLabel?columnName='+ columnName)
+                    .then(response => {
+                        this.columnMydynamic=response.data.list
+                    })
+            },
+            showColumnList(name) {
+                //alert(name)
+                alert(this.columnMydynamic[name].label+"====>"+this.columnMydynamic[name].columnId)
+                // alert(label,columnId)
+                // axios.get('http://localhost:1111/columnSettings/findColumnList?label='+ label+'&columnId='+columnId)
+                //     .then(response => {
+                //         this.columnList=response.data.list
+                //     })
+            },
+
+            /*
+             * 发布功能
+             * */
+            publishSubmit() {
+                var txt = this.mydynamic.security;
+                if(txt == "所有人可见") {
+                    txt = "0"
+                } else if(txt == "仅好友可见") {
+                    txt = "1"
+                } else if(txt == "仅自己可见") {
+                    txt = "2"
+                } else if(txt == "仅指定组可见") {
+                    txt = "3"
+                }
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/mydynamic/saveMydynamic',
+                    data: {
+                        title: this.mydynamic.title,
+                        type: this.mydynamic.type,
+                        category: this.mydynamic.category,
+                        source: this.mydynamic.source,
+                        district: this.mydynamic.district,
+                        goodsname: this.mydynamic.goodsname,
+                        servicename: this.mydynamic.servicename,
+                        label: this.mydynamic.label,
+                        species: this.mydynamic.species,
+                        summary: this.mydynamic.summary,
+                        industry: this.mydynamic.industry,
+                        prior: this.mydynamic.title,
+                        content: UE.getEditor('editor').getContent(),
+                        security: txt
+                    }
+                }).then(response => {
+                    this.$Message.success('发布成功!')
+                    window.location.reload();
+
+                }).catch(function(error) {
+                    this.$Message.success('发布失败!');
+                    console.log(error)
+                })
+
+            },
+            /*
+             * 回复
+             * */
+            reply(id) {
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/mydynamic/saveHuiFu',
+                    data: {
+                        dynamicId: id,
+                        comment: this.huifu
+                    }
+                }).then(response => {
+                    this.flag = response.data.flag
+                    if(this.flag == '1') {
+
+                        $("#" + id).attr("style", "display:none;");
+                        this.huifu = ""
+                    }
+                }).catch(function(error) {
+                    alert("回复失败!");
+                    console.log(error)
+                })
+            },
+            /**
+             * 点赞
+             * */
+            dianzan(id) {
+                axios.get('http://localhost:1111/mydynamic/saveZan?id=' + id)
+                    .then(response => {
+                        if(response.data.flag == '1') {
+                            var div = $("#" + id).prev()
+                            $.each($(div).find("span"), function(i, span) {
+                                var txt = $(span).text()
+                                if(txt.indexOf("赞") > -1) {
+                                    var html = $(span).html()
+                                    html = html.replace(txt, "")
+                                    $(span).html(html + "赞" + response.data.thumbUpNum)
+                                }
+                            })
+                        }
+                    }).catch(function(error) {
+                        console.log(error)
+                    })
+            },
+            /**
+             *
+             * */
+            showHuiFu(id) {
+                if(this.loginuserinfo != null) {
+                    $.each($(".main_r_d div"), function(i, obj) {
+                        if(obj.id) {
+                            $(obj).hide()
+                        }
+                    })
+                    if(this.user != '') {
+                        $("#" + id).show()
+                    }
+                } else {
+                    alert("请先登录！")
+                }
+
+            },
+            nextPage(page) {
+                this.currentPage = page;
+                axios.get('http://localhost:1111/login/friend_list/' + this.currentPage)
+                    .then(response => {
+                        this.friend = response.data.list
+                        this.total = response.data.total
+                    })
+            },
+            logout() {
+                axios.get('http://localhost:1111/login/logout')
+                    .then(response => {
+                        console.log(response.data)
+                    })
+                sessionStorage.removeItem("user")
+                this.$router.push('/pro/firstPage')
+            },
+
+            // over: function() {
+            //  $('.ivu-dropdown-menu').css("display", "block")
+            //  $('.ivu-dropdown-menu li').click(function() {
+            //      $('.ivu-dropdown-menu').css("display", "none")
+            //  })
+            // },
+            tabsClick(name){
+                this.tabsDynaShow = (name === 'name1' ? true : false)
+            },
+            /**
+             * 进入认证页面
+             */
+            show() {
+                this.modal2 = true;
+                this.$router.push("/pro/member/step1");
+            },
+            /**
+             * 重启认证
+             */
+            showSec() {
+                this.modal3 = true;
+                this.$router.push("/pro/member/progress1");
+            },
+            /**
+             * 下一步
+             */
+            next() {
+                this.count1 += 1;
+                console.log("count1=" + this.count1)
+                if(this.count1 == 35) {
+                    this.count1 = 1;
+                }
+                this.getCurrent(this.count1);
+                const paths = this.$route.path.substring(12);
+                console.log("paths=" + paths)
+                //完善信息
+//              if("step23/step25" == paths & this.getContent.content != null & this.getContent.content1 != null) {
+//                  this.$store.commit('savePhone', this.con)
+//                  this.$store.commit('saveReligion', this.con)
+//                  this.$store.commit('savePolitical', this.con)
+//                  this.$store.commit('saveEducation', null)
+//                  this.$store.commit('saveWork', null)
+//                  this.$store.commit('savePlant', null)
+//                  this.$store.commit('saveHonor', null)
+//
+//                  this.saveBasic();
+//              }
+//              if("step23/step26" == paths & this.getPhone.content != null & this.getPhone.content1 != null) {
+//                  this.$store.commit('saveContent', this.con)
+//                  this.$store.commit('savePolitical', this.con)
+//                  this.$store.commit('saveReligion', this.con)
+//                  this.$store.commit('saveEducation', null)
+//                  this.$store.commit('saveWork', null)
+//                  this.$store.commit('savePlant', null)
+//                  this.$store.commit('saveHonor', null)
+//                  this.saveBasic();
+//              }
+//              if("step23/step27" == paths & this.getEducation != null) {
+//                  this.$store.commit('savePhone', this.con)
+//                  this.$store.commit('saveContent', this.con)
+//                  this.$store.commit('savePolitical', this.con)
+//                  this.$store.commit('saveReligion', this.con)
+//                  this.$store.commit('saveWork', null)
+//                  this.$store.commit('saveHonor', null)
+//                  this.$store.commit('savePlant', null)
+//                  this.saveBasic();
+//              }
+//              if("step23/step28" == paths & this.getWork != null) {
+//                  this.$store.commit('savePhone', this.con)
+//                  this.$store.commit('saveContent', this.con)
+//                  this.$store.commit('savePolitical', this.con)
+//                  this.$store.commit('saveReligion', this.con)
+//                  this.$store.commit('saveEducation', null)
+//                  this.$store.commit('saveHonor', null)
+//                  this.$store.commit('savePlant', null)
+//                  this.saveBasic();
+//              }
+//              if("step23/step29" == paths & this.getPlant != null) {
+//                  this.$store.commit('savePhone', this.con)
+//                  this.$store.commit('saveContent', this.con)
+//                  this.$store.commit('savePolitical', this.con)
+//                  this.$store.commit('saveReligion', this.con)
+//                  this.$store.commit('saveEducation', null)
+//                  this.$store.commit('saveWork', null)
+//                  this.$store.commit('saveHonor', null)
+//                  this.saveBasic();
+//              }
+//              if("step23/step30" == paths & this.getPolitical.content != null & this.getPolitical.content1 != null) {
+//                  this.$store.commit('savePhone', this.con)
+//                  this.$store.commit('saveContent', this.con)
+//                  this.$store.commit('saveReligion', this.con)
+//                  this.$store.commit('saveEducation', null)
+//                  this.$store.commit('saveWork', null)
+//                  this.$store.commit('savePlant', null)
+//                  this.$store.commit('saveHonor', null)
+//                  this.saveBasic();
+//              }
+//              if("step23/step31" == paths & this.getReligion.content != null & this.getReligion.content1 != null) {
+//                  this.$store.commit('savePhone', this.con)
+//                  this.$store.commit('saveContent', this.con)
+//                  this.$store.commit('saveEducation', null)
+//                  this.$store.commit('saveWork', null)
+//                  this.$store.commit('savePlant', null)
+//                  this.$store.commit('saveHonor', null)
+//                  this.$store.commit('savePolitical', this.con)
+//                  this.saveBasic();
+//              }
+//              if("step23/step32" == paths & this.getHonor != null) {
+//                  this.$store.commit('savePhone', this.con)
+//                  this.$store.commit('saveContent', this.con)
+//                  this.$store.commit('savePolitical', this.con)
+//                  this.$store.commit('saveReligion', this.con)
+//                  this.$store.commit('saveEducation', null)
+//                  this.$store.commit('saveWork', null)
+//                  this.$store.commit('savePlant', null)
+//                  this.saveBasic();
+//              }
+                //
+                //                          设置账号
+                //                          if("step6/step16"==paths){
+                //                              this.setAccount();
+                //                          }
+                //                          if("step6/step17"==paths){
+                //                              this.setAccount();
+                //                          }
+                //                          if("step6/step18"+==paths){
+                //                              this.setPwd();
+                //                          }
+                //
+                //                          //应用设置
+                //                          if("step20" == paths) {
+                //                              this.setApp();
+                //                          }
+                //                          if("step21" == paths) {
+                //                              this.setApp();
+                //                          }
+                //                          if("step6/step15" == paths) {
+                //                              this.setFriend();
+                //                          }
+
+                this.gotoPath(this.count1)
+            },
+
+            //重启认证引导步骤
+            nextSec() {
+                this.count1 += 1;
+                console.log("progress=" + this.count1)
+                if(this.count1 == 34) {
+                    this.count1 = 1;
+                }
+
+                const paths = this.$route.path.substring(12);
+                console.log(this.$route.path+"==paths"+paths)
+
+                //完善信息
+                //                              if("progress23/progress25"==paths&this.getContent.content!=null&this.getContent.content1!=null){
+                //                                  this.$store.commit('savePhone',this.con)
+                //                                  this.$store.commit('saveReligion',this.con)
+                //                                  this.$store.commit('savePolitical',this.con)
+                //                                  this.$store.commit('saveEducation',null)
+                //                                  this.$store.commit('saveWork',null)
+                //                                  this.$store.commit('savePlant',null)
+                //                                  this.$store.commit('saveHonor',null)
+                //
+                //                                      this.saveBasic();
+                //                              }
+                //                              if("progress23/progress26"==paths&this.getPhone.content!=null&this.getPhone.content1!=null){
+                //                                  this.$store.commit('saveContent',this.con)
+                //                                  this.$store.commit('savePolitical',this.con)
+                //                                  this.$store.commit('saveReligion',this.con)
+                //                                  this.$store.commit('saveEducation',null)
+                //                                  this.$store.commit('saveWork',null)
+                //                                  this.$store.commit('savePlant',null)
+                //                                  this.$store.commit('saveHonor',null)
+                //                                  this.saveBasic();
+                //                              }
+                //                              if("progress23/progress27"==paths&this.getEducation!=null){
+                //                                  this.$store.commit('savePhone',this.con)
+                //                                  this.$store.commit('saveContent',this.con)
+                //                                  this.$store.commit('savePolitical',this.con)
+                //                                  this.$store.commit('saveReligion',this.con)
+                //                                  this.$store.commit('saveWork',null)
+                //                                  this.$store.commit('saveHonor',null)
+                //                                  this.$store.commit('savePlant',null)
+                //                                  this.saveBasic();
+                //                              }
+                //                              if("progress23/progress28"==paths&this.getWork!=null){
+                //                                  this.$store.commit('savePhone',this.con)
+                //                                  this.$store.commit('saveContent',this.con)
+                //                                  this.$store.commit('savePolitical',this.con)
+                //                                  this.$store.commit('saveReligion',this.con)
+                //                                  this.$store.commit('saveEducation',null)
+                //                                  this.$store.commit('saveHonor',null)
+                //                                  this.$store.commit('savePlant',null)
+                //                                  this.saveBasic();
+                //                              }
+                //                              if("progress23/progress29"==paths&this.getPlant!=null){
+                //                                  this.$store.commit('savePhone',this.con)
+                //                                  this.$store.commit('saveContent',this.con)
+                //                                  this.$store.commit('savePolitical',this.con)
+                //                                  this.$store.commit('saveReligion',this.con)
+                //                                  this.$store.commit('saveEducation',null)
+                //                                  this.$store.commit('saveWork',null)
+                //                                  this.$store.commit('saveHonor',null)
+                //                                  this.saveBasic();
+                //                              }
+                //                              if("progress23/progress30"==paths&this.getPolitical.content!=null&this.getPolitical.content1!=null){
+                //                                  this.$store.commit('savePhone',this.con)
+                //                                  this.$store.commit('saveContent',this.con)
+                //                                  this.$store.commit('saveReligion',this.con)
+                //                                  this.$store.commit('saveEducation',null)
+                //                                  this.$store.commit('saveWork',null)
+                //                                  this.$store.commit('savePlant',null)
+                //                                  this.$store.commit('saveHonor',null)
+                //                                  this.saveBasic();
+                //                              }
+                //                              if("progress23/progress31"==paths&this.getReligion.content!=null&this.getReligion.content1!=null){
+                //                                  this.$store.commit('savePhone',this.con)
+                //                                  this.$store.commit('saveContent',this.con)
+                //                                  this.$store.commit('saveEducation',null)
+                //                                  this.$store.commit('saveWork',null)
+                //                                  this.$store.commit('savePlant',null)
+                //                                  this.$store.commit('saveHonor',null)
+                //                                  this.$store.commit('savePolitical',this.con)
+                //                                  this.saveBasic();
+                //                              }
+                //                              if("progress23/progress32"==paths&this.getHonor!=null){
+                //                                  this.$store.commit('savePhone',this.con)
+                //                                  this.$store.commit('saveContent',this.con)
+                //                                  this.$store.commit('savePolitical',this.con)
+                //                                  this.$store.commit('saveReligion',this.con)
+                //                                  this.$store.commit('saveEducation',null)
+                //                                  this.$store.commit('saveWork',null)
+                //                                  this.$store.commit('savePlant',null)
+                //                                  this.saveBasic();
+                //                              }
+                //
+                //                          设置账号
+                //                          if("progress6/progress15" == paths) {
+                //                              this.setFriend();
+                //                          }
+                //                          if("progress6/progress16"==paths){
+                //                              this.setAccount();
+                //                          }
+                //                          if("progress6/progress17"==paths){
+                //                              this.setAccount();
+                //                          }
+                //                          if("progress6/progress18"+==paths){
+                //                              this.setPwd();
+                //                          }
+                //
+                //                          //应用设置
+                //                          if("progress20" == paths) {
+                //                              this.setApp();
+                //                          }
+                //                          if("progress21" == paths) {
+                //                              this.setApp();
+                //                          }
+                //
+
+                this.gotoPathSec(this.count1)
+            },
+            gotoPath(n) {
+                switch(n) {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                        this.$router.push('/pro/member/step' + n);
+                        break;
+                    case 7:
+                        this.$router.push('/pro/member/step6/step7')
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                        this.$router.push('/pro/member/step6/step7/step' + n)
+                        break;
+                    case 14:
+                    case 15:
+                    case 16:
+                    case 17:
+                    case 18:
+                        this.$router.push('/pro/member/step6/step' + n)
+                        break;
+                    case 19:
+                    case 20:
+                    case 21:
+                    case 22:
+                    case 23:
+                    case 33:
+                        this.$router.push('/pro/member/step' + n);
+                        break;
+                    case 24:
+                    case 25:
+                    case 26:
+                    case 27:
+                    case 28:
+                    case 29:
+                    case 30:
+                    case 31:
+                    case 32:
+                        this.$router.push('/pro/member/step23/step' + n)
+                        break;
+
+                }
+            },
+            gotoPathSec(n) {
+                switch(n) {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                        this.$router.push('/pro/member/progress' + n);
+                        break;
+                    case 7:
+                        this.$router.push('/pro/member/progress6/progress7');
+                        break;
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                        this.$router.push('/pro/member/progress6/progress7/progress' + n);
+                        break;
+                    case 14:
+                    case 15:
+                    case 16:
+                    case 17:
+                    case 18:
+                        this.$router.push('/pro/member/progress6/progress' + n);
+                        break;
+                    case 19:
+                    case 20:
+                    case 21:
+                    case 22:
+                    case 23:
+                    case 33:
+                        this.$router.push('/pro/member/progress' + n);
+                        break;
+                    case 24:
+                    case 25:
+                    case 26:
+                    case 27:
+                    case 28:
+                    case 29:
+                    case 30:
+                    case 31:
+                    case 32:
+                        this.$router.push('/pro/member/progress23/progress' + n)
+                        break;
+
+                }
+            },
+
+            saveBasic() {
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/userFullInfo/insert',
+                    data: {
+                        content: this.getContent.content,
+                        con: this.getContent.content1,
+                        contract: this.getPhone.content,
+                        contract1: this.getPhone.content1,
+                        education: this.getEducation,
+                        work: this.getWork,
+                        plant: this.getPlant,
+                        honor: this.getHonor,
+                        political: this.getPolitical.content,
+                        political1: this.getPolitical.content1,
+                        religion: this.getReligion.content,
+                        religion1: this.getReligion.content1
+
+                    }
+                }).then(response => {
+                    const flag = response.data
+                    if(flag == 2) {
+                        this.$Message.success('提交成功！');
+                    }
+
+                }).catch(function(error) {
+                    this.$Message.success('提交失败!');
+                    console.log(error)
+                })
+            },
+            getCurrent(n) {
+                switch(n) {
+                    case 1:
+                    case 2:
+                        this.current = 0;
+                        break;
+                    case 3:
+                    case 4:
+                        this.current = 1;
+                        break;
+                    case 7:
+                    case 8:
+                    case 5:
+                    case 6:
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                    case 14:
+                    case 15:
+                    case 16:
+                    case 17:
+                    case 18:
+                        this.current = 2;
+                        break;
+
+                    case 19:
+                    case 20:
+                    case 21:
+                        this.current = 3;
+                        break;
+
+                    case 22:
+                    case 23:
+                    case 24:
+                    case 25:
+                    case 26:
+                    case 27:
+                    case 28:
+                    case 29:
+                    case 30:
+                    case 31:
+                    case 32:
+                        this.current = 4;
+                        break;
+                    case 33:
+                    case 34:
+                        this.current = 5;
+                        break;
+                }
+            },
+            preStep() {
+                this.$router.go(-1);
+                this.count1--;
+                this.getCurrent(this.count1);
+            },
+            regest() {
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/Certification/insert',
+                    data: {
+                        name: this.getCertification.name,
+                        idcard: this.getCertification.idcard,
+                        code: this.getCertification.code,
+                        phone: this.getCertification.phone,
+                        city: this.getCertification.city
+                    }
+                }).then(response => {
+                    console.log(response.data);
+                    if(0 == response.data) {
+                        this.$Message.error('提交失败');
+                    } else {
+                        this.$Message.success('提交成功!');
+                        this.next();
+
+                    }
+                }).catch(function(error) {
+                    console.log(error)
+                })
+            },
+            //账号设置
+            setAccount() {
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/bank/insert',
+                    data: {
+                        name: this.getAccount.name,
+                        idcard: this.getAccount.idcard,
+                        phone: this.getAccount.phone,
+                        bank: this.getAccount.bank
+                    }
+                }).then(response => {
+                    console.log(response.data);
+                    if(0 == response.data) {
+                        this.$Message.error('提交失败');
+                    } else {
+                        this.$Message.success('提交成功!');
+                        this.next();
+
+                    }
+                }).catch(function(error) {
+                    console.log(error)
+                })
+            },
+            setPwd() {
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/bank/password',
+                    data: {
+                        pwd: this.getAccount.pwd,
+                        secpwd: this.getAccount.secpwd
+                    }
+                }).then(response => {
+                    console.log(response.data);
+                    if(3 == response.data) {
+                        this.$Message.error('两次输入的密码不一样，请重新输入！');
+                    } else if(0 == response.data) {
+                        this.$Message.error('提交失败！');
+                    } else {
+                        this.$Message.success('提交成功!');
+                        this.next();
+
+                    }
+                }).catch(function(error) {
+                    console.log(error)
+                })
+            },
+            //好友分组
+            setFriend() {
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/friendGroup/insert',
+                    data: {
+                        friend: this.getFriend
+                    }
+                }).then(response => {
+                    console.log(response.data);
+                    if(0 == response.data) {
+                        this.$Message.error('提交失败！');
+                    } else {
+                        this.$Message.success('提交成功!');
+                        this.next();
+
+                    }
+                }).catch(function(error) {
+                    console.log(error)
+                })
+            },
+            //应用设置
+            setApp() {
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/bank/setapp',
+                    data: {
+                        appname: this.getApp.agent,
+                        level: this.getApp.level
+                    }
+                }).then(response => {
+                    console.log(response.data);
+                    if(0 == response.data) {
+                        this.$Message.error('提交失败！')
+                    } else {
+                        this.$Message.success('提交成功!');
+                        this.next();
+                    }
+                }).catch(function(error) {
+                    console.log(error)
+                })
+            },
+            columnSet() {
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:1111/columnSettings/insert',
+                    data: {
+                        base: this.getColumn
+
+                    }
+                })
+            },
+
+            //认证第一步
+            identification() {
+                this.count1 = 1;
+                this.current = 0
+                this.$router.push('/pro/member/progress1')
+
+            },
+            //认证第二步
+            column() {
+                this.count1 = 3;
+                this.current = 1
+                this.$router.push('/pro/member/progress3')
+
+            },
+            //认证第3步
+            individualization() {
+                this.count1 = 5;
+                this.current = 2
+                this.$router.push('/pro/member/progress5')
+
+            },
+            //认证第四步
+            application() {
+                this.count1 = 19;
+                this.current = 3
+                this.$router.push('/pro/member/progress19')
+
+            },
+            //认证第五步
+            perfect() {
+                this.count1 = 22;
+                this.current = 4
+                this.$router.push('/pro/member/progress22')
+
+            },
+            //认证第六步
+            website() {
+                this.count1 = 33;
+                this.current = 5
+                this.$router.push('/pro/member/progress33')
+
+            },
+            read(id,flag){
+                var url="";
+                if(flag=="information"){
+                    url="http://localhost:8080/InforMation/findInforMationDetail?id="+id
+                }else if(flag=="policy"){
+                    url="http://localhost:8080/InforMation/policyDetail?id="+id
+                }else if(flag="knowLedge"){
+                    url="http://localhost:8080/InforMation/knowledgeDetail?id="+id
+                }
+                window.open(url, "_blank");
+            }
+        }
+    }
+</script>

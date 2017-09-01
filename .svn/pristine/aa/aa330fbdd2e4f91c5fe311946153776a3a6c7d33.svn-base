@@ -1,0 +1,156 @@
+<style scoped>
+    @import '../../css/departmentDetail.css';
+</style>
+<template>
+    <div class="index">
+        <!--header开始-->
+        <header>
+            <div class="container">
+                <Row>
+                    <Col span="4" class="region ">
+                    <img src="../../img/huiyuan-logo.png" alt="">
+                    </Col>
+                    <Col span="10" class="nav-center" style="width:45%;">
+                    <ul class="ns-nav">
+                        <li>
+                            <a href="/" class="ns-active">
+                                <!-- <img src="../src/img/head-icon1-lv.png" alt="">  -->
+                                <Icon type="monitor"></Icon> 无忧导航
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/mall/index">
+                                <!-- <img src="../src/img/head-icon2.png" alt="">  -->
+                                <Icon type="ios-home"></Icon> 无忧首页
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/" >
+                                <!-- <img src="../src/img/head-icon3.png" alt="">  -->
+                                <Icon type="ipad"></Icon> 掌上无忧
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/" >
+                                <!-- <img src="../src/img/head-icon4.png" alt="">  -->
+                                <Icon type="map"></Icon> 地图导航
+                            </a>
+                        </li>
+                    </ul>
+                    </Col>
+                    <Col span="7">
+                        <div class="header-serch">
+                            <Input v-model="search" style="margin-top: 19px; width: 108px;">
+                            <Button slot="append" icon="ios-search"  @click="find"></Button>
+                            </Input>
+                        </div>
+                    </Col>
+                    <Col span="3" style="float: right;height:81px;">
+                    <p href="#" style="float: right;line-height: 81px;font-size: 14px;" >
+                        <Dropdown v-if="loginuserinfo != null">
+                            <a href="javascript:void(0)" style="color: #51ad79">
+                                {{loginuserinfo.displayName}}
+                                <Icon type="arrow-down-b"></Icon>
+                            </a>
+                            <Dropdown-menu slot="list" trigger="click">
+                                <Dropdown-item>账户安全</Dropdown-item>
+                                <Dropdown-item><a :href="['http://192.168.7.61:8080/ovit/center/address.htm?uid='+loginuserinfo.uniqueId]" target="_blank">收货地址</a></Dropdown-item>
+                                <Dropdown-item><a :href="['http://192.168.7.61:8080/ovit/center/order/list.htm?uid='+loginuserinfo.uniqueId]" target="_blank">消费记录</a></Dropdown-item>
+                                <Dropdown-item><a href="javascript:void0" @click="logout">退出</a></Dropdown-item>
+                            </Dropdown-menu>
+                        </Dropdown>
+                    </p>
+                    <Badge count="3" style="margin-top: 30px;float: right;margin-right: 20px">
+                        <a href="#" class="demo-badge">
+                            <Icon type="ios-bell" size="22" style="color: #51ad79"></Icon>
+                        </a>
+                    </Badge>
+                    </Col>
+                </Row>
+            </div>
+        </header>
+        <!--header结束-->
+        <!--mian开始-->
+        <div class="main" style="background: url(../../../static/datas/img/department-detail.png) no-repeat top center;height: 1400px;background-size: cover;margin: 0;">
+            
+        </div>
+        <!--mian结束-->
+        <!--footer开始-->
+        <div class="footer" style="margin-top:0">
+            <div class="container">
+                <div class="footer-l">
+                    <ul>
+                        <li>关于NSS1</li>
+                        <li>公益性质</li>
+                        <li>服务项目</li>
+                        <li>以往案例</li>
+                        <li>新闻动态</li>
+                        <li>联系我们</li>
+                    </ul>
+                    <br/>
+                    <br/>
+                    <div >Copyright©2015trecare.com All Rights Reserved 版权所有TREcare
+<br/>备案号：蜀ICP备88888888号-1</div>
+                </div>
+                <div class="footer-r" >
+                    <ul>
+                        <li>微博</li>
+                        <li>微信</li>
+                        <li>Support:DGG Group</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <Back-top :height="400" :bottom="80">
+            <div class="top">返回顶端</div>
+        </Back-top>
+        <!--footer结束-->
+    </div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            theme1: 'light',
+            loginuserinfo: JSON.parse(sessionStorage.getItem("user")),
+            portal :'',
+            modal2: false,
+            modal_loading: false,
+            modal3: false,
+            modal4: false,
+            modal5: false,
+            formInline: {
+                user: '',
+                password: ''
+            },
+            ruleInline: {
+                user: [
+                    { required: true, message: '请填写用户名', trigger: 'blur' }
+                ],
+                password: [
+                    { required: true, message: '请填写密码', trigger: 'blur' },
+                    { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
+                ],
+                methods: {
+                    del() {
+                        this.modal_loading = true;
+                        setTimeout(() => {
+                            this.modal_loading = false;
+                            this.modal2 = false;
+                            this.$Message.success('删除成功');
+                        }, 2000);
+                    },
+                    logout(){
+                        axios.get('http://localhost:1111/login/logout')
+                            .then(response => {
+                                console.log(response.data)
+                            })
+                            sessionStorage.removeItem("user")
+                            this.$router.push('/pro/firstPage')
+                    }
+                }
+            }
+        }
+    }
+}
+</script>

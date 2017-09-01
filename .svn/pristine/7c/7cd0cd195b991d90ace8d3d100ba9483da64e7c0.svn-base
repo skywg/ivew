@@ -1,0 +1,506 @@
+<style scoped>
+    .wrapper-container{
+        width: 1197px;
+        margin: 0 auto;
+    }
+    .input {
+        margin: 30px 0;
+    }
+    .demo-upload-list{
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        overflow: hidden;
+        background: #fff;
+        position: relative;
+        box-shadow: 0 1px 1px rgba(0,0,0,.2);
+        margin-right: 4px;
+    }
+    .demo-upload-list img{
+        width: 100%;
+        height: 100%;
+    }
+    .demo-upload-list-cover{
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,.6);
+    }
+    .demo-upload-list:hover .demo-upload-list-cover{
+        display: block;
+    }
+    .demo-upload-list-cover i{
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 0 2px;
+    }
+</style>
+<template>
+    <div class="index">
+        <!--header开始-->
+        <header>
+            <div class="container">
+                <Row>
+                    <Col span="4" class="region ">
+                    <img src="../../img/huiyuan-logo.png" alt="">
+                    </Col>
+                    <Col span="10" class="nav-center" style="width:45%;">
+                    <Menu mode="horizontal" :theme="theme1" active-name="/pro/member" @on-select="routeTo">
+                        <Menu-item name="/pro/firstPage">
+                            <Icon type="ios-home"></Icon>
+                            首页
+                        </Menu-item>
+                        <Menu-item name="/pro/member">
+                            会员中心
+                        </Menu-item>
+                        <Menu-item name="/myWorries">
+                            我的无忧
+                        </Menu-item>
+                        <Menu-item name="/portal">
+                            我的门户
+                        </Menu-item>
+                        <Submenu name="3">
+                            <template slot="title">
+                                机构注册
+                            </template>
+                            <Menu-item name="/corpInfo/corpRegister">企业注册</Menu-item>
+                            <Menu-item name="/corpInfo/govRegister">机关注册</Menu-item>
+                        </Submenu>
+                    </Menu>
+                    </Col>
+                    <Col span="7">
+                        <!--<div class="header-serch">
+                            <Input v-model="value13" style="margin-top: 19px;margin-left: 60px;    width: 108px;">
+                            <Button slot="append" icon="ios-search"></Button>
+                            </Input>
+                        </div>-->
+                    </Col>
+                    <Col span="3" style="float: right;height:81px;">
+                    <p href="#" style=";float: right;line-height: 81px;font-size: 14px;">
+                        <Dropdown v-if="loginuserinfo != null">
+                            <a href="javascript:void(0)" style="color: #51ad79">
+                                {{loginuserinfo.displayName}}
+                                <Icon type="arrow-down-b"></Icon>
+                            </a>
+                            <Dropdown-menu slot="list" trigger="click">
+                                <Dropdown-item>账户安全</Dropdown-item>
+                                <Dropdown-item>收货地址</Dropdown-item>
+                                <Dropdown-item>消费记录</Dropdown-item>
+                                <Dropdown-item><a href="javascript:void0" @click="logout">退出</a></Dropdown-item>
+                            </Dropdown-menu>
+                        </Dropdown>
+                    </p>
+                    <Badge count="3" style="margin-top: 30px;float: right;margin-right: 20px">
+                        <a href="#" class="demo-badge">
+                            <Icon type="ios-bell" size="22" style="color: #51ad79"></Icon>
+                        </a>
+                    </Badge>
+                    </Col>
+                </Row>
+            </div>
+        </header>
+        <!--header结束-->
+
+        <!--mian开始-->
+        <div class="main">
+            <div class="wrapper-container"  >
+                <Form ref="corpInfo" :model="corpInfo" :rules="ruleInline" >
+                <div style="width: 700px;margin: 40px auto">
+                    <div style="margin-top: 30px;margin-left: 100px;height: 95px">
+                        <Steps :current="current" size="large">
+                            <Step title="第一步" content="提交业务资料"></Step>
+                            <Step title="第二部" content="提交运营资料"></Step>
+                            <Step title="第三部" content="注册完成"></Step>
+                        </Steps>
+                    </div>
+                    <div style="text-align: center" v-if="willShow">
+                        <h1  style="margin-bottom: 20px;font-size: 22px;font-weight: normal">企业注册</h1>
+                        <span>为确保您的信息准确，每一步都必须填写</span>
+                            <Form-item prop="corp_name" class="input">
+                                <Input v-model="corpInfo.corp_name" placeholder="企业全称" style="width: 260px;height: 25px"  size="large"></Input>
+                            </Form-item>
+                            <Form-item prop="business_scope" class="input">
+                                <Input v-model="corpInfo.business_scope" placeholder="经营范围" style="width: 260px;height: 25px" size="large"></Input>
+                            </Form-item>
+                            <Form-item prop="legal_person" class="input">
+                                <Input v-model="corpInfo.legal_person" placeholder="法人姓名" style="width: 260px;height: 25px" size="large"></Input>
+                            </Form-item>
+                            <Form-item prop="corp_code" class="input">
+                                <Input v-model="corpInfo.corp_code" placeholder="工商执照注册号" style="width: 260px;height: 25px" size="large"></Input>
+                            </Form-item>
+                            <Form-item prop="credit_code" class="input">
+                                <Input v-model="corpInfo.credit_code" placeholder="统一社会信用代码" style="width: 260px;height: 25px" size="large"></Input>
+                            </Form-item>
+                            <Form-item class="input">
+                                <div><h2 style="font-size: 22px;margin-top: 20px;margin-bottom: 20px;font-weight: normal">请上传企业工商营业执照（副本）</h2></div>
+                                <div>
+                                    <div class="demo-upload-list" v-for="item in uploadList">
+                                        <template v-if="item.status === 'finished'">
+                                            <img :src="item.url">
+                                            <div class="demo-upload-list-cover">
+                                                <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
+                                                <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
+                                            </div>
+                                        </template>
+                                        <template v-else>
+                                            <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
+                                        </template>
+                                    </div>
+                                    <Upload
+                                            ref="upload"
+                                            :show-upload-list="false"
+                                            :default-file-list="defaultList"
+                                            :on-success="handleSuccess"
+                                            :format="['jpg','jpeg','png']"
+                                            :max-size="2048"
+                                            :on-format-error="handleFormatError"
+                                            :on-exceeded-size="handleMaxSize"
+                                            :before-upload="handleBeforeUpload"
+                                            multiple
+                                            type="drag"
+                                            action="//jsonplaceholder.typicode.com/posts/"
+                                            style="display: inline-block;width:58px;">
+                                        <div style="width: 58px;height:58px;line-height: 58px;">
+                                            <Icon type="camera" size="20"></Icon>
+                                        </div>
+                                    </Upload>
+                                    <Modal title="查看图片" v-model="business_license">
+                                        <img :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'" v-if="visible" style="width: 100%">
+                                    </Modal>
+                                </div>
+                                <div>
+                                    <Button type="primary" shape="circle" style="width:110px;height:30px;"  @click="back">返回</Button>&nbsp&nbsp
+                                    <Button type="primary" shape="circle" style="width:110px;height:30px;" @click="next">下一步</Button>
+                                </div>
+                            </Form-item>
+                    </div>
+                    <div style="text-align: center" v-else>
+                       <div v-if="showT">
+                           <h1  style="margin-bottom: 20px;font-size: 22px;font-weight: normal">企业注册</h1>
+                           <span>为确保您的信息准确，每一步都必须填写</span>
+                           <Form-item prop="operator" class="input">
+                               <Input v-model="corpInfo.operator" placeholder="运营者姓名" style="width: 260px;height: 25px"  size="large"></Input>
+                           </Form-item>
+                           <Form-item prop="mobile" class="input">
+                               <Input v-model="corpInfo.mobile" placeholder="手机号码" style="width: 260px;he ight: 25px" size="large"></Input>
+                           </Form-item>
+                           <Form-item prop="phone" class="input">
+                               <Input v-model="corpInfo.phone" placeholder="座机号码" style="width: 260px;height: 25px" size="large"></Input>
+                           </Form-item>
+                           <Form-item prop="email" class="input">
+                               <Input v-model="corpInfo.email" placeholder="电子邮箱" style="width: 260px;height: 25px" size="large"></Input>
+                           </Form-item>
+                           <Form-item prop="identification_card" class="input">
+                               <Input v-model="corpInfo.identification_card" placeholder="身份证号码" style="width: 260px;height: 25px" size="large"></Input>
+                           </Form-item>
+                           <Form-item prop="credit_code" class="input">
+                           <div><h2 style="font-size: 22px;margin-top: 20px;margin-bottom: 20px;font-weight: normal">请上传身份证件（正面和反面）</h2></div>
+
+                           <div>
+                               <div class="demo-upload-list" v-for="item in uploadList">
+                                   <template v-if="item.status === 'finished'">
+                                       <img :src="item.url">
+                                       <div class="demo-upload-list-cover">
+                                           <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
+                                           <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
+                                       </div>
+                                   </template>
+                                   <template v-else>
+                                       <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
+                                   </template>
+                               </div>
+                               <Upload
+                                       ref="upload"
+                                       :show-upload-list="false"
+                                       :default-file-list="defaultList"
+                                       :on-success="handleSuccess"
+                                       :format="['jpg','jpeg','png']"
+                                       :max-size="2048"
+                                       :on-format-error="handleFormatError"
+                                       :on-exceeded-size="handleMaxSize"
+                                       :before-upload="handleBeforeUpload"
+                                       multiple
+                                       type="drag"
+                                       action="//jsonplaceholder.typicode.com/posts/"
+                                       style="display: inline-block;width:58px;">
+                                   <div style="width: 58px;height:58px;line-height: 58px;">
+                                       <Icon type="camera" size="20"></Icon>
+                                   </div>
+                               </Upload>
+                               <Modal title="查看图片" v-model="identification">
+                                   <img :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'" v-if="visible" style="width: 100%">
+                               </Modal>
+                           </div>
+                           </Form-item>
+                           <div>
+                               <Button type="primary" shape="circle" style="width:110px;height:30px;" @click="breaks">返回</Button>&nbsp&nbsp
+                               <Button type="primary" shape="circle" @click="submit" style="width:110px;height:30px;">提交</Button>
+                           </div>
+                       </div>
+
+                    </div>
+                </div>
+                </Form>
+            </div>
+        </div>
+        <!--mian结束-->
+        <!--footer开始-->
+        <div class="footer">
+            <div class="container">
+                <div class="footer-l">
+                    <ul>
+                        <li>关于NSS1</li>
+                        <li>公益性质</li>
+                        <li>服务项目</li>
+                        <li>以往案例</li>
+                        <li>新闻动态</li>
+                        <li>联系我们</li>
+                    </ul>
+                    <br/>
+                    <br/>
+                    <div >Copyright©2015trecare.com All Rights Reserved 版权所有TREcare
+<br/>备案号：蜀ICP备88888888号-1</div>
+                </div>
+                <div class="footer-r" >
+                    <ul>
+                        <li>微博</li>
+                        <li>微信</li>
+                        <li>Support:DGG Group</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <Back-top :height="400" :bottom="80">
+            <div class="top">返回顶端</div>
+        </Back-top>
+        <!--footer结束-->
+    </div>
+</template>
+<script>
+import axios from 'axios'
+export default {
+    data() {
+        let checkCredit = (rules, value, cb) => {　//转换函数，主要目的是传给store内方法的参数。
+            this.$store.dispatch('checkCredit', { rules, value, cb })//这儿的checkAge是写在store中的，vuex规定参数必须传对象。
+        }
+        let checkCorp = (rules, value, cb) => {　//转换函数，主要目的是传给store内方法的参数。
+            this.$store.dispatch('checkCorp', { rules, value, cb })//这儿的checkAge是写在store中的，vuex规定参数必须传对象。
+        }
+        let checkModle = (rules, value, cb) => {　//转换函数，主要目的是传给store内方法的参数。
+            this.$store.dispatch('checkModle', { rules, value, cb })//这儿的checkAge是写在store中的，vuex规定参数必须传对象。
+        }
+        let checkPhone = (rules, value, cb) => {　//转换函数，主要目的是传给store内方法的参数。
+            this.$store.dispatch('checkPhone', { rules, value, cb })//这儿的checkAge是写在store中的，vuex规定参数必须传对象。
+        }
+        let checkEmail = (rules, value, cb) => {　//转换函数，主要目的是传给store内方法的参数。
+            this.$store.dispatch('checkEmail', { rules, value, cb })//这儿的checkAge是写在store中的，vuex规定参数必须传对象。
+        }
+        let checkIdentification = (rules, value, cb) => {　//转换函数，主要目的是传给store内方法的参数。
+            this.$store.dispatch('checkIdentification', { rules, value, cb })//这儿的checkAge是写在store中的，vuex规定参数必须传对象。
+        }
+        return {
+            loginuserinfo: JSON.parse(sessionStorage.getItem("user")),
+            portal: '',
+            theme1: 'light',
+            defaultList: [
+                {
+                    'name': 'a42bdcc1178e62b4694c830f028db5c0',
+                    'url': 'https://o5wwk8baw.qnssl.com/a42bdcc1178e62b4694c830f028db5c0/avatar'
+                },
+                {
+                    'name': 'bc7521e033abdd1e92222d733590f104',
+                    'url': 'https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar'
+                }
+            ],
+            willShow: true,
+            showT: true,
+            current: 0,
+            imgName: '',
+            visible: false,
+            uploadList: [],
+            corpInfo: {
+                corp_name: '',
+                business_scope: '',
+                legal_person: '',
+                corp_code: '',
+                credit_code: '',
+                operator: '',
+                mobile: '',
+                phone: '',
+                email: '',
+                identification_card: ''
+            },
+            modal2: false,
+            modal_loading: false,
+            modal3: false,
+            modal4: false,
+            modal5: false,
+            formInline: {
+                user: '',
+                password: ''
+            },
+            ruleInline: {
+                corp_name: [
+                    { required: true, message: '请填写企业名称', trigger: 'blur' }
+                ],
+                business_scope: [
+                    { required: true, message: '请填写经营范围', trigger: 'blur' }
+                ],
+                legal_person: [
+                    { required: true, message: '请填写法人姓名', trigger: 'blur' }
+                ],
+                corp_code: [
+                    { validator: checkCorp, required: true, trigger: 'blur' }
+                ],
+                credit_code: [
+                    { validator: checkCredit, required: true, trigger: 'blur' }
+                ],
+                operator: [
+                    { required: true, message: '请填写运营者姓名', trigger: 'blur' }
+                ],
+                mobile: [
+                    { validator: checkModle, required: true, trigger: 'blur' }
+                ],
+                phone: [
+                    { validator: checkPhone, required: true, trigger: 'blur' }
+                ],
+                email: [
+                    { validator: checkEmail, required: true, trigger: 'blur' }
+                ],
+                identification_card: [
+                    { validator: checkIdentification, required: true, trigger: 'blur' }
+                ],
+                user: [
+                    { required: true, message: '请填写用户名', trigger: 'blur' }
+                ],
+                password: [
+                    { required: true, message: '请填写密码', trigger: 'blur' },
+                    { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
+                ],
+                methods: {
+                    del() {
+                        this.modal_loading = true
+                        setTimeout(() => {
+                            this.modal_loading = false
+                            this.modal2 = false
+                            this.$Message.success('删除成功')
+                        }, 2000)
+                    },
+                    handleView(name) {
+                        this.imgName = name
+                        this.visible = true
+                    },
+                    handleRemove(file) {
+                        // 从 upload 实例删除数据
+                        const fileList = this.$refs.upload.fileList
+                        this.$refs.upload.fileList.splice(fileList.indexOf(file), 1)
+                    },
+                    handleSuccess(res, file) {
+                        // 因为上传过程为实例，这里模拟添加 url
+                        file.url = 'https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar';
+                        file.name = '7eb99afb9d5f317c912f08b5212fd69a';
+                    },
+                    handleFormatError(file) {
+                        this.$Notice.warning({
+                            title: '文件格式不正确',
+                            desc: '文件 ' + file.name + ' 格式不正确，请上传 jpg 或 png 格式的图片。'
+                        });
+                    },
+                    handleMaxSize(file) {
+                        this.$Notice.warning({
+                            title: '超出文件大小限制',
+                            desc: '文件 ' + file.name + ' 太大，不能超过 2M。'
+                        });
+                    },
+                    handleBeforeUpload() {
+                        const check = this.uploadList.length < 5
+                        if (!check) {
+                            this.$Notice.warning({
+                                title: '最多只能上传 5 张图片。'
+                            })
+                        }
+                        return check
+                    }
+                }
+            }
+        }
+    },
+    methods: {
+        next() {
+            if (this.current == 0) {
+                if (this.willShow == true) {
+                    this.willShow = false
+                    this.current += 1
+                }
+            } else {
+                this.current += 1
+            }
+        },
+        back() {
+            this.$router.push({
+                path: '/pro/member'
+            })
+        },
+        breaks() {
+            if (this.willShow == false) {
+                this.willShow = true
+                this.showT = false
+                if (this.current != 0) {
+                    this.current -= 1
+                }
+            }
+        },
+        submit() {
+            axios({
+                method: 'post',
+                url: 'http://localhost:1111/corpInfo/saveCorp',
+                data: {
+                    corp_name: this.corpInfo.corp_name,
+                    business_scope: this.corpInfo.business_scope,
+                    legal_person: this.corpInfo.legal_person,
+                    corp_code: this.corpInfo.corp_code,
+                    credit_code: this.corpInfo.credit_code,
+                    operator: this.corpInfo.operator,
+                    mobile: this.corpInfo.mobile,
+                    phone: this.corpInfo.phone,
+                    email: this.corpInfo.email,
+                    identification_card: this.corpInfo.identification_card,
+                }
+            }).then(response => {
+                this.flag = response.data.flag
+                if (this.flag == '1') {
+                    alert("注册成功!")
+                    this.$router.push('/pro/member')
+                }
+            }).catch(function (error) {
+                alert("注册失败!");
+                console.log(error)
+            })
+        },
+        routeTo(e) {
+            if (e == '/portal') {
+                this.portal = 'http://192.168.7.61:8080/gf_mall_client/shop/seller.html?memLoginId=' + this.loginuserinfo.loginAccount
+                window.open(this.portal)
+            } else {
+                this.$router.push(e)
+            }
+        },
+        logout() {
+            axios.get('http://localhost:1111/login/logout')
+                .then(response => {
+                    console.log(response.data)
+                })
+            sessionStorage.removeItem("user")
+            this.$router.push('/pro/firstPage')
+        }
+    }
+}
+</script>

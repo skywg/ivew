@@ -1,0 +1,153 @@
+<template>
+	<!--3设置栏目第八步开始-->
+	<div style="margin: 30px auto;padding:0 24px;">
+
+		<div style="padding:0 24px;display: block">
+				<div style="float: right;margin-top: 24px;">
+				<Button type="primary" size="small">查询</Button>
+					&nbsp&nbsp
+				<Button type="error" size="small">重置</Button>
+			</div>
+				<div style="padding-top: 46px">
+				<span>名称：</span>
+				<Input v-model="value" placeholder="请输入…" style="width: 108px"></Input>
+				&nbsp&nbsp&nbsp&nbsp&nbsp
+				<span>备注信息：</span>
+				<Input v-model="value" placeholder="请输入…" style="width: 108px"></Input>
+				</div>
+				<p style="padding-top: 20px;padding-bottom: 10px;font-size: 14px;color: #4fac77" @click="add">新增栏目</p>
+		<div id="content">
+				<Row style="text-align: left;font-size: 16px;margin-bottom: 16px;font-weight: 600;background: #fafafa;padding: 10px 8px">
+					<Col span="6">分组名称</Col>
+					<Col span="8" style="text-align: center">备注名称</Col>
+					<Col span="10" style="text-align: center">操作</Col>
+				</Row>
+				<Row style="text-align: left;font-size: 16px;margin-bottom: 16px">
+					<Col span="6">
+					<Tree :data="baseData"  show-checkbox multiple @on-check-change="change">
+					</Tree>
+					</Col>
+					<Col span="8" style="text-align: center">
+					<!--<p>花卉</p>-->
+					<Input v-model="beizhu" class="beizhu"></Input>
+					</Col>
+					<Col span="10" style="text-align: center">
+					<Button-group>
+						<Button>向上</Button>
+						<Button >向下</Button>
+						<Button>重命名</Button>
+						<Button >删除</Button>
+					</Button-group>
+					</Col>
+				</Row>
+			</div>
+			</div>
+
+
+
+
+			<h1>测试</h1>
+			<button @click="addNode">Add Node</button>
+			<vue-tree-list :model="data" default-tree-node-name="new node" default-leaf-node-name="new leaf"></vue-tree-list>
+			<button @click="getNewTree">Get new tree</button>
+			<pre>
+			  {{newTree}}
+			</pre>
+	</div>
+	<!--3设置栏目第八步结束-->
+</template>
+<script>
+import $ from 'jquery'
+import { VueTreeList, Tree, TreeNode } from '~components/VueTreeList/index'
+export default {
+	components: {
+      VueTreeList
+    },
+	data() {
+		return {
+			 newTree: {},
+        data: new Tree([
+          {
+            name: 'Node 1',
+            id: 1,
+            pid: 0,
+            children: [
+              {
+                name: 'Node 1-2',
+                id: 2,
+                isLeaf: true,
+                pid: 1
+              }
+            ]
+          },
+          {
+            name: 'Node 2',
+            id: 3,
+            pid: 0
+          },
+          {
+            name: 'Node 3',
+            id: 4,
+            pid: 0
+          }
+        ])
+      ,
+			baseData: [{
+				title: '草莓',
+				children: [{
+					title: '小苺',
+					children: [{
+						title: '小苺1'
+					}, {
+						title: 'leaf'
+					}]
+				}, {
+					title: '水稻',
+					checked: true,
+					children: [{
+						title: '水稻'
+					}]
+				}]
+			}]
+		}
+	},
+	methods: {
+		add() {
+
+		},
+		change(e){
+				console.log(e)
+		},
+		 addNode: function () {
+        var node = new TreeNode('new node', false)
+        if (!this.data.children) this.data.children = []
+        this.data.addChildren(node)
+      },
+
+      getNewTree: function () {
+        const vm = this
+        function _dfs (oldNode) {
+          let newNode = {}
+
+          newNode.name = oldNode.name
+          newNode.pid = oldNode.pid
+          newNode.isLeaf = oldNode.isLeaf
+          newNode.id = oldNode.id
+
+          if (oldNode.children && oldNode.children.length > 0) {
+            newNode.children = []
+            for (let i = 0, len = oldNode.children.length; i < len; i++) {
+              newNode.children.push(_dfs(oldNode.children[i]))
+            }
+          }
+          return newNode
+        }
+
+        vm.newTree = _dfs(vm.data)
+      }
+	},
+	created:function(){
+		this.$parent.baifen=50
+	}
+}
+</script>

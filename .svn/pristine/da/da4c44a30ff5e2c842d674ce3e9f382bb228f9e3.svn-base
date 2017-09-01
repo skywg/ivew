@@ -1,0 +1,154 @@
+<style scoped>
+    .news-img {
+        text-align: right;
+    }
+    .main-nav ul li a {
+        float: left;
+        margin-right: 46px;
+        color: #666;
+        font-size: 20px;
+        line-height: 1.5 !important;
+
+        width: 500px;
+        margin-top: 25px;
+    }
+    .main-nav ul li a:hover{
+        border-bottom: none;
+        color: #4fac77;
+    }
+    .lan1{
+        margin-top: -34px;
+        padding-bottom: 14px;
+    }
+    .new-last li {
+        border-bottom: 1px solid #ccc;
+        padding: 0 12px 40px 12px;
+        margin-bottom: 0px !important;
+    }
+       
+</style>
+<template>
+    <Row  dis-hover >
+        <Col span="15" >
+        <div class="new-last">
+            <ul id="box">
+                <li class="new-last1" style="position: relative;" v-for="item in data.list.list">
+                    <h3 ><router-link :to="{ path: '/InforMation/findInforMationDetail', query: { 'id': item.informationDetailId }}"> {{ item.title }}</router-link></h3>
+                    <div  class="news-img" ><img src="../../img/news-img.png" alt=""></div>
+                    <div class="lan1">
+                        <Tag type="border" class="new-tab">资讯</Tag>
+                        <div style="padding-top: 5px;float: left">
+                            <span>{{item.label}}</span>
+                            <span class="main-time">{{item.day}}前</span>
+                        </div>
+                        <div style="float: right;margin-right: 174px">
+                            <div style="padding-top: 5px;">
+                                <Icon type="share" style="font-size: 22px"></Icon>
+                                &nbsp; &nbsp;
+                                <Icon type="ios-chatbubble-outline" style="font-size: 22px">
+                                </Icon>
+                                <span style="float: right;line-height: 22px;margin-left: 8px">{{item.commentNum}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="fenye" style="margin-top: 10px;">
+            <Page :total='data.list.total'  show-total :current='currentPage'  @on-change="nextPage" ></Page>
+        </div>
+        </Col>
+        <Col span="5" offset="1" style="margin-top: 25px">
+        <div>
+            <h3 style="display: block;border-left: 4px solid #51ad79;height: 14px;line-height: 14px;padding-left: 10px">相关政策</h3>
+            <div>
+                <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+            </div>
+            <div>
+                <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+            </div>
+            <div>
+                <p style="margin-top: 28px;font-size: 16px">转基因技术在植物环境修复中的应用综述</p>
+                <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+            </div>
+            <div>
+                <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+            </div>
+        </div>
+        <div>
+            <h3 style="display: block;border-left: 4px solid #51ad79;height: 14px;line-height: 14px;padding-left: 10px">相关知识</h3>
+            <div>
+                <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+            </div>
+            <div>
+                <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+            </div>
+            <div>
+                <p style="margin-top: 28px;font-size: 16px">转基因技术在植物环境修复中的应用综述</p>
+                <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+            </div>
+            <div>
+                <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+            </div>
+        </div>
+        </Col>
+    </Row>
+</template>
+<script>
+import axios from 'axios'
+import $ from 'jquery'
+export default {
+    created() {
+        this.fetchData()
+        //setInterval(this.resetWidth, 100)
+    },
+    props: ['data'],
+    data() {
+        return {
+            currentPage: 1,
+            pageSize: 10,
+            total: 0,
+            data: [],
+            portal :''
+        }
+    },
+    methods: {
+        fetchData: function () {
+            this.list = []
+            axios.get('http://localhost:1111/inforMation/findInforMation/' + this.currentPage + "?pageSize=" + this.pageSize)
+                .then(response => {
+                    this.data = response.data
+                }).catch(function (error) {
+                    console.log(error)
+                })
+        },
+        nextPage(val) {
+            this.currentPage = val
+            this.list = []
+            axios.get('http://localhost:1111/inforMation/findInforMation/' + this.currentPage + "?pageSize=" + this.pageSize)
+                .then(response => {
+                    this.data = response.data
+                }).catch(function (error) {
+                    console.log(error)
+                })
+        },
+        routeTo(e) {
+            if(e == '/portal'){
+                this.portal = 'http://192.168.7.61:8080/gf_mall_client/shop/seller.html?memLoginId='+this.loginuserinfo.loginAccount
+                window.open(this.portal)
+            }else{
+                this.$router.push(e)
+            }
+        },
+        resetWidth() {
+            $(".ivu-page li").css("min-width", "initial").css("width", "32px")
+        }
+    }
+}
+</script>

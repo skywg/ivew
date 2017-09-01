@@ -1,0 +1,45 @@
+<template>
+	<!--3实名认证第十二步开始-->
+	<div>
+
+		<p style="text-align: center;margin-top: 30px;font-size: 16px;line-height: 1.8; padding-top: 65px;">设置支付密码</p>
+		<div style="margin: 10px auto">
+			<div style="text-align: center">
+				<Input v-model="account.pwd" placeholder="设置支付密码" style="width: 260px;height: 45px;margin-top:6px;" size="large" @on-change="change"></Input>
+				<span class="zhushi">*</span>
+			</div>
+			<div style="text-align: center">
+				<Input v-model="account.secpwd" placeholder="确认密码" style="width: 260px;height: 45px;margin-top: 6px" size="large" @on-change="change"></Input>
+				<span class="zhushi">*</span>
+			</div>
+
+		</div>
+		<div style="height: 30px"></div>
+	</div>
+	<!--3实名认证第十二步结束-->
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				account:{
+					pwd:'',
+					secpwd:''
+				}
+			}
+		},
+		created:function(){
+		this.$parent.baifen=100
+	},
+	methods:{
+		change(){
+			this.$store.commit('saveAccount',this.account)
+		}
+	}
+	}
+</script>
+
+<style>
+
+</style>

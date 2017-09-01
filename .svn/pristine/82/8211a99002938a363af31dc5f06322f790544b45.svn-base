@@ -1,0 +1,508 @@
+<style scoped>
+    .layout {
+        background: #fff;
+    }
+
+    header {
+        height: 81px;
+        background: #FFFFFF;
+        border-bottom: 1px solid #e7e7e7;
+    }
+
+    /*main样式开始*/
+    .main {
+        margin-top: 10px;
+    }
+
+    .mian-left {
+        border-right: 1px solid #fafafa;
+        width: 210px;
+
+    }
+
+    /*main样式结束*/
+
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+        color: #51ad79;
+
+    }
+
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+        color: #51ad79;
+        border-right: 2px solid #51ad79;
+        z-index: 2;
+    }
+
+    .mian-center {
+        max-width: 702px;
+        margin-left: 10px;
+        margin-top: 60px;
+        background: #fafafa;
+        border: 1px solid #eeeeee;
+        padding-bottom: 500px;
+    }
+
+    .main-user {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        margin-top: -46px;
+
+    }
+
+    .main-top-bg {
+        height: 135px;
+        width: 100%;
+        background: url("../../img/images/mian-img.png") no-repeat center top;
+        position: relative;
+    }
+
+    .main-t-r {
+        width: 74%;
+        margin-top: 24px;
+        height: 100px;
+    }
+
+    .main-t-r ul li {
+        float: right;
+        margin-right: 28px;
+        text-align: center;
+    }
+
+    .main-t-r span {
+        font-size: 20px;
+        font-weight: 500;
+
+    }
+
+    .main-t-r p {
+        font-size: 14px;
+
+    }
+
+    .main-bot {
+        width: 600px;
+
+        margin: 0 auto;
+        border-top: 1px solid #ededed;
+        position: relative;
+    }
+
+    .main-bot-title {
+        width: 120px;
+        height: 35px;
+        font-size: 18px;
+        background: #ededed;
+        text-align: center;
+        line-height: 35px;
+        position: absolute;
+        top: -20px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        color: #333;
+        border-radius: 18px;
+    }
+
+    .mian-bot1-title {
+        width: auto;
+        height: 18px;
+        font-size: 16px;
+        margin-top: 46px;
+        border-left: 4px solid #51ad79;
+        padding-left: 10px;
+        line-height: 16px;
+
+    }
+
+    .mian-bot1-title a {
+        color: #333;
+        font-size: 12px;
+    }
+
+    .main-bot2 img {
+        margin-right: 16px;
+        margin-top: 8px;
+    }
+
+    .main-bot2 p {
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+    .main-bot2 ul {
+        margin-right: 63px;
+    }
+
+    .main-bot2 ul li {
+        line-height: 30px;
+        font-size: 14px;
+    }
+
+    .main-bot3 li {
+        line-height: 18px;
+
+    }
+
+    .main-bot3 ul {
+        margin-left: 24px;
+
+    }
+
+    .check-box ul li {
+        margin-bottom: 20px;
+        font-size: 14px;
+
+    }
+
+    .ivu-switch-checked {
+        border-color: #51ad79;
+        background-color: #51ad79;
+    }
+
+    .ivu-btn-group-small > .ivu-btn {
+        padding: 4px 12px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+
+    .ivu-btn-group:not(.ivu-btn-group-vertical) .ivu-btn-primary:not(:first-child):not(:last-child) {
+        border: 1px solid #51ad79;
+    }
+
+    .ivu-btn:hover {
+        color: #51ad79;
+        background-color: #fff;
+        border-color: #51ad79;
+    }
+
+    /*本页出了头和底部样式结束*/
+</style>
+<template>
+    <div class="main-bot">
+        <div class="main-bot-title">自定义设置</div>
+        <div class="mian-bot1" style="margin-bottom: 160px">
+            <div class="mian-bot1-title">
+                <span>菜单设置</span>
+                &nbsp;
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 20px"></div>
+                    <Checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
+                        <Row class="check-box" style="margin: 0 ">
+                            <Col span="8">
+                            <ul>
+                                <li>
+                                    <Checkbox label="个人信息"></Checkbox>
+                                </li>
+                                <li>
+                                    <Checkbox label="我的圈子"></Checkbox>
+                                </li>
+                                <li>
+                                    <Checkbox label="我的服务"></Checkbox>
+                                </li>
+                                <li>
+                                    <Checkbox label="工作室"></Checkbox>
+                                </li>
+
+                            </ul>
+                            </Col>
+
+                            <Col span="8">
+                            <ul style="text-align:center">
+                                <li>
+                                    <Checkbox label="我的认证"></Checkbox>
+                                </li>
+                                <li>
+                                    <Checkbox label="联系方式"></Checkbox>
+                                </li>
+                                <li style="margin-left: 12px">
+                                    <Checkbox label="我的知识库"></Checkbox>
+                                </li>
+                                <li>
+                                    <Checkbox label="资质审核"></Checkbox>
+                                </li>
+
+                            </ul>
+                            </Col>
+                            <Col span="8">
+                            <ul style="text-align: right">
+                                <li>
+                                    <Checkbox label="我的相册"></Checkbox>
+                                </li>
+                                <li>
+                                    <Checkbox label="我的商品"></Checkbox>
+                                </li>
+                                <li>
+                                    <Checkbox label="我的政策"></Checkbox>
+                                </li>
+                                <li>
+                                    <Checkbox label="荣誉证书"></Checkbox>
+                                </li>
+
+                            </ul>
+                            </Col>
+                        </Row>
+
+
+                    </Checkbox-group>
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <br/>
+        <div class="mian-bot1" style="margin-bottom: 160px">
+            <div class="mian-bot1-title">
+                <span>隐私设置</span>
+                &nbsp;
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 20px"></div>
+                    <Checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
+                        <Row class="check-box" :gutter="86" style="margin: 0 ">
+                            <Col span="24" style="padding: 0" >
+                            <ul >
+                                <li style="margin-bottom: 24px">个人信息
+
+                                                        <div style="float: right">
+                                    <Button-group size="small">
+                                        <Button>所有人</Button>
+                                        <Button type="primary">仅好友</Button>
+                                        <Button>仅自己</Button>
+                                    </Button-group>
+                                </div>
+                                </li>
+                                <li style="margin-bottom: 24px">我的认证
+
+                                                        <div style="float: right">
+                                    <Button-group size="small">
+                                        <Button>所有人</Button>
+                                        <Button type="primary">仅好友</Button>
+                                        <Button>仅自己</Button>
+                                    </Button-group>
+                                </div>
+                                </li>
+
+
+                                <li style="margin-bottom: 24px">我的圈子
+
+                                                        <div style="float: right">
+                                    <Button-group size="small">
+                                        <Button>所有人</Button>
+                                        <Button type="primary">仅好友</Button>
+                                        <Button>仅自己</Button>
+                                    </Button-group>
+                                </div>
+                                </li>
+                                <li style="margin-bottom: 24px">联系方式
+
+                                                        <div style="float: right">
+                                    <Select v-model="model10" multiple style="width:108px">
+                                        <Option v-for="item in cityList" :value="item.value"
+                                                :key="item">{{ item.label }}
+                                                                </Option>
+                                    </Select>
+                                </div>
+                                </li>
+
+                                <li style="margin-bottom: 24px">我的商品
+
+                                                        <div style="float: right">
+                                    <Select v-model="model10" multiple style="width:108px">
+                                        <Option v-for="item in cityList" :value="item.value"
+                                                :key="item">{{ item.label }}
+                                                                </Option>
+                                    </Select>
+                                </div>
+                                </li>
+
+
+                            </ul>
+                            </Col>
+
+
+                        </Row>
+
+
+                    </Checkbox-group>
+
+
+                </div>
+                <div style="margin-top: 12px;">
+                    <div style="height: 20px"></div>
+                    <Checkbox-group v-model="checkAllGroup" @on-change="checkAllGroupChange">
+                        <Row class="check-box" :gutter="86">
+                            <Col span="12">
+                            <ul>
+                                <li style="margin-bottom: 24px">个人信息
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+                                <li style="margin-bottom: 24px">我的认证
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+
+                                <li style="margin-bottom: 24px">我的相册
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+                                <li style="margin-bottom: 24px">我的圈子
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+                                <li style="margin-bottom: 24px">联系方式
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+
+                                <li style="margin-bottom: 24px">我的商品
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+
+
+                            </ul>
+                            </Col>
+                            <Col span="12">
+                            <ul>
+                                <li style="margin-bottom: 24px">我的服务
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+                                <li style="margin-bottom: 24px">我的政策
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+
+                                <li style="margin-bottom: 24px">我的知识库
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+                                <li style="margin-bottom: 24px">我的工作室
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+                                <li style="margin-bottom: 24px">资质审核
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+
+                                <li style="margin-bottom: 24px">荣誉证书
+
+                                                        <div style="float: right">
+                                    <i-switch v-model="switch1" @on-change="change"></i-switch>
+                                </div>
+                                </li>
+
+
+                            </ul>
+                            </Col>
+
+
+                        </Row>
+
+
+                    </Checkbox-group>
+
+
+                </div>
+                <div style="width: 150px;margin: 36px auto">
+                    <Button type="primary" shape="circle" size="large"
+                            style="width: 150px;height: 50px;">保存
+                                        </Button>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+</template>
+
+<script>
+    import Qs from 'qs'
+    import axios from 'axios'
+    import $ from 'jquery'
+    export default {
+        data() {
+            return {
+                portal :'',
+                modal1: false,
+                modal2: false,
+                modal_loading: false,
+                modal3: false,
+                modal4: false,
+                modal5: false,
+                value: '',
+                formInline: {
+                    user: '',
+                    password: ''
+                },
+                ruleInline: {
+                    user: [{
+                        required: true,
+                        message: '请填写用户名',
+                        trigger: 'blur'
+                    }],
+                    password: [{
+                        required: true,
+                        message: '请填写密码',
+                        trigger: 'blur'
+                    },
+                        {
+                            type: 'string',
+                            min: 6,
+                            message: '密码长度不能小于6位',
+                            trigger: 'blur'
+                        }
+                    ]
+
+
+                },
+                cardShow: false,
+                appShow: true
+            }
+        },
+        created: function () {
+
+        },
+        methods: {
+            routeTo(e) {
+                if(e == '/portal'){
+                    this.portal = 'http://192.168.7.61:8080/ovit/center/gateway.htm?uid='+this.loginuserinfo.uniqueId
+                    window.open(this.portal)
+                }else{
+                    this.$router.push(e)
+                }
+            }
+        }
+
+    }
+</script>

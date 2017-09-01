@@ -1,0 +1,213 @@
+<style scoped>
+    .news-img {
+        text-align: right;
+    }
+    .new-last li {
+        border-bottom: 1px solid #ccc;
+        padding: 5px;
+    }
+       
+</style>
+<style lang="scss">
+    .new-last{
+        a {
+            color: #666;
+        }
+        .ivu-tag{
+            margin:0;
+        }
+        .main-time,
+        .label{
+            display:inline-block;
+            vertical-align:middle;
+            padding: 0 8px;
+            height: 24px; 
+            line-height: 24px;
+        }
+    }
+</style>
+<template>
+    <div class="layouts">
+        <Row class="mt30 mb10">
+            <Col span="3" class="pr10">
+                <Select v-model="filterVal" @on-change="filterChange">
+                    <Option value="1">商务资讯</Option>
+                    <Option value="2">公务资讯</Option>
+                </Select>
+            </Col>
+            <Col span="3" class="pr10">
+                <Select v-model="rangeVal" filterable>
+                    <Option v-for="item in filterList.rangeList" :key="item.value" :value="item.value">{{item.label}}</Option>
+                </Select>
+            </Col>
+            <Col span="3" class="pr10">
+                <Select v-model="natureVal" filterable>
+                    <Option v-for="item in filterList.natureList" :key="item.value" :value="item.value">{{item.label}}</Option>
+                </Select>
+            </Col>
+            <Col span="3" class="pr10" v-show="allTradeShow">
+                <Select v-model="allTradeVal" filterable>
+                    <Option v-for="item in filterList.allTradeList" :key="item.value" :value="item.value">{{item.label}}</Option>
+                </Select>
+            </Col>
+        </Row>
+        <Row>
+            <Col span="19" >
+                <div class="new-last">
+                    <ul id="box">
+                        <li v-for="item in data.list.list">
+                            <Row>
+                                <Col span="19">
+                                    <h3 ><router-link :to="{ path: '/InforMation/findInforMationDetail', query: { 'id': item.informationDetailId }}"> {{ item.title }}</router-link></h3>
+                                    <Row>
+                                        <Col span="20">
+                                            <Tag type="border" class="new-tab">资讯</Tag>
+                                            <span class="label">{{item.label}}</span>
+                                            <span class="main-time">{{item.day}}前</span>
+                                        </Col>
+                                        <Col span="4" class="tr">
+                                            <Icon type="share" style="font-size: 22px"></Icon>
+                                            &nbsp; &nbsp;
+                                            <Icon type="ios-chatbubble-outline" style="font-size: 22px">
+                                            </Icon>
+                                            <span>{{item.commentNum}}</span>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                                <Col span="4" offset="1">
+                                    <div  class="news-img" ><img src="../../img/news-img.png" alt="" width="100%"></div>
+                                </Col>
+                            </Row>
+                        </li>
+                    </ul>
+                </div>
+                <div class="fenye" style="margin-top: 10px;">
+                    <Page :total='data.list.total'  show-total :current='currentPage'  @on-change="nextPage" ></Page>
+                </div>
+            </Col>
+            <Col span="4" offset="1">
+                <div>
+                    <h3 style="display: block;border-left: 4px solid #51ad79;height: 14px;line-height: 14px;padding-left: 10px">相关政策</h3>
+                    <div>
+                        <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                        <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+                    </div>
+                    <div>
+                        <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                        <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+                    </div>
+                    <div>
+                        <p style="margin-top: 28px;font-size: 16px">转基因技术在植物环境修复中的应用综述</p>
+                        <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+                    </div>
+                    <div>
+                        <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                        <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="display: block;border-left: 4px solid #51ad79;height: 14px;line-height: 14px;padding-left: 10px">相关知识</h3>
+                    <div>
+                        <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                        <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+                    </div>
+                    <div>
+                        <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                        <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+                    </div>
+                    <div>
+                        <p style="margin-top: 28px;font-size: 16px">转基因技术在植物环境修复中的应用综述</p>
+                        <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+                    </div>
+                    <div>
+                        <p style="margin-top: 28px;font-size: 16px">杂饲料喂猪 注意五大问题</p>
+                        <p style="line-height: 28px;margin-bottom: 28px;color: #999999">养殖    昨天</p>
+                    </div>
+                </div>
+            </Col>
+        </Row>
+    </div>
+</template>
+<script>
+import axios from 'axios'
+import $ from 'jquery'
+export default {
+    created() {
+        this.fetchData()
+        //setInterval(this.resetWidth, 100)
+    },
+    props: ['data'],
+    data() {
+        return {
+            currentPage: 1,
+            pageSize: 10,
+            total: 0,
+            data: [],
+            portal :'',
+            filterVal:'1',
+            rangeVal:'f1r1',
+            natureVal:'',
+            allTradeVal:'',
+            allTradeShow:true,
+            filterList:{},
+            filterData1:{},
+            filterData2:{}
+        }
+    },
+    beforeCreate(){
+        axios.get('/static/datas/newsFilter1.json').then((res)=>{
+            this.filterData1 = res.data
+            this.filterList = res.data
+        })
+        axios.get('/static/datas/newsFilter2.json').then((res)=>{
+            this.filterData2 = res.data
+        })
+    },
+    methods: {
+        // 筛选改变
+        filterChange(value){
+            if(value === '2'){
+                this.filterList = this.filterData2
+                this.allTradeShow = false
+                this.filterVal='2'
+                this.rangeVal='f2r1'
+            }else{
+                this.filterList = this.filterData1
+                this.allTradeShow = true
+                this.filterVal='1'
+                this.rangeVal='f1r1'
+            }
+        },
+        fetchData: function () {
+            this.list = []
+            axios.get('http://192.168.13.54:1111/inforMation/findInforMation/' + this.currentPage + "?pageSize=" + this.pageSize)
+                .then(response => {
+                    this.data = response.data
+                }).catch(function (error) {
+                    console.log(error)
+                })
+        },
+        nextPage(val) {
+            this.currentPage = val
+            this.list = []
+            axios.get('http://192.168.13.54:1111/inforMation/findInforMation/' + this.currentPage + "?pageSize=" + this.pageSize)
+                .then(response => {
+                    this.data = response.data
+                }).catch(function (error) {
+                    console.log(error)
+                })
+        },
+        routeTo(e) {
+            if(e == '/portal'){
+                this.portal = 'http://192.168.7.61:8080/gf_mall_client/shop/seller.html?memLoginId='+this.loginuserinfo.loginAccount
+                window.open(this.portal)
+            }else{
+                this.$router.push(e)
+            }
+        },
+        resetWidth() {
+            $(".ivu-page li").css("min-width", "initial").css("width", "32px")
+        }
+    }
+}
+</script>

@@ -1,0 +1,65 @@
+<style scoped>
+	label.check_box {
+    margin: 10px 49px;
+    font-size: 14px;
+    width: 90px;
+
+}
+.ivu-checkbox-checked .ivu-checkbox-inner {
+    border-color: #51ad79! important;
+    background-color: #51ad79! important;
+}
+
+</style>
+<template>
+	<!--4应用设置第二步开始-->
+	<div>
+		<p style="font-size: 22px ;text-align: center;line-height: 80px;padding-top: 20px">基础应用</p>
+
+		<Row :gutter="16" style="font-size: 14px;padding: 0 26px;height: 200px;overflow-y: auto" >
+			<Checkbox-group v-model="app.agent" @on-change="save">
+				<Checkbox label="代理管理" class="check_box"></Checkbox>
+				<Checkbox label="关注管理" class="check_box" ></Checkbox>
+				<Checkbox label="名称库管理" class="check_box"></Checkbox>
+				<Checkbox label="收藏管理" class="check_box"></Checkbox>
+				<Checkbox label="库存管理" class="check_box"></Checkbox>
+				<Checkbox label="关系圈管理" class="check_box"></Checkbox>
+				<Checkbox label="公众号管理" class="check_box"></Checkbox>
+				<Checkbox label="聘请管理" class="check_box"></Checkbox>
+				<Checkbox label="生产管理" class="check_box"></Checkbox>
+				<Checkbox label="储藏管理" class="check_box"></Checkbox>
+			</Checkbox-group>
+
+		</Row>
+	</div>
+	<!--4应用设置第二步结束-->
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				app:{
+					agent: ['储藏管理', '生产管理', '聘请管理', '公众号管理', '关系圈管理',
+					'库存管理', '收藏管理', '名称库管理', '关注管理', '代理管理'
+				],
+				level:0
+				}
+
+			}
+		},
+		methods:{
+			save(){
+				this.$store.commit('saveApp',this.app)
+		}
+		},
+		created:function(){
+			this.save()
+		}
+
+	}
+</script>
+
+<style>
+
+</style>

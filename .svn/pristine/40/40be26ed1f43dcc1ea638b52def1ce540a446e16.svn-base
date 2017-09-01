@@ -1,0 +1,343 @@
+<style scoped>
+    .layout {
+        background: #fff;
+    }
+
+    header {
+        height: 81px;
+        background: #FFFFFF;
+        border-bottom: 1px solid #e7e7e7;
+    }
+
+
+    /*main样式开始*/
+    .main{
+        margin-top: 10px;
+    }
+
+    .mian-left{
+        border-right: 1px  solid #fafafa;
+        width: 210px;
+
+
+    }
+
+
+    /*main样式结束*/
+
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+        color: #51ad79;
+
+    }
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+        color: #51ad79;
+        border-right: 2px solid #51ad79;
+        z-index: 2;
+    }
+    .mian-center{
+        max-width: 702px;
+        margin-left: 10px;
+        margin-top: 60px;
+        background: #fafafa;
+        border: 1px solid #eeeeee;
+        padding-bottom: 500px;
+    }
+    .main-user{
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        margin-top: -46px;
+
+
+
+
+    }
+    .main-top-bg{
+        height: 135px;
+        width: 100%;
+        background: url("../../img/images/mian-img.png") no-repeat center top;
+        position: relative;
+    }
+
+    .main-t-r{
+        width: 74%;
+        margin-top: 24px;
+        height: 100px;
+    }
+    .main-t-r ul li{
+        float: right;
+        margin-right: 28px;
+        text-align: center;
+    }
+    .main-t-r span{
+        font-size: 20px;
+        font-weight: 500;
+
+
+
+    }
+    .main-t-r p{
+        font-size: 14px;
+
+
+    }
+    .main-bot{
+        width: 600px;
+        margin: 0 auto;
+        /*border-top: 1px solid #ededed;*/
+        position: relative;
+    }
+    .mian-bot1{
+        margin-bottom: 120px;
+    }
+    .main-bot-title{
+        width: 120px;
+        height: 35px;
+        font-size: 18px;
+        background: #ededed;
+        text-align: center;
+        line-height: 35px;
+        position: absolute;
+        top: -20px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        color: #333;
+        border-radius: 18px;
+    }
+    .mian-bot1-title{
+        width: auto;
+        height: 18px;
+        font-size: 16px;
+        margin-top: 46px;
+        border-left: 4px solid #51ad79;
+        padding-left: 10px;
+        line-height: 16px;
+
+
+    }
+    .mian-bot1-title a{
+        color: #333;
+        font-size: 12px;
+    }
+    .main-bot2 img{
+        margin-right: 16px;
+        margin-top: 8px;
+    }
+    .main-bot2 p{
+        font-size: 14px;
+        line-height: 30px;
+    }
+    .main-bot2 ul{
+        margin-right: 63px;
+    }
+    .main-bot2 ul li{
+        line-height: 30px;
+        font-size: 14px;
+    }
+    .main-bot3 li{
+        line-height: 18px;
+
+    }
+    .main-bot3 ul{
+        margin-left: 24px;
+
+    }
+
+
+    .check-box ul li{
+        margin-bottom: 20px;
+        font-size: 14px;
+
+    }
+    .ivu-switch-checked {
+        border-color: #51ad79;
+        background-color: #51ad79;
+    }
+    .ivu-btn-group-small > .ivu-btn {
+        padding: 4px 12px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+    .ivu-btn-group:not(.ivu-btn-group-vertical) .ivu-btn-primary:not(:first-child):not(:last-child) {
+        border: 1px solid #51ad79;
+    }
+    .ivu-btn:hover {
+        color: #51ad79;
+        background-color: #fff;
+        border-color: #51ad79;
+    }
+
+
+
+
+
+
+    /*本页出了头和底部样式结束*/
+</style>
+<template>
+	<div >
+
+		<Row v-show="xian">
+			<p style="text-align: center;margin-top: 30px;font-size: 16px;line-height: 200px">
+				你所填的任何信息都会在这里形成人物百科</p>
+		</Row>
+		<Row v-show="shi" >
+			<div class="main-bot">
+        <div class="mian-bot1" >
+            <div class="mian-bot1-title" >
+                <span>基础信息</span>
+                &nbsp;
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <!--隐藏开始-->
+                    <p style="font-size: 14px ;line-height: 2;display: block">{{basicInfo}}</p>
+                    <!--隐藏结束-->
+
+
+                </div>
+            </div>
+        </div>
+        <div class="mian-bot1" >
+            <div class="mian-bot1-title" >
+                <span>联系方式</span>
+                &nbsp;
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                            {{contract}}
+                        </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="mian-bot1" >
+            <div class="mian-bot1-title" >
+                <span>教育经历</span>
+                &nbsp;
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                        {{education}}
+
+                        </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="mian-bot1" >
+            <div class="mian-bot1-title" >
+                <span>工作经历</span>
+                &nbsp;
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                        {{work}}
+
+                        </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="mian-bot1" >
+            <div class="mian-bot1-title" >
+                <span>种养信息</span>&nbsp;
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                        {{farmlan}}
+                        </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="mian-bot1" >
+            <div class="mian-bot1-title" >
+                <span>政治面貌</span>
+                &nbsp;
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                        {{policial}}
+                                                                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mian-bot1" >
+            <div class="mian-bot1-title" >
+                <span>宗教信仰</span>
+                &nbsp;
+                <div style="border-top:1px solid #ededed;margin-top: 12px;">
+                    <div style="height: 10px"></div>
+                    <p style="font-size: 14px ;line-height: 2">
+                       {{religion}}
+
+                                                                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+		</Row>
+	</div>
+</template>
+
+<script>
+	import axios from 'axios'
+    import $ from 'jquery'
+	export default {
+		data() {
+			return {
+				 contract:'',
+                education:'',
+                work:'',
+                farmlan:'',
+                policial:'',
+                religion:'',
+                honor:'',
+                basicInfo:'',
+                xian:true,
+                shi:false
+
+
+			}
+		},
+		created:function(){
+ 			this.fetchData()
+		},
+		methods: {
+			fetchData: function () {
+				this.$nextTick(()=>{
+					axios.get('http://localhost:1111/userFullInfo/findUserFullInfo')
+                    .then(response => {
+                    	console.log("基本信息")
+                    	console.log(response.data.userFullInfo)
+                    	if(null==response.data.userFullInfo){
+                    		this.xian=true;
+                    		this.shi=false;
+                    	}else{
+                    		this.xian=false;
+                    		this.shi=true;
+                    	this.contract = response.data.userFullInfo.contract1
+                        this.education =  response.data.userFullInfo.education1
+                        this.work = response.data.userFullInfo.work1
+                        this.farmlan = response.data.userFullInfo.farmlan1
+                        this.policial = response.data.userFullInfo.policial1
+                        this.religion = response.data.userFullInfo.religion1
+                        this.basicInfo = response.data.userFullInfo.basic1
+                    	}
+
+                    }).catch(function (error) {
+                    console.log(error)
+                })
+				})
+
+            }
+		}
+	}
+</script>
+
+<style>
+
+</style>

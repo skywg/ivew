@@ -1,0 +1,366 @@
+<template>
+	<!--3设置栏目第四步开始-->
+	<div>
+
+		<div style="padding: 0 38px">
+			<Row>
+				<Col span="12" style="border: 1px solid #ededed;width: 358px;margin-right: 26px;">
+				<div style="margin-left: 128px;">
+					<h2 style="line-height: 52px">选择政策类型</h2>
+					<div class="zhuce-list">
+						<Tree :data="policys"  show-checkbox multiple @on-check-change=""></Tree>
+					</div>
+					<div style="margin: 14px">
+						<Button type="primary" size="small">添加</Button>&nbsp&nbsp&nbsp
+						<Button type="error" size="small">删除</Button>
+					</div>
+					<Modal v-model="modal1" width="450" :closable="true" :mask-closable="false" class="gex"  @on-ok="ok">
+
+						<Row style="margin-top: 20px;padding: 0 20px;text-align:left;font-size: 12px;">
+							<span>当前选中：<span v-for=" r in category_a" style="color: red;">*{{r}};</span>
+										<span v-for=" r in category_p" >*{{r}};</span>
+							</span>
+						</Row>
+						<hr />
+						<Row style="margin-top: 20px;width: 390px;padding: 0 20px;text-align: center;font-size: 16px;">
+							<Col span="2" style="text-align:left;">
+							<Tooltip placement="bottom-start" >
+								<Col span="12">党务</Col>
+								<div slot="content" style="white-space: normal;">
+									<Checkbox-group v-model="category_a" >
+										<Checkbox label="肉用类" class="check_box">
+											<span class="inner_1">综合</span>
+										</Checkbox>
+										<Checkbox label="肉蛋兼用类" class="check_box">
+											<span class="inner_1">组织</span>
+										</Checkbox>
+										<Checkbox label="肉奶兼用类" class="check_box">
+											<span class="inner_1">宣传</span>
+										</Checkbox>
+										<Checkbox label="肉毛(绒)兼用类" class="check_box">
+											<span class="inner_1">统战</span>
+										</Checkbox>
+										<Checkbox label="肉皮兼用类" class="check_box">
+											<span class="inner_1">外联</span>
+										</Checkbox>
+										<Checkbox label="肉药兼用类" class="check_box">
+											<span class="inner_1">政法</span>
+										</Checkbox>
+										<Checkbox label="役力类" class="check_box">
+											<span class="inner_1">纪检</span>
+										</Checkbox>
+									</Checkbox-group>
+								</div>
+							</Tooltip>
+							</Col>
+							<Col span="2" style="text-align:left;">
+							<Tooltip placement="bottom-start">
+								<Col span="12" >政务</Col>
+								<div slot="content" style="white-space: normal;">
+									<Checkbox-group v-model="category_p" @on-change="changePlant">
+										<Checkbox label="粮食类" class="check_box">
+											<span class="inner_1">综合</span>
+										</Checkbox>
+										<Checkbox label="纤维类" class="check_box">
+											<span class="inner_1">外交</span>
+										</Checkbox>
+										<Checkbox label="油料类" class="check_box">
+											<span class="inner_1">国防</span>
+										</Checkbox>
+										<Checkbox label="糖料类" class="check_box">
+											<span class="inner_1">发展</span>
+										</Checkbox>
+										<Checkbox label="嗜好类" class="check_box">
+											<span class="inner_1">教育</span>
+										</Checkbox>
+										<Checkbox label="瓜果蔬类" class="check_box">
+											<span class="inner_1">科技</span>
+										</Checkbox>
+										<Checkbox label="食用菌藻类" class="check_box">
+											<span class="inner_1">工信</span>
+										</Checkbox>
+										<Checkbox label="饮料类" class="check_box">
+											<span class="inner_1">民族</span>
+										</Checkbox>
+										<Checkbox label="调料类" class="check_box">
+											<span class="inner_1">公安</span>
+										</Checkbox>
+										<Checkbox label="香料类" class="check_box">
+											<span class="inner_1">国安</span>
+										</Checkbox>
+										<Checkbox label="药用类" class="check_box">
+											<span class="inner_1">监察</span>
+										</Checkbox>
+										<Checkbox label="花卉类" class="check_box">
+											<span class="inner_1">民政</span>
+										</Checkbox>
+										<Checkbox label="绿化观赏林木" class="check_box">
+											<span class="inner_1">司法</span>
+										</Checkbox>
+										<Checkbox label="染料类" class="check_box">
+											<span class="inner_1">财政</span>
+										</Checkbox>
+										<Checkbox label="漆料类" class="check_box">
+											<span class="inner_1">人社</span>
+										</Checkbox>
+										<Checkbox label="胶液料类" class="check_box">
+											<span class="inner_1">国土</span>
+										</Checkbox>
+										<Checkbox label="鞣料类" class="check_box">
+											<span class="inner_1">环保</span>
+										</Checkbox>
+										<Checkbox label="饲料类" class="check_box">
+											<span class="inner_1">住建</span>
+										</Checkbox>
+										<Checkbox label="肥料类" class="check_box">
+											<span class="inner_1">交通</span>
+										</Checkbox>
+										<Checkbox label="防护用材林木" class="check_box">
+											<span class="inner_1">水利</span>
+										</Checkbox>
+										<Checkbox label="能源类" class="check_box">
+											<span class="inner_1">农业</span>
+										</Checkbox>
+
+
+										<Checkbox label="粮食类" class="check_box">
+											<span class="inner_1">商务</span>
+										</Checkbox>
+										<Checkbox label="纤维类" class="check_box">
+											<span class="inner_1">文化</span>
+										</Checkbox>
+										<Checkbox label="油料类" class="check_box">
+											<span class="inner_1">卫生</span>
+										</Checkbox>
+										<Checkbox label="糖料类" class="check_box">
+											<span class="inner_1">银行</span>
+										</Checkbox>
+										<Checkbox label="嗜好类" class="check_box">
+											<span class="inner_1">审计</span>
+										</Checkbox>
+										<Checkbox label="瓜果蔬类" class="check_box">
+											<span class="inner_1">国资</span>
+										</Checkbox>
+										<Checkbox label="食用菌藻类" class="check_box">
+											<span class="inner_1">海关</span>
+										</Checkbox>
+										<Checkbox label="饮料类" class="check_box">
+											<span class="inner_1">税务</span>
+										</Checkbox>
+										<Checkbox label="调料类" class="check_box">
+											<span class="inner_1">传媒</span>
+										</Checkbox>
+										<Checkbox label="香料类" class="check_box">
+											<span class="inner_1">体育</span>
+										</Checkbox>
+										<Checkbox label="药用类" class="check_box">
+											<span class="inner_1">安监</span>
+										</Checkbox>
+										<Checkbox label="花卉类" class="check_box">
+											<span class="inner_1">食药监</span>
+										</Checkbox>
+										<Checkbox label="绿化观赏林木" class="check_box">
+											<span class="inner_1">统计</span>
+										</Checkbox>
+										<Checkbox label="染料类" class="check_box">
+											<span class="inner_1">林业</span>
+										</Checkbox>
+										<Checkbox label="漆料类" class="check_box">
+											<span class="inner_1">知识产权</span>
+										</Checkbox>
+										<Checkbox label="胶液料类" class="check_box">
+											<span class="inner_1">旅游</span>
+										</Checkbox>
+										<Checkbox label="鞣料类" class="check_box">
+											<span class="inner_1">宗教</span>
+										</Checkbox>
+										<Checkbox label="饲料类" class="check_box">
+											<span class="inner_1">机关事务</span>
+										</Checkbox>
+										<Checkbox label="肥料类" class="check_box">
+											<span class="inner_1">侨务</span>
+										</Checkbox>
+										<Checkbox label="防护用材林木" class="check_box">
+											<span class="inner_1">地震</span>
+										</Checkbox>
+										<Checkbox label="能源类" class="check_box">
+											<span class="inner_1">气象</span>
+										</Checkbox>
+
+										<Checkbox label="粮食类" class="check_box">
+											<span class="inner_1">银监</span>
+										</Checkbox>
+										<Checkbox label="纤维类" class="check_box">
+											<span class="inner_1">政监</span>
+										</Checkbox>
+										<Checkbox label="油料类" class="check_box">
+											<span class="inner_1">保监</span>
+										</Checkbox>
+										<Checkbox label="糖料类" class="check_box">
+											<span class="inner_1">社保基金</span>
+										</Checkbox>
+										<Checkbox label="嗜好类" class="check_box">
+											<span class="inner_1">科学基金</span>
+										</Checkbox>
+										<Checkbox label="瓜果蔬类" class="check_box">
+											<span class="inner_1">信访</span>
+										</Checkbox>
+										<Checkbox label="食用菌藻类" class="check_box">
+											<span class="inner_1">粮食</span>
+										</Checkbox>
+										<Checkbox label="饮料类" class="check_box">
+											<span class="inner_1">能源</span>
+										</Checkbox>
+										<Checkbox label="调料类" class="check_box">
+											<span class="inner_1">烟草</span>
+										</Checkbox>
+										<Checkbox label="香料类" class="check_box">
+											<span class="inner_1">海洋</span>
+										</Checkbox>
+										<Checkbox label="药用类" class="check_box">
+											<span class="inner_1">测绘</span>
+										</Checkbox>
+										<Checkbox label="花卉类" class="check_box">
+											<span class="inner_1">铁路</span>
+										</Checkbox>
+										<Checkbox label="绿化观赏林木" class="check_box">
+											<span class="inner_1">民航</span>
+										</Checkbox>
+										<Checkbox label="染料类" class="check_box">
+											<span class="inner_1">邮政</span>
+										</Checkbox>
+										<Checkbox label="漆料类" class="check_box">
+											<span class="inner_1">文物</span>
+										</Checkbox>
+										<Checkbox label="胶液料类" class="check_box">
+											<span class="inner_1">中医药</span>
+										</Checkbox>
+										<Checkbox label="鞣料类" class="check_box">
+											<span class="inner_1">外汇</span>
+										</Checkbox>
+										<Checkbox label="饲料类" class="check_box">
+											<span class="inner_1">煤安监</span>
+										</Checkbox>
+										<Checkbox label="肥料类" class="check_box">
+											<span class="inner_1">交通</span>
+										</Checkbox>
+										<Checkbox label="防护用材林木" class="check_box">
+											<span class="inner_1">水利</span>
+										</Checkbox>
+										<Checkbox label="能源类" class="check_box">
+											<span class="inner_1">农业</span>
+										</Checkbox>
+									</Checkbox-group>
+								</div>
+							</Tooltip>
+							</Col>
+							<Col span="2" style="text-align:left;">
+							<Tooltip placement="bottom-start" >
+								<Col span="12">群团</Col>
+								<div slot="content" style="white-space: normal;">
+									<Checkbox-group v-model="category_a" >
+										<Checkbox label="肉用类" class="check_box">
+											<span class="inner_1">工会</span>
+										</Checkbox>
+										<Checkbox label="肉蛋兼用类" class="check_box">
+											<span class="inner_1">共青团</span>
+										</Checkbox>
+									</Checkbox-group>
+								</div>
+							</Tooltip>
+							</Col>
+							<Col span="2" style="text-align:left;">
+							<Tooltip placement="bottom-start" >
+								<Col span="12">群众自治</Col>
+							</Tooltip>
+							</Col>
+							<Col span="2" style="text-align:left;">
+							<Tooltip placement="bottom-start" >
+								<Col span="12">国际</Col>
+							</Tooltip>
+							</Col>
+						</Row>
+
+					</Modal>
+
+				</div>
+				</Col>
+				<Col span="12" style="border: 1px solid #ededed;width: 358px">
+				<div style="text-align: center">
+					<h2 style="line-height: 52px">关联关注</h2>
+					<div class="zhuce-list2">
+						<ul>
+							<li @click="changeColor">关联产品</li>
+							<li @click="changeColor">关联物种</li>
+							<li @click="changeColor">关联服务</li>
+
+						</ul>
+					</div>
+					<div style="margin: 14px">
+						<Button type="primary" size="small">保存</Button>
+
+					</div>
+
+				</div>
+				</Col>
+
+			</Row>
+		</div>
+	</div>
+	<!--3设置栏目第四步结束-->
+</template>
+
+<script>
+	import $ from 'jquery'
+	export default {
+		data() {
+			return {
+				modal1:false,
+				policys: [{
+                    expand: true,
+                    title: '政策',
+                    children: [
+                    {
+                        title: '党务',
+                        children: []
+                    },
+                    {
+                        title: '政务',
+                        children: []
+                    },
+                    {
+                        title: '群团',
+                        children: []
+                    },
+                    {
+                        title: '群众自治',
+                        children: []
+                    },
+                    {
+                        title: '国际',
+                        children: []
+                    }
+                    ]
+                }]
+			}
+		},
+		methods:{
+			changePlant(obj){
+				this.plants=obj
+				console.log(this.plants)
+			},
+			changeAnimal(obj){
+				this.animals=obj
+				console.log(this.animals)
+			},
+			changeColor(){
+				var obj = event.target
+				$(obj).toggleClass("intro");
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

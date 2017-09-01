@@ -1,0 +1,20 @@
+<template>
+	<!--1实名认证第一步开始-->
+				<div style="display: block" >
+					<div style="text-align: center;"><img src="../../img/4.png" alt="" v-on:click="next"></div>
+				</div>
+			<!--1实名认证第一步结束-->
+</template>
+
+<script>
+	export default {
+		methods:{
+			next(){
+				 this.$parent.$router.push('/identification/step35');
+			}
+		}
+	}
+</script>
+
+<style>
+</style>

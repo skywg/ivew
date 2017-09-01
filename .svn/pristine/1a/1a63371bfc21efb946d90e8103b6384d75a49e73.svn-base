@@ -1,0 +1,438 @@
+<style scoped lang="scss">
+    @import '../../css/index.css';
+    .app-list p {
+        font-size: 12px;
+        color: #737373;
+        margin-top: -5px;
+    }
+    .app1-text {
+        float: left;
+
+        margin-left: 18px;
+        margin-top: 8px;
+    }
+    .app1:hover p{
+        color: #4fac77;
+
+
+        cursor: pointer;
+
+    }
+    .app1:hover {
+        color: #4fac77;
+        cursor: pointer;
+    }
+    .app-poptip{
+        display: block;
+    }
+    .cardList {
+        box-shadow: none;
+        .cardList-title{
+            text-align: center;
+        }
+    }
+</style>
+<style lang="scss">
+    .app-poptip {
+        .ivu-poptip-rel{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+        }
+        .ivu-poptip-popper{
+            min-width: 74%;
+            transform: translateX(-50%);
+            left: 50% !important;
+
+        }
+    }
+    
+</style>
+<template>
+    <!-- 导航 -->
+    <div>
+        <!--banner开始-->
+        <div class="banner">
+            <div class="container">
+                <div style="height: 120px"></div>
+                <div class="banner-main">
+                    <div class="banner-logo"><img src="../../img/banner-logo.png" /></div>
+                    <Tabs id="font-size"  :animated="false">
+                        <Tab-pane label="资讯">
+                            <Input v-model="zixun"  placeholder="请输入..." size="large" style="width: 660px;border-radius: 4px 0 0 4px">
+                            </Input>
+                            <Button type="primary" size="large" class="search" @click="search(1)">搜一下</Button>
+                        </Tab-pane>
+                        <Tab-pane label="政策">
+                            <Input v-model="zhengce"  placeholder="请输入..." size="large" style="width: 660px;border-radius: 4px 0 0 4px">
+                            </Input>
+                            <Button type="primary" size="large" class="search" @click="search(2)">搜一下</Button>
+                        </Tab-pane>
+                        <Tab-pane label="知识">
+                            <Input v-model="zhishi"  placeholder="请输入..." size="large" style="width: 660px;border-radius: 4px 0 0 4px">
+                            </Input>
+                            <Button type="primary" size="large" class="search" @click="search(3)">搜一下</Button>
+                        </Tab-pane>
+                        <Tab-pane label="产品">
+                            <Input v-model="chanpin"  placeholder="请输入..." size="large" style="width: 660px;border-radius: 4px 0 0 4px">
+                            </Input>
+                            <Button type="primary" size="large" class="search" @click="search(4)">搜一下</Button>
+                        </Tab-pane>
+                        <Tab-pane label="服务">
+                            <Input v-model="fuwu"  placeholder="请输入..." size="large" style="width: 660px;border-radius: 4px 0 0 4px">
+                            </Input>
+                            <Button type="primary" size="large" class="search" @click="search(5)">搜一下</Button>
+                        </Tab-pane>
+                        <Tab-pane label="会员">
+                            <Input v-model="huiyuan"  placeholder="请输入..." size="large" style="width: 660px;border-radius: 4px 0 0 4px">
+                            </Input>
+                            <Button type="primary" size="large" class="search" @click="search(6)">搜一下</Button>
+                        </Tab-pane>
+                        <!-- <Tab-pane label="机关">
+                            <Input v-model="jiguan"  placeholder="请输入..." size="large" style="width: 660px;border-radius: 4px 0 0 4px">
+                            </Input>
+                            <Button type="primary" size="large" class="search" @click="search(7)">搜一下</Button>
+                        </Tab-pane>
+                        <Tab-pane label="专家">
+                            <Input v-model="zhuanjia"  placeholder="请输入..." size="large" style="width: 660px;border-radius: 4px 0 0 4px">
+                            </Input>
+                            <Button type="primary" size="large" class="search" @click="search(8)">搜一下</Button>
+                        </Tab-pane> -->
+                    </Tabs>
+                </div>
+            </div>
+        </div>
+        <!--banner结束-->
+        <!--app开始-->
+        <div class="app" ref="app">
+            <div class="container">
+                <div class="title">
+                    <div class="text">
+                        <h5 class="title-h5">应用导航</h5>
+                        <p>发现更多有意思的农业</p>
+                    </div>
+                </div>
+                <div class="app-list">
+                    <Row>
+                        <i-col span="6">
+                            <div class="app1">
+                                <div class="app1-l"><img src="../../img/app-icon1.png" alt=""></div>
+                                <div class="app1-text">
+                                    <h5>查看资讯</h5>
+                                    <p>农业资讯快速观看</p>
+                                </div>
+                            </div>
+                        </i-col>
+                        <i-col span="6">
+                            <div class="app1">
+                                <div class="app1-l"><img src="../../img/app-icon2.png" alt=""></div>
+                                <div class="app1-text">
+                                    <h5>寻找政策</h5>
+                                    <p>农业资讯</p>
+                                </div>
+                            </div>
+                        </i-col>
+                        <i-col span="6">
+                            <div class="app1">
+                                <div class="app1-l"><img src="../../img/app-icon3.png" alt=""></div>
+                                <div class="app1-text">
+                                    <h5>查看知识</h5>
+                                    <p>农业资讯快速查看</p>
+                                </div>
+                            </div>
+                        </i-col>
+                        <i-col span="6">
+                            <div class="app1">
+                                <div class="app1-l"><img src="../../img/app-icon4.png" alt=""></div>
+                                <div class="app1-text">
+                                    <h5>种养什么</h5>
+                                    <p>农业资讯快速观看</p>
+                                </div>
+                            </div>
+                        </i-col>
+                    </Row>
+                </div>
+                <div class="app-list">
+                    <Row>
+                        <i-col span="6">
+                            <div class="app1">
+                                <div class="app1-l"><img src="../../img/app-icon5.png" alt=""></div>
+                                <div class="app1-text">
+                                    <h5>买卖产品</h5>
+                                    <p>农业资讯</p>
+                                </div>
+                            </div>
+                        </i-col>
+                        <i-col span="6">
+                            <div class="app1">
+                                <div class="app1-l"><img src="../../img/app-icon6.png" alt=""></div>
+                                <div class="app1-text">
+                                    <h5>买卖服务</h5>
+                                    <p>农业资讯快速观看</p>
+                                </div>
+                            </div>
+                        </i-col>
+                        <i-col span="6">
+                            <div class="app1">
+                                <div class="app1-l"><img src="../../img/app-icon7.png" alt=""></div>
+                                <div class="app1-text">
+                                    <h5>寻找专家</h5>
+                                    <p>农业资讯快速观看</p>
+                                </div>
+                            </div>
+                        </i-col>
+                        <i-col span="6">
+                            <div class="app1">
+                                <div class="app1-l"><img src="../../img/app-icon8.png" alt=""></div>
+                                <div class="app1-text">
+                                    <h5>寻找企业</h5>
+                                    <p>农业资讯快速观看</p>
+                                </div>
+                            </div>
+                        </i-col>
+                    </Row>
+                </div>
+                <!--app面板开始-->
+                <Poptip width="100%" placement="top" class="app-poptip">
+                    <Button type="ghost" shape="circle" icon="ios-arrow-down" size="large" />
+                    <div class="cardList" slot="content">
+                        <h3 slot="title" class="cardList-title">应用中心</h3>
+                        <div class="cardList-content">
+                            <h3><span>分类</span></h3>
+                            <Row>
+                                <i-col span="6">
+                                    <div class="app1">
+                                        <div class="app1-l"><img src="../../img/app-icon1.png" alt=""></div>
+                                        <div class="app1-text">
+                                            <h5>查看资讯</h5>
+                                            <p>农业资讯快速观看</p>
+                                        </div>
+                                    </div>
+                                </i-col>
+                                <i-col span="6">
+                                    <div class="app1">
+                                        <div class="app1-l"><img src="../../img/app-icon2.png" alt=""></div>
+                                        <div class="app1-text">
+                                            <h5>寻找政策</h5>
+                                            <p>农业资讯</p>
+                                        </div>
+                                    </div>
+                                </i-col>
+                                <i-col span="6">
+                                    <div class="app1">
+                                        <div class="app1-l"><img src="../../img/app-icon3.png" alt=""></div>
+                                        <div class="app1-text">
+                                            <h5>查看知识</h5>
+                                            <p>农业资讯快速查看</p>
+                                        </div>
+                                    </div>
+                                </i-col>
+                                <i-col span="6">
+                                    <div class="app1">
+                                        <div class="app1-l"><img src="../../img/app-icon4.png" alt=""></div>
+                                        <div class="app1-text">
+                                            <h5>种养什么</h5>
+                                            <p>农业资讯快速观看</p>
+                                        </div>
+                                    </div>
+                                </i-col>
+                            </Row>
+                        </div>
+                        <div class="cardList-content">
+                            <h3><span>分类</span></h3>
+                            <Row>
+                                <Col span="6">
+                                <div class="app1">
+                                    <div class="app1-l"><img src="../../img/app-icon1.png" alt=""></div>
+                                    <div class="app1-text">
+                                        <h5>查看资讯</h5>
+                                        <p>农业资讯快速观看</p>
+                                    </div>
+                                </div>
+                                </Col>
+                                <Col span="6">
+                                <div class="app1">
+                                    <div class="app1-l"><img src="../../img/app-icon2.png" alt=""></div>
+                                    <div class="app1-text">
+                                        <h5>寻找政策</h5>
+                                        <p>农业资讯</p>
+                                    </div>
+                                </div>
+                                </Col>
+                                <Col span="6">
+                                <div class="app1">
+                                    <div class="app1-l"><img src="../../img/app-icon3.png" alt=""></div>
+                                    <div class="app1-text">
+                                        <h5>查看知识</h5>
+                                        <p>农业资讯快速查看</p>
+                                    </div>
+                                </div>
+                                </Col>
+                                <Col span="6">
+                                <div class="app1">
+                                    <div class="app1-l"><img src="../../img/app-icon4.png" alt=""></div>
+                                    <div class="app1-text">
+                                        <h5>种养什么</h5>
+                                        <p>农业资讯快速观看</p>
+                                    </div>
+                                </div>
+                                </Col>
+                            </Row>
+                        </div>
+                    </div>
+                </Poptip>
+                <!--app面板结束-->
+                
+                <div class="app-more">
+                </div>
+            </div>
+        </div>
+        <!--app结束-->
+        <div class="main"  style="padding-bottom: 10px">
+            <div class="container">
+                <div class="main-title">
+                    <div class="main-text">
+                        <h5 class="main-title-h5">农业动态</h5>
+                    </div>
+                </div>
+                <div class="main-nav">
+                    <Tabs :animated="false">
+                        <Tab-pane label="资讯">
+                            <inforMation></inforMation>
+                        </Tab-pane>
+                        <Tab-pane label="政策">
+                            <policy></policy>
+                        </Tab-pane>
+                        <Tab-pane label="知识">
+                            <knowledge></knowledge>
+                        </Tab-pane>
+                        <Tab-pane label="产品">
+                            <product></product>
+                        </Tab-pane>
+                        <Tab-pane label="服务">
+                            <service></service>
+                        </Tab-pane>
+                        <Tab-pane label="企业">
+                            <enterprise></enterprise>
+                        </Tab-pane>
+                        <Tab-pane label="机关">
+                            <department></department>
+                        </Tab-pane>
+                        <Tab-pane label="专家">
+                            <expert></expert>
+                        </Tab-pane>
+                    </Tabs>
+                </div>
+            </div>
+        </div>
+        <Back-top :height="400" :bottom="80">
+            <div class="top">返回顶端</div>
+        </Back-top>
+    </div>
+</template>
+<script>
+    import axios from 'axios'
+    axios.defaults.withCredentials = true;
+    import inforMation from '../InforMation/InforMation.vue'
+    import policy from '../InforMation/policy.vue'
+    import knowledge from '../InforMation/knowledge.vue'
+    import product from '../InforMation/product.vue'
+    import service from '../InforMation/service.vue'
+    import enterprise from '../InforMation/enterprise.vue'
+    import department from '../InforMation/department.vue'
+    import expert from '../InforMation/expert.vue'
+
+    export default {
+        name: 'app',
+        components: {
+            'inforMation':inforMation,
+            'policy':policy,
+            'knowledge':knowledge,
+            'product':product,
+            'service':service,
+            'enterprise':enterprise,
+            'department':department,
+            'expert':expert
+        },
+        data() {
+            return {
+                zixun:'',
+                zhengce:'',
+                zhishi:'',
+                qiye:'',
+                jiguan:'',
+                zhuanjia:'',
+                chanpin:'',
+                fuwu:'',
+                modal2: false,
+                modal_loading: false,
+                modal3: false,
+                modal4: false,
+                modal5: false,
+                formInline: {
+                    user: '',
+                    password: ''
+                },
+                ruleInline: {
+                    user: [{
+                        required: true,
+                        message: '请填写用户名',
+                        trigger: 'blur'
+                    }],
+                    password: [{
+                            required: true,
+                            message: '请填写密码',
+                            trigger: 'blur'
+                        },
+                        {
+                            type: 'string',
+                            min: 6,
+                            message: '密码长度不能小于6位',
+                            trigger: 'blur'
+                        }
+                    ],
+                    methods: {
+                        del() {
+                            this.modal_loading = true
+                            setTimeout(() => {
+                                this.modal_loading = false
+                                this.modal2 = false
+                                this.$Message.success('删除成功')
+                            }, 2000)
+                        }
+                    }
+
+                },
+                cardShow: false
+            }
+        },
+        methods: {
+            // modalShow(e) {
+            //  this.cardShow = !this.cardShow
+            //  console.log(this.$refs)
+            //  // document.querySelector('.'+this.$refs.cardShow.bodyClasses).className+=" animated bounceIn"
+            // },
+            search(flag) {
+                if(flag=='1'){
+                    this.$router.push({path: '/search/InforMation',query:{title: this.zixun,flag:flag}})
+                }else if(flag=='2'){
+                    this.$router.push({path: '/search/policy',query:{title: this.zhengce,flag:flag}})
+                }else if(flag=='3'){
+                    this.$router.push({path: '/search/knowledge',query:{title: this.zhishi,flag:flag}})
+                }else if(flag=='4'){
+                    window.open('http://192.168.7.61:8080/ovit/product/search.htm?name='+this.chanpin)
+                }else if(flag=='5'){
+                    window.open('http://192.168.7.61:8080/ovit/product/search.htm?name='+this.fuwu) 
+                }else if(flag=='6'){
+                    this.$router.push({path: '/search/memberSearch',query:{title: this.huiyuan,flag:flag}})
+                }
+            },
+            InforMation() {
+                this.$router.push({
+                    path: '/InforMation/InforMation'
+                })
+            }               
+        }
+    }
+</script>

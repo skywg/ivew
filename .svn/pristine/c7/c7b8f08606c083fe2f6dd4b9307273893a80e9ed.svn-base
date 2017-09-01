@@ -1,0 +1,451 @@
+<style scoped>
+	@import '../../css/identification.css';
+</style>
+<template>
+	<!--3设置栏目第二步开始-->
+	<div>
+		<div style="padding: 0 38px">
+
+			<Row >
+				<Col span="12" style="border: 1px solid #ededed;width: 358px;margin-right: 26px;">
+				<div style="margin-left: 128px;">
+					<h2 style="line-height: 52px">选择物种类型</h2>
+					<div class="zhuce-list">
+						<Tree :data="plant" show-checkbox multiple @on-check-change="changePlant"></Tree>
+						<Tree :data="animal" show-checkbox multiple @on-check-change="changeAnimal"></Tree>
+					</div>
+					<div style="margin: 14px">
+						<Button type="primary" size="small" @click.native="modal1=true">添加</Button>&nbsp&nbsp&nbsp
+						<Button type="error" size="small" @click="del">删除</Button>
+					</div>
+
+					<Modal v-model="modal1" width="450" :closable="true" :mask-closable="false" class="gex"  @on-ok="ok">
+
+						<Row style="margin-top: 20px;padding: 0 20px;text-align:left;font-size: 12px;">
+							<span>当前选中：<span v-for=" r in category_a" style="color: red;">*{{r}};</span>
+										<span v-for=" r in category_p" >*{{r}};</span>
+							</span>
+						</Row>
+						<hr />
+						<Row style="margin-top: 20px;width: 390px;padding: 0 20px;text-align: center;font-size: 16px;">
+							<Col span="12" style="text-align:left;">
+							<Tooltip placement="bottom-start" >
+								<Col span="12">动物</Col>
+								<div slot="content" style="white-space: normal;">
+									<Checkbox-group v-model="category_a" >
+										<Checkbox label="肉用类" class="check_box">
+											<span class="inner_1">肉用类</span>
+										</Checkbox>
+										<Checkbox label="肉蛋兼用类" class="check_box">
+											<span class="inner_1">肉蛋兼用类</span>
+										</Checkbox>
+										<Checkbox label="肉奶兼用类" class="check_box">
+											<span class="inner_1">肉奶兼用类</span>
+										</Checkbox>
+										<Checkbox label="肉毛(绒)兼用类" class="check_box">
+											<span class="inner_1">肉毛(绒)兼用类</span>
+										</Checkbox>
+										<Checkbox label="肉皮兼用类" class="check_box">
+											<span class="inner_1">肉皮兼用类</span>
+										</Checkbox>
+										<Checkbox label="肉药兼用类" class="check_box">
+											<span class="inner_1">肉药兼用类</span>
+										</Checkbox>
+										<Checkbox label="役力类" class="check_box">
+											<span class="inner_1">役力类</span>
+										</Checkbox>
+										<Checkbox label="丝蜜类" class="check_box">
+											<span class="inner_1">丝蜜类</span>
+										</Checkbox>
+										<Checkbox label="宠娱观赏类" class="check_box">
+											<span class="inner_1">宠娱观赏类</span>
+										</Checkbox>
+										<Checkbox label="实验类" class="check_box">
+											<span class="inner_1">实验类</span>
+										</Checkbox>
+										<Checkbox label="饲饵类" class="check_box">
+											<span class="inner_1">饲饵类</span>
+										</Checkbox>
+									</Checkbox-group>
+								</div>
+							</Tooltip>
+							</Col>
+							<Col span="12" style="text-align:left;">
+							<Tooltip placement="bottom-start">
+								<Col span="12" >植物</Col>
+								<div slot="content" style="white-space: normal;">
+									<Checkbox-group v-model="category_p" @on-change="changePlant">
+										<Checkbox label="粮食类" class="check_box">
+											<span class="inner_1">粮食类</span>
+										</Checkbox>
+										<Checkbox label="纤维类" class="check_box">
+											<span class="inner_1">纤维类</span>
+										</Checkbox>
+										<Checkbox label="油料类" class="check_box">
+											<span class="inner_1">油料类</span>
+										</Checkbox>
+										<Checkbox label="糖料类" class="check_box">
+											<span class="inner_1">糖料类</span>
+										</Checkbox>
+										<Checkbox label="嗜好类" class="check_box">
+											<span class="inner_1">嗜好类</span>
+										</Checkbox>
+										<Checkbox label="瓜果蔬类" class="check_box">
+											<span class="inner_1">瓜果蔬类</span>
+										</Checkbox>
+										<Checkbox label="食用菌藻类" class="check_box">
+											<span class="inner_1">食用菌藻类</span>
+										</Checkbox>
+										<Checkbox label="饮料类" class="check_box">
+											<span class="inner_1">饮料类</span>
+										</Checkbox>
+										<Checkbox label="调料类" class="check_box">
+											<span class="inner_1">调料类</span>
+										</Checkbox>
+										<Checkbox label="香料类" class="check_box">
+											<span class="inner_1">香料类</span>
+										</Checkbox>
+										<Checkbox label="药用类" class="check_box">
+											<span class="inner_1">药用类</span>
+										</Checkbox>
+										<Checkbox label="花卉类" class="check_box">
+											<span class="inner_1">花卉类</span>
+										</Checkbox>
+										<Checkbox label="绿化观赏林木" class="check_box">
+											<span class="inner_1">绿化观赏林木</span>
+										</Checkbox>
+										<Checkbox label="染料类" class="check_box">
+											<span class="inner_1">染料类</span>
+										</Checkbox>
+										<Checkbox label="漆料类" class="check_box">
+											<span class="inner_1">漆料类</span>
+										</Checkbox>
+										<Checkbox label="胶液料类" class="check_box">
+											<span class="inner_1">胶液料类</span>
+										</Checkbox>
+										<Checkbox label="鞣料类" class="check_box">
+											<span class="inner_1">鞣料类</span>
+										</Checkbox>
+										<Checkbox label="饲料类" class="check_box">
+											<span class="inner_1">饲料类</span>
+										</Checkbox>
+										<Checkbox label="肥料类" class="check_box">
+											<span class="inner_1">肥料类</span>
+										</Checkbox>
+										<Checkbox label="防护用材林木" class="check_box">
+											<span class="inner_1">防护用材林木</span>
+										</Checkbox>
+										<Checkbox label="能源类" class="check_box">
+											<span class="inner_1">能源类</span>
+										</Checkbox>
+									</Checkbox-group>
+								</div>
+							</Tooltip>
+							</Col>
+						</Row>
+
+					</Modal>
+
+				</div>
+				</Col>
+				<Col span="12" style="border: 1px solid #ededed;width: 358px">
+				<div style="text-align: center">
+					<h2 style="line-height: 52px">选择物种</h2>
+					<div class="zhuce-list2">
+						<ul id="cp">
+							<li @click="changeColor(c)" v-for="c in chanp" >{{c}}</li>
+						</ul>
+					</div>
+					<div style="margin: 14px;text-align: center;">
+						<Button type="primary" size="small" @click="save">保存</Button>
+					</div>
+
+				</div>
+				</Col>
+
+			</Row>
+		</div>
+	</div>
+	<!--3设置栏目第二步结束-->
+</template>
+
+<script>
+	import $ from 'jquery'
+	import axios from 'axios'
+	export default {
+		data() {
+			return {
+				result:[],
+				modal1: false,
+				modal2: false,
+				plant: [{
+					expand: true,
+					title: '植物',
+					children: []
+
+				}],
+				animal: [{
+					expand: true,
+					title: '动物',
+					children: []
+
+				}],
+				isOk: false,
+				category_a:[],
+				category_p:[],
+				chanp:[],
+				plants:[],
+				animals:[],
+				resultCP:[]
+			}
+		},
+		methods: {
+			changePlant(obj) {
+				this.plants = obj
+
+			},
+			changeAnimal(obj) {
+				this.animals = obj
+			},
+
+			changeColor(e) {
+				var obj = event.target
+				var len=this.resultCP.length;
+				var _this=this;
+				$(obj).toggleClass("intro");
+				var cla=$(obj).attr("class")
+				console.log("intro="+cla)
+				if(cla=="intro"){
+					if(len>0){
+							var le=_this.resultCP.indexOf(e)
+							console.log("e=="+e)
+							console.log(_this.resultCP)
+							if(le==-1){
+								_this.resultCP.push(e)
+							}
+
+					}else{
+						_this.resultCP.push(e)
+					}
+				}else{
+					if(len>0){
+							var le=_this.resultCP.indexOf(e)
+							if(le>-1){
+								_this.resultCP.splice(le,1)
+							}
+					}
+				}
+				console.log(this.resultCP)
+			},
+
+			del(){
+
+				var _this=this;
+				this.plants.forEach(e=>{
+					const index = _this.plant[0].children.indexOf(e);
+					if(index>-1){
+						_this.plant[0].children.splice(index,1)
+					}
+					var len=_this.category_p.indexOf(e.title)
+					if(len>-1){
+						_this.category_p.splice(len,1)
+					}
+				})
+				this.animals.forEach(e=>{
+					var index = _this.animal[0].children.indexOf(e);
+					if(index>-1){
+						_this.animal[0].children.splice(index,1)
+					}
+
+					var len=_this.category_a.indexOf(e.title)
+					if(len>-1){
+						_this.category_a.splice(len,1)
+					}
+				})
+
+
+				this.result=[];
+				this.category_a.forEach(e=>
+					_this.getResult(e)
+				);
+				this.category_p.forEach(e=>
+					_this.getResult(e)
+				);
+				this.resultCP=[]
+				$("#cp li").removeClass("intro")
+				this.getChanpin()
+
+			},
+			ok(){
+				var _this=this;
+				this.result=[];
+				this.animal[0].children=[]
+				this.plant[0].children=[]
+				this.category_a.forEach(e=>
+					_this.animal[0].children.push({'title':e})
+
+				);
+				this.category_p.forEach(e=>
+					_this.plant[0].children.push({'title':e})
+
+				);
+				this.category_a.forEach(e=>
+					_this.getResult(e)
+				);
+				this.category_p.forEach(e=>
+					_this.getResult(e)
+				);
+				this.getChanpin()
+
+			},
+			getChanpin(){
+				axios({
+						method: 'post',
+						url: 'http://localhost:1111/indivi/species',
+						data: {
+							species:this.result
+						}
+					}).then(response => {
+						if (""!= response.data) {
+							this.chanp=response.data
+						} else {
+							this.$Message.error('没有对应物种')
+						}
+
+					}).catch(function (error) {
+						console.log(error)
+					})
+			},
+			save(){
+				axios({
+						method: 'post',
+						url: 'http://localhost:1111/indivi/save',
+						data: {
+							species:this.resultCP
+						}
+					}).then(response => {
+						if ("OK"== response.data) {
+							this.$Message.success('保存成功！')
+						} else {
+							this.$Message.error('保存失败！')
+						}
+
+					}).catch(function (error) {
+						console.log(error)
+					})
+			},
+			getResult(title) {
+				switch(title) {
+					case "粮食类":
+					this.result.push("WZ0101")
+					break;
+					case "纤维类":
+					this.result.push("WZ0102")
+					break;
+					case "油料类":
+					this.result.push("WZ0103")
+					break;
+					case "糖料类":
+					this.result.push("WZ0104")
+					break;
+					case "饮料类":
+					this.result.push("WZ0105")
+					break;
+					case "调料类":
+					this.result.push("WZ0106")
+					break;
+					case "染料类":
+					this.result.push("WZ0107")
+					break;
+					case "漆料类":
+					this.result.push("WZ0108")
+					break;
+					case "胶液料类":
+					this.result.push("WZ0109")
+					break;
+					case "鞣料类":
+					this.result.push("WZ0110")
+					break;
+					case "嗜好类":
+					this.result.push("WZ0111")
+					break;
+					case "药用类":
+					this.result.push("WZ0112")
+					break;
+					case "香料类":
+					this.result.push("WZ0113")
+					break;
+					case "瓜果蔬类":
+					this.result.push("WZ0114")
+					break;
+					case "能源类":
+					this.result.push("WZ0115")
+					break;
+					case "食用菌藻类":
+					this.result.push("WZ0116")
+					break;
+					case "花卉类":
+					this.result.push("WZ0117")
+					break;
+					case "饲料类":
+					this.result.push("WZ0118")
+					break;
+					case "肥料类":
+					this.result.push("WZ0119")
+					break;
+					case "防护用材林木":
+					this.result.push("WZ0120")
+					break;
+					case "绿化观赏林木":
+					this.result.push("WZ0121")
+					break;
+
+
+					case "肉用类":
+					this.result.push("WZ0201")
+					break;
+					case "肉蛋兼用类":
+					this.result.push("WZ0202")
+					break;
+					case "肉奶兼用类":
+					this.result.push("WZ0203")
+					break;
+					case "肉毛(绒)兼用类":
+					this.result.push("WZ0204")
+					break;
+					case "肉皮兼用类":
+					this.result.push("WZ0206")
+					break;
+					case "肉药兼用类":
+					this.result.push("WZ0207")
+					break;
+					case "役力类":
+					this.result.push("WZ0208")
+					break;
+					case "丝蜜类":
+					this.result.push("WZ0209")
+					break;
+					case "宠娱观赏类":
+					this.result.push("WZ0210")
+					break;
+					case "实验类":
+					this.result.push("WZ0211")
+					break;
+					case "饲饵类":
+					this.result.push("WZ0213")
+					break;
+				}
+			}
+
+
+		}
+
+	}
+</script>
+
+<style>
+	.intro_cs
+	{
+	background-color:white;
+	}
+</style>

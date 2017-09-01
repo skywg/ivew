@@ -1,0 +1,438 @@
+<template>
+    <div>
+        <top />
+        <div class="search-wrap">
+            <div class="search-box">
+                <Select
+                    style="width:494px"
+                    placeholder="搜索关键字"
+                    v-model="search.value"
+                    filterable
+                    remote
+                    :remote-method="handleSearch"
+                    :loading="search.loading">
+                    <Option v-for="option in search.defOpt" :value="option.value" :key="option.value">
+                        <span>{{option.label}}</span>
+                        <span style="float:right;color:#ccc">约有{{option.value}}个商品</span>
+                    </Option>
+                </Select><Button type="primary">搜索</Button>
+            </div>
+            <div class="hot-tag">
+                <a href="javascript:;" class="item">苹果</a>|
+                <a href="javascript:;" class="item">香蕉</a>|
+                <a href="javascript:;" class="item">梨子</a>|
+                <a href="javascript:;" class="item">西瓜</a>|
+                <a href="javascript:;" class="item">葡萄</a>|
+                <a href="javascript:;" class="item">哈密瓜</a>|
+                <a href="javascript:;" class="item">大巴辣</a>
+            </div>
+        </div>
+        <!-- 导航 -->
+        <nav class="mall-nav">
+            <div class="layout">
+                <a href="javascript:;" class="item on">首页</a>
+                <a href="javascript:;" class="item">热门团购</a>
+                <a href="javascript:;" class="item">定价好货</a>
+                <a href="javascript:;" class="item">优品竞拍</a>
+                <a href="javascript:;" class="item">新品预售</a>
+                <a href="javascript:;" class="item">抢现货</a>
+                <a href="javascript:;" class="item">可追溯商品</a>
+                <a href="javascript:;" class="item">特卖商品</a>
+                <a href="javascript:;" class="item">超实惠</a>
+            </div>
+        </nav>
+        <!-- banner -->
+        <section class="layout">
+            <Row class="mb30">
+                <Col span="18">
+                    <Carousel
+                        class="auction-bannner"
+                        v-model="carousel.value"
+                        :autoplay="carousel.autoplay"
+                        :arrow="carousel.arrow">
+                        <Carousel-item v-for="item in carousel.list">
+                            <img :src="item.src">
+                            <div class="tit">{{item.title}}
+                                <clocker :time="item.time" slot="value">
+                                    <span class="item">%D</span>天
+                                    <span class="item">%H</span>小时
+                                    <span class="item">%M</span>分
+                                    <span class="item">%S</span>秒
+                                </clocker>
+                            </div>
+                        </Carousel-item>
+                    </Carousel>
+                </Col>
+                <Col span="6">
+                    <paper :level="2">
+                        <contentBlock :padding="['20px']">
+                            <h5 class="tc">张家港村0543地块10公顷</h5>
+                            <contentBlock :padding="['5px']" border class="clear mt5">
+                                威龙实业有限公司 <span class="fr">广东湛江</span>
+                            </contentBlock>
+                            <contentBlock :padding="['4px','5px']" class="mt10 mb5">
+                                拍卖湛江市威龙实业有限公司位于湛江市赤坎区大埠工业区即市威立制钉厂北侧三块土地使用权Ώ、面积4000平方米，证号为湛府国用（1997）字第特243号；2、面积3460.6平方米，证号为湛府国用（1997）字第特244号;3、面积4000平方米，证号为湛府国用（1997）字第特078号]
+                            </contentBlock>
+                            <Row>
+                                <Col span="6" class="tc">
+                                    <i class="icon-gift t-green h2"></i>
+                                    <p class="t-grey">拍品数量</p>
+                                    <p class="t-orange h4">1</p>
+                                </Col>
+                                <Col span="6" class="tc">
+                                    <i class="icon-holl-team t-green h2"></i>
+                                    <p class="t-grey">围观人数</p>
+                                    <p class="t-orange h4">56</p>
+                                </Col>
+                                <Col span="6" class="tc">
+                                    <i class="icon-holl-hammer t-green h2"></i>
+                                    <p class="t-grey">出价次数</p>
+                                    <p class="t-orange h4">70</p>
+                                </Col>
+                                <Col span="6" class="tc">
+                                    <i class="icon-holl-gold t-green h2"></i>
+                                    <p class="t-grey">当前价格</p>
+                                    <p class="t-orange h4">99</p>
+                                </Col>
+                            </Row>
+                        </contentBlock>
+                    </paper>
+                </Col>
+            </Row>
+            <!-- 火热竞拍 -->
+            <div class="hot-auction">
+                <div class="hd mb20">
+                    <h4 class="tit">火热竞拍</h4>
+                </div>
+                <Row :gutter="24">
+                    <Col span="6" v-for="item in goodsList">
+                        <div class="goods">
+                            <div class="hd">
+                                距离结束：
+                                <clocker :time="item.time" slot="value">
+                                    <span class="item">%D</span>天
+                                    <span class="item">%H</span>小时
+                                    <span class="item">%M</span>分
+                                    <span class="item">%S</span>秒
+                                </clocker>
+                            </div>
+                            <div class="bd">
+                                <img :src="item.src">
+                            </div>
+                            <Row class="pd10 info">
+                                <Col span="16">
+                                    <span class="t-grey">当前价格：</span>
+                                    <span class="h4 t-orange">￥{{item.price}}</span>
+                                </Col>
+                                <Col span="8">
+                                    <span class="t-grey">出价：</span>
+                                    <span class="h4 t-green">{{item.rate}}</span>
+                                    <span class="t-grey">次</span>
+                                </Col>
+                                <Col span="24" class="ell h6">
+                                    {{item.title}}
+                                </Col>
+                                <Col span="18" class="t-grey">{{item.shop}}</Col>
+                                <Col span="6" class="t-grey">{{item.address}}</Col>
+                            </Row>
+                            <div class="fd">
+                                <Button type="primary" long><i class="icon-holl-hammer h4"></i> 我要出价</Button>
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+            </div>
+
+            <!-- 拍品 -->
+            <div class="hot-auction mt30 mb30">
+                <div class="hd mb20">
+                    <h4 class="tit">拍品</h4>
+                    <div class="fliter pd10">
+                        <Row>
+                            <Col span="8">
+                                <Button type="primary" size="small" class="mr5">默认</Button>
+                                <Button type="ghost" size="small" class="mr5">价格 <i class="icon-desc-default"></i></Button>
+                                <Button type="ghost" size="small" class="mr5">人数 <i class="icon-desc-default"></i></Button>
+                            </Col>
+                            <Col span="16" class="tr">
+                                共 <span class="t-green"> 99999 </span>件商品  
+                                <span class="ml10 mr10">1/100</span>
+                                <Button-group>
+                                    <Button type="ghost" size="small">
+                                        <Icon type="chevron-left"></Icon>
+                                        前进
+                                    </Button>
+                                    <Button type="ghost" size="small">
+                                        后退
+                                        <Icon type="chevron-right"></Icon>
+                                    </Button>
+                                </Button-group>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+                <Row :gutter="24">
+                    <Col span="6" v-for="item in goodsList">
+                        <div class="goods">
+                            <div class="hd">
+                                距离结束：
+                                <clocker :time="item.time" slot="value">
+                                    <span class="item">%D</span>天
+                                    <span class="item">%H</span>小时
+                                    <span class="item">%M</span>分
+                                    <span class="item">%S</span>秒
+                                </clocker>
+                            </div>
+                            <div class="bd">
+                                <img :src="item.src">
+                            </div>
+                            <Row class="pd10 info">
+                                <Col span="16">
+                                    <span class="t-grey">当前价格：</span>
+                                    <span class="h4 t-orange">￥{{item.price}}</span>
+                                </Col>
+                                <Col span="8">
+                                    <span class="t-grey">出价：</span>
+                                    <span class="h4 t-green">{{item.rate}}</span>
+                                    <span class="t-grey">次</span>
+                                </Col>
+                                <Col span="24" class="ell h6">
+                                    {{item.title}}
+                                </Col>
+                                <Col span="18" class="t-grey">{{item.shop}}</Col>
+                                <Col span="6" class="t-grey">{{item.address}}</Col>
+                            </Row>
+                            <div class="fd">
+                                <Button type="primary" long><i class="icon-holl-hammer h4"></i> 我要出价</Button>
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+            </div>
+            <div class="tc">
+                
+                <Page :total="100" show-sizer show-elevator></Page>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </section>
+    </div>
+</template>
+<script>
+import  top from '../../top'
+import  clocker from '~components/clocker'
+import  contentBlock from '~components/contentBlock'
+import  paper from '~components/paper'
+export default {
+    components:{
+        top,
+        clocker,
+        contentBlock,
+        paper
+    },
+    data () {
+        return {
+            search:{
+                value:'',
+                loading:false,
+                defOpt:[],
+                filterOpt:[
+                    {label:'蔬菜', value:10},
+                    {label:'苹果', value:20},
+                    {label:'香蕉', value:30},
+                    {label:'梨子', value:40},
+                    {label:'西瓜', value:50}
+                ]
+            },
+            carousel:{
+                value: 0,
+                autoplay: true,
+                arrow:'never',
+                list:[
+                    {
+                        src:'../src/img/pai_banner.png',
+                        title:'距离结束时间仅剩：',
+                        time:'2018-08-01'
+                    },
+                    {
+                        src:'../src/img/pai_banner.png',
+                        title:'距离结束时间仅剩：',
+                        time:'2016-08-01'
+                    }
+                ]
+            },
+            goodsList:[
+                {
+                    time:'2017-09-10',
+                    src:'../src/img/baicai.png',
+                    price: 80,
+                    rate:12,
+                    title:'鄂甜玉四号',
+                    shop:'普利家农资专营店',
+                    address:'湖北襄阳'
+                },
+                {
+                    time:'2017-10-01',
+                    src:'../src/img/baicai.png',
+                    price: 80,
+                    rate:12,
+                    title:'鄂甜玉四号',
+                    shop:'普利家农资专营店',
+                    address:'湖北襄阳'
+                },{
+                    time:'2017-11-01',
+                    src:'../src/img/baicai.png',
+                    price: 80,
+                    rate:12,
+                    title:'鄂甜玉四号',
+                    shop:'普利家农资专营店',
+                    address:'湖北襄阳'
+                },{
+                    time:'2017-12-01',
+                    src:'../src/img/baicai.png',
+                    price: 80,
+                    rate:12,
+                    title:'鄂甜玉四号',
+                    shop:'普利家农资专营店',
+                    address:'湖北襄阳'
+                }
+            ]
+        }
+    },
+    methods: {
+        handleSearch (query) {
+            const search = this.search;
+            if (query !== '') {
+                search.loading = true;
+                setTimeout(() => {
+                    search.loading = false;
+                    search.defOpt = search.filterOpt.filter(item => item.label === query)
+                }, 200);
+            } else {
+                search.defOpt = [];
+            }
+        }
+    }
+}
+</script>
+<style lang="scss">
+@import '../../scss/WMlib.scss';
+.search-wrap{
+    width:625px;
+    margin: 30px auto;
+    .ivu-select-single .ivu-select-selection,
+    .ivu-select-input{
+        height:38px;
+        line-height:38px;
+    }
+    .ivu-select-single .ivu-select-selection,
+    .ivu-btn{
+        border-radius:0;
+    }
+    .ivu-btn{
+        font-size:16px;
+        width: 131px;
+    }
+    .hot-tag{
+        margin-top:10px;
+        font-size:14px;
+        &,.item{color:#9B9B9B;}
+        .item{
+            display: inline-block;
+            margin:0 10px;
+            text-align:center;
+        }
+    }
+}
+.mall-nav{
+    background:#4FAC77;
+    .item{
+        display: inline-block;
+        vertical-align:middle;
+        padding:10px 20px;
+        font-size:16px;
+        color:#fff;
+        &:hover,
+        &.on{
+            background:#458F65;
+        }
+    }
+
+}
+.auction-bannner{
+    .ivu-carousel-item{
+        position: relative;
+    }
+    .tit{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        background: #4A4A4A;
+        color: #fff;
+    }
+    .item{
+        font-size:14px;
+    }
+}
+.hot-auction{
+    >.hd{
+        .tit{
+            padding:5px;
+            border-bottom:2px solid #D8D8D8;
+        }
+    }
+    .fliter{
+        background: rgba(241,241,241,0.51);
+        border: 1px solid rgba(218,218,218,0.39);
+    }
+    .goods{
+        overflow: hidden;
+        height: 383px;
+        &:hover{
+            box-shadow: 0 0 5px rgba(21,46,32,0.29);
+        }
+        .hd{
+            background:#51ad79;
+            padding:10px;
+            color:#fff;
+            .item{
+                background: rgba(21,46,32,0.29);
+                border-radius: 4px;
+                padding:3px 5px;
+                margin:0 2px;
+                font-size:16px;
+            }
+        }
+        .bd,.info{
+            border-left: 1px solid #E8E8E8;
+            border-right: 1px solid #E8E8E8;
+        }
+        .info{
+            span{
+                display:inline-block;
+                vertical-align: middle;
+            }
+        }
+        .bd{
+            height:210px;
+            img{
+                display:block;
+                height:100%;
+                margin: auto;
+            }
+        }
+        .fd{
+            .ivu-btn{
+                font-size:16px;
+                border-radius:0;
+            }
+        }
+    }
+}
+</style>
