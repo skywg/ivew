@@ -1,0 +1,316 @@
+
+<template>
+    <div class="main-bot">
+        <Tabs value="n1" class="mt20">
+            <Tab-pane label="相册" name="n1">
+                <template v-if="album">
+                    <div class="clear">
+                        <Button type="primary" class="mr10" @click="uploadBtn">上传照片</Button>
+                        <Button type="ghost" @click="createdBtn">创建相册</Button>
+                    </div>
+                    <Row :gutter="16" class="album mt20">
+                        <Col span="6" v-for="(item,index) in albumList">
+                            <figure class="wrap mb10">
+                                <Dropdown trigger="click" placement="left-start">
+                                    <Icon type="arrow-down-b" style="padding:2px 5px;"></Icon>
+                                    <Dropdown-menu slot="list">
+                                        <Dropdown-item>
+                                            <div @click="handleEdit(index)"><Icon type="edit"></Icon> 编辑</div>
+                                        </Dropdown-item>
+                                        <Dropdown-item>
+                                            <div @click="handlePower(index)"><Icon type="locked"></Icon> 权限</div>
+                                        </Dropdown-item>
+                                        <Dropdown-item>
+                                            <div @click="handleDel(index)"><Icon type="trash-a"></Icon> 删除</div>
+                                        </Dropdown-item>
+                                    </Dropdown-menu>
+                                </Dropdown>
+                                <img :src="item.src" width="100%" @click="lookPhoto">
+                                <div class="photo-num">共 {{item.number}} 张</div>
+                            </figure>
+                            <p class="ell">{{item.title}}</p>
+                            <p class="t-grey">更新于{{item.time}}</p>
+                        </Col>
+                    </Row>
+                    <!-- 编辑相册 -->
+                    <Modal
+                        v-model="editAlbum.show"
+                        @on-ok="editAlbumOk"
+                        title="编辑相册信息">
+                        <Row>
+                            <Col span="4">名称：</Col>
+                            <Col span="20" class="mb10"><Input v-model="editAlbum.name" :maxlength="15" placeholder="名称不能超过15字" /></Col>
+                            <Col span="4">描述：</Col>
+                            <Col span="20">
+                                <Input v-model="editAlbum.depict" type="textarea" :maxlength="100" :rows="4" placeholder="请输入相册简介不能超100字" />
+                            </Col>
+                        </Row>
+                    </Modal>
+                    <!-- 编辑权限 -->
+                    <Modal
+                        v-model="PowerAlbum.show"
+                        title="编辑相册信息">
+                        <Row>
+                            <Col span="4" class="pt5">访问权限：</Col>
+                            <Col span="20" class="mb10">
+                                <Select v-model="PowerAlbum.value">
+                                    <Option v-for="item in PowerAlbum.list" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                                </Select>
+                            </Col>
+                        </Row>
+                    </Modal>
+                </template>
+
+                <!-- 上传 -->
+                <template v-if="dropzone.show">
+                    <Select v-model="createdAlbum.value" class="mb10"  style="width:200px">
+                        <Option v-for="item in createdAlbum.list" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                    </Select>
+                    <dropzone id="myVueDropzone" :language="dropzone.language" url="https://httpbin.org/post">
+                        <input type="hidden" name="token" value="xxx">
+                    </dropzone>
+                </template>
+
+                <template v-if="createdAlbum.show">
+                    <Row class="mb10">
+                        <Col span="3" class="pt5">相册名称：</Col>
+                        <Col span="8">
+                            <Input v-model="createdAlbum.name" :maxlength="15" placeholder="名称不能超过15字" />
+                        </Col>
+                        <Col span="1">&nbsp;</Col>
+                        <Col span="3" class="pt5">相册分类：</Col>
+                        <Col span="8">
+                            <Select v-model="createdAlbum.value">
+                                <Option v-for="item in createdAlbum.list" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </Col>
+                    </Row>
+                    <Row class="mb10">
+                        <Col span="3">添加图片：</Col>
+                        <Col span="21">
+                            <dropzone id="myVueDropzone2" :language="dropzone.language" url="https://httpbin.org/post">
+                                <input type="hidden" name="token" value="xxx">
+                            </dropzone>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="3">图片详情：</Col>
+                        <Col span="21">
+                            <Input v-model="createdAlbum.depict" type="textarea" :rows="4" placeholder="请输入..."></Input>
+                        </Col>
+                    </Row>
+                    <Row class="mt20">
+                        <Col span="3">&nbsp;</Col>
+                        <Col span="21">
+                            <Button type="primary" @click="handleSave" class="mr10">保存</Button>
+                            <Button type="ghost" @click="handleSave">取消</Button>
+                        </Col>
+                    </Row>
+                </template>
+
+                <template v-if="albumDetail.show">
+                    <Row :gutter="16" class="album mt20">
+                        <Col span="6" v-for="(item,index) in albumList">
+                            <figure class="wrap mb10">
+                                <img :src="item.src" class="preview-img"  @click="show(index)" width="100%">
+                            </figure>
+                            <p class="ell">{{item.title}}</p>
+                            <p class="ell t-grey">描述信息</p>
+                        </Col>
+                    </Row>
+                </template>
+                
+            </Tab-pane>
+            <Tab-pane label="照片" name="n2">
+
+            </Tab-pane>
+                <Button v-show="showReturn" type="ghost" size="small" class="mt5" icon="chevron-left" @click="handleSave" slot="extra">返回</Button>
+        </Tabs>
+        <Preview :list="previewList" ref="preview" :options="options" />
+    </div>
+</template>
+<script>
+import Dropzone from '~components/dropzone'
+import Preview from '~components/preview'
+export default {
+
+    components: {
+        Dropzone,
+        Preview
+    },
+    data() {
+        return {
+            showReturn:false,
+            album:true,
+            editAlbum:{
+                show:false,
+                name:'',
+                depict:'',
+                index:0
+            },
+            PowerAlbum:{
+                show:false,
+                value:'',
+                list:[
+                    {
+                        value: '1',
+                        label: '仅好友可见'
+                    },
+                    {
+                        value: '2',
+                        label: '仅自己可见'
+                    }
+                ]
+            },
+            albumList:[
+                {
+                    src:'../static/datas/img/kaocha01.png',
+                    number:100,
+                    title:'圈贴插图',
+                    time:'2017-04-13'
+                },{
+                    src:'../static/datas/img/kaocha02.png',
+                    number:210,
+                    title:'专栏插图',
+                    time:'2017-06-11'
+                },{
+                    src:'../static/datas/img/kaocha03.png',
+                    number:131,
+                    title:'动态插图',
+                    time:'2017-07-29'
+                },{
+                    src:'../static/datas/img/kaocha04.png',
+                    number:223,
+                    title:'醋',
+                    time:'2017-08-20'
+                }
+            ],
+            dropzone:{
+                show:false,
+                language:{
+                    dictDefaultMessage:'<p class="h6">请选择图片</p>',
+                    dictCancelUpload:'取消上传',
+                    dictRemoveFile:'删除文件',
+                    dictMaxFilesExceeded:'您不能上传更多'
+
+                }
+            },
+            createdAlbum:{
+                show:false,
+                value:'',
+                name:'',
+                depict:'',
+                list:[
+                    {
+                        value: '1',
+                        label: '圈贴插图'
+                    },
+                    {
+                        value: '2',
+                        label: '专栏插图'
+                    },
+                    {
+                        value: '3',
+                        label: '动态插图'
+                    },
+                    {
+                        value: '4',
+                        label: '醋'
+                    }
+                ]
+            },
+            albumDetail:{
+                show:false
+            },
+            previewList: [{
+                src: '../static/datas/img/kaocha01.png',
+                title: '照片描述',
+                w: 640,
+                h: 425
+              },
+              {
+                src: '../static/datas/img/kaocha02.png',
+                title: '照片描述',
+                w: 640,
+                h: 400
+              }, {
+                src: '../static/datas/img/kaocha03.png',
+                title: '照片描述',
+                w: 640,
+                h: 425
+              }, {
+                src: '../static/datas/img/kaocha04.png',
+                title: '照片描述',
+                w: 640,
+                h: 425
+              }],
+              options: {
+                //  动画显示
+                showHideOpacity: true,
+                // 背景透明
+                bgOpacity: 0.8
+                // 显示第几张
+                // index: 2
+              }
+        }
+    },
+    methods: {
+        handleEdit(index){
+            this.editAlbum.show = true
+            this.editAlbum.index = index
+        },
+        editAlbumOk(){
+            if(this.editAlbum.name){
+                this.albumList[this.editAlbum.index].title = this.editAlbum.name
+            }
+        },
+        handlePower(){
+            this.PowerAlbum.show = true
+        },
+        handleDel(index){
+            this.$Modal.error({
+                content: '<p>是否确认删除这个相册</p><p class="t-grey">删除相册后图片也会随之删除</p>',
+                onOk: () => {
+                    this.albumList.splice(index,1)
+                    this.$Message.info('删除成功')
+                },
+                onCancel: () => {
+                }
+            })
+        },
+        uploadBtn(){
+            this.showReturn = true
+            this.dropzone.show = true
+            this.album = false
+            this.createdAlbum.show = false
+            this.albumDetail.show = false
+        },
+        createdBtn(){
+            this.showReturn = true
+            this.dropzone.show = false
+            this.album = false
+            this.createdAlbum.show = true
+            this.albumDetail.show = false
+
+        },
+        handleSave(){
+            this.showReturn = false
+            this.dropzone.show = false
+            this.album = true
+            this.createdAlbum.show = false
+            this.albumDetail.show = false
+        },
+        lookPhoto(){
+            this.showReturn = true
+            this.dropzone.show = false
+            this.album = false
+            this.createdAlbum.show = false
+            this.albumDetail.show = true
+        },
+        show (index) {
+          this.$refs.preview.open(index, '.preview-img')
+        }
+        
+    }
+}
+</script>

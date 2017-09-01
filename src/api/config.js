@@ -1,0 +1,5 @@
+module.exports = {
+    //接口入口
+    api: 'http://localhost:8080/static/datas/',
+    timeout: 30000
+}

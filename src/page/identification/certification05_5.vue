@@ -1,0 +1,356 @@
+<style scoped>
+	.dropbtn {
+	line-height: 30px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	padding-right: 18px;
+	color: #666;
+	outline: none;
+}
+</style>
+<template>
+	<div>
+		<div style="text-align: center;margin: 20px 0 40px 0">
+			<div  v-for="(c,index) in con">
+				<div style="margin-bottom: 16px" v-show="c.sch0" >
+					<input v-model="c.school" class="dropbtn"/>
+					<img src="../../../src/img/ns-head-jtx.png" @click="show(index)" class="xs"/>
+				</div>
+				<div v-show="c.sch1">
+				<div style="margin-bottom: 16px">
+					<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">学校名称</span>
+					<span style="font-size: 14px;width: 230px;display: inline-block;text-align: left">
+										<Input v-model="c.school" style="width:150px" @on-change="change(index)"></Input>
+								</span>
+					<i-switch style="margin-left: 30px" v-model="c.switch1" @on-change="change1(index)">
+						<span slot="open">公开</span>
+						<span slot="close">隐藏</span>
+					</i-switch>
+				</div>
+				<div style="margin-bottom: 16px">
+					<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">学历学位</span>
+					<span style="font-size: 14px;width: 230px;display: inline-block;text-align: left">
+									  <Select v-model="c.education" style="width:150px" @on-change="change(index)">
+											<Option v-for="item in xueli" :value="item.value" >{{ item.label }}</Option>
+										</Select>
+								</span>
+					<i-switch style="margin-left: 30px" v-model="c.switch4" @on-change="change1(index)">
+						<span slot="open">公开</span>
+						<span slot="close">隐藏</span>
+					</i-switch>
+				</div>
+				<div style="margin-bottom: 16px" v-show="xuey">
+					<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">学业名称</span>
+					<span style="font-size: 14px;width: 230px;display: inline-block;text-align: left">
+				  <Select v-model="c.academic" style="width:150px" @on-change="change(index)">
+						<Option v-for="item in zhuanye" :value="item.value" >{{ item.label }}</Option>
+					</Select>
+								</span>
+					<i-switch style="margin-left: 30px" v-model="c.switch2" @on-change="change1(index)">
+						<span slot="open">公开</span>
+						<span slot="close">隐藏</span>
+					</i-switch>
+				</div>
+				<div style="margin-bottom: 16px" v-show="xuey">
+					<span style="font-size: 14px;padding-right: 30px;text-align: right" class="span-width">是否统招</span>
+					<span style="font-size: 14px;width: 230px;display: inline-block;text-align: left">
+									  <Select v-model="c.tongz" style="width:150px" @on-change="change(index)">
+											<Option v-for="item in tongzhao" :value="item.value" >{{ item.label }}</Option>
+										</Select>
+								</span>
+					<i-switch style="margin-left: 30px" v-model="c.switch3" @on-change="change1(index)">
+						<span slot="open">公开</span>
+						<span slot="close">隐藏</span>
+					</i-switch>
+				</div>
+
+
+
+				<div style="margin-bottom: 16px">
+					<span style="font-size: 14px;padding-right: 30px;text-align: right;    text-align: left;" class="span-width">入学/毕业时间</span>
+					<span style="font-size: 14px;display: inline-block;width: 230px;text-align: left">
+
+				<Date-picker v-model="c.time" format="yyyy年MM月" @on-change="time=$event" type="daterange" @on-ok="change(index)" confirm="true"
+					 placeholder="选择日期" style="width: 150px;"></Date-picker>
+				</span>
+					<i-switch style="margin-left: 30px" v-model="c.switch5" @on-change="change1(index)">
+						<span slot="open">公开</span>
+						<span slot="close">隐藏</span>
+					</i-switch>
+				</div>
+				</div>
+			</div>
+				<div style="margin-bottom: 16px">
+					<span style="font-size: 14px;padding-right: 30px;text-align: right; margin-left: -316px;color: #4fac77" class="span-width" @click="add">新增学历</span>
+
+				</div>
+
+
+		</div>
+			<div v-for="(c,index) in con" v-show="c.sch1">
+				<h2 style="text-align: center;padding:0 0 20px 0">实时预览</h2>
+				<Input v-model="c.content" type="textarea" :rows="7" placeholder="请输入..." v-on:input="saveBasic"></Input>
+			</div>
+		</div>
+</template>
+
+<script>
+	import $ from 'jquery'
+
+	export default {
+		data() {
+			return {
+
+				xuey:true,
+				zhuanye: [{
+						value: '计算机信息与技术',
+						label: '计算机信息与技术'
+					},
+					{
+						value: '磨具设计与制造',
+						label: '磨具设计与制造'
+					},
+					{
+						value: '会计',
+						label: '会计'
+					}
+
+				],
+				tongzhao: [{
+						value: '全日制统招',
+						label: '全日制统招'
+					},
+					{
+						value: '自考',
+						label: '自考'
+					},
+					{
+						value: '函授',
+						label: '函授'
+					}
+
+				],
+				xueli: [{
+						value: '小学',
+						label: '小学'
+					},
+					{
+						value: '初中',
+						label: '初中'
+					},
+					{
+						value: '高中',
+						label: '高中'
+					},
+					{
+						value: '大专',
+						label: '大专'
+					},
+					{
+						value: '本科',
+						label: '本科'
+					},
+					{
+						value: '研究生',
+						label: '研究生'
+					}
+
+				],
+				result:[
+				{
+					contents:{
+						school: '',
+						academic: '',
+						education: '',
+						tongz: '',
+						time: []
+					},
+					contents1:{
+						school: '',
+						academic: '',
+						education: '',
+						tongz: '',
+						time: []
+					}
+				}
+				],
+				con:[
+					{
+					content: '',
+					content1: '',
+					school: '',
+					academic: '',
+					education: '',
+					tongz: '',
+					time: [],
+					sch0:false,
+					sch1:true,
+					switch1:true,
+					switch2:true,
+					switch3:true,
+					switch4:true,
+					switch5:true,
+					}
+				]
+
+
+
+
+			}
+		},
+		methods: {
+			change(e) {
+				if(this.con[e].education=='小学'||this.con[e].education=='初中'||this.con[e].education=='高中'){
+					this.xuey=false;
+				}else{
+					this.xuey=true;
+				}
+				if(this.con[e].school != '') {
+					this.result[e].contents.school = '年就读于' + this.con[e].school+','
+					if(this.con[e].switch1==true){
+						this.result[e].contents1.school='年就读于' + this.con[e].school
+					}
+				}
+				if(this.con[e].academic != '') {
+					this.result[e].contents.academic = this.con[e].academic+','
+					if(this.con[e].switch2==true){
+						this.result[e].contents1.academic=this.con[e].academic+','
+					}
+				}
+				if(this.con[e].tongz != '') {
+					this.result[e].contents.tongz= this.con[e].tongz+','
+					if(this.con[e].switch3==true){
+						this.result[e].contents1.tongz=this.con[e].tongz+','
+					}
+				}
+				if(this.con[e].education != '') {
+					this.result[e].contents.education= this.con[e].education+',';
+					if(this.con[e].switch4==true){
+						this.result[e].contents1.education=this.con[e].education+','
+					}
+				}
+				if(this.con[e].time.length != 0) {
+					this.result[e].contents.time = this.con[e].time
+					if(this.con[e].switch5==true){
+						this.result[e].contents1.time=this.con[e].time
+					}
+				}
+				this.con[e].content=this.result[e].contents.school+this.result[e].contents.academic+this.result[e].contents.tongz+this.result[e].contents.education;
+				if(this.result[e].contents.time.length != 0) {
+					this.con[e].content=this.result[e].contents.time[0]+"-"+this.result[e].contents.time[1]+this.con[e].content
+				}
+
+				this.con[e].content1=this.result[e].contents1.school+this.result[e].contents1.academic+this.result[e].contents1.tongz+this.result[e].contents1.education;
+
+				if(this.result[e].contents1.time.length != 0) {
+					this.con[e].content1=this.result[e].contents1.time[0]+"-"+this.result[e].contents1.time[1]+this.con[e].content1
+				}
+
+				this.saveBasic()
+
+			},
+			change1(e) {
+					if(this.con[e].school != ''&this.con[e].switch1==true){
+						contents1.school='年就读于' + this.con[e].school+','
+					}else{
+						contents1.school=''
+					}
+					if(this.con[e].academic != ''&this.con[e].switch2==true){
+						contents1.academic=this.con[e].academic+','
+					}else{
+						contents1.academic=''
+					}
+					if(this.con[e].tongz != ''&this.con[e].switch3==true){
+						contents1.tongz=this.con[e].tongz+','
+					}else{
+						contents1.tongz=''
+					}
+					if(this.con[e].education != ''&this.con[e].switch4==true){
+						contents1.education=this.con[e].education+','
+					}else{
+						contents1.education=''
+					}
+					if(this.con[e].time.length !=0&this.con[e].switch5==true){
+						contents1.time=this.con[e].time
+					}else{
+						contents1.time=''
+					}
+
+
+				this.con[e].content1=this.result[e].contents1.school+this.result[e].contents1.academic+this.result[e].contents1.tongz+this.result[e].contents1.education;
+
+				if(this.result[e].contents1.time.length != 0) {
+					this.con[e].content1=this.result[e].contents1.time[0]+"-"+this.result[e].contents1.time[1]+this.con[e].content1
+				}
+
+
+				this.saveBasic()
+
+			},
+			saveBasic() {
+				this.$store.commit('saveEducation', this.con)
+			},
+
+			add(){
+				var len=this.con.length
+				this.con[len-1].sch0=true
+				this.con[len-1].sch1=false
+				var newresult=
+					{
+						contents:{
+							school: '',
+							academic: '',
+							education: '',
+							tongz: '',
+							time: [],
+
+						},
+						contents1:{
+							school: '',
+							academic: '',
+							education: '',
+							tongz: '',
+							time: []
+						}
+					}
+
+				this.result.push(newresult);
+				var newclone=
+					{
+					content: '',
+					content1: '',
+					school: '',
+					academic: '',
+					education: '',
+					tongz: '',
+					time: [],
+					sch0:false,
+					sch1:true,
+					switch1:true,
+					switch2:true,
+					switch3:true,
+					switch4:true,
+					switch5:true,
+					}
+				this.con.push(newclone);
+
+			},
+			show(e){
+					var obj = event.target;
+					var this_=$(obj).parent().next();
+					$(this_).toggle("slow","linear",function(){
+						$(this_).addClass("intro1")
+					})
+
+
+
+
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

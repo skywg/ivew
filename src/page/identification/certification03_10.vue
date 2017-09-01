@@ -1,0 +1,46 @@
+<template>
+	<!--3实名认证第十步开始-->
+	<div>
+
+		<p style="text-align: center;margin-top: 30px;font-size: 16px;line-height: 1.8;    padding-top: 65px;">填写信息</p>
+		<div style="margin: 10px auto">
+			<div style="text-align: center">
+				<Input v-model="account.name" placeholder="真实姓名" style="width: 260px;height: 45px;margin-top:6px;" size="large" @on-change="change"></Input>
+				<span class="zhushi">*</span>
+			</div>
+			<div style="text-align: center">
+				<Input v-model="account.idcard" placeholder="身份证号码" style="width: 260px;height: 45px;margin-top:6px;" size="large" @on-change="change"></Input>
+				<span class="zhushi">*</span>
+			</div>
+
+		</div>
+		<div style="height: 30px"></div>
+	</div>
+	<!--3实名认证第十步结束-->
+
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				account:{
+					name:'',
+					idcard:''
+				}
+			}
+		},
+		created:function(){
+		this.$parent.baifen=100
+	},
+	methods:{
+		change(){
+			this.$store.commit('saveAccount',this.account)
+		}
+	}
+	}
+</script>
+
+<style>
+
+</style>
